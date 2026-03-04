@@ -1,0 +1,3574 @@
+[00:00:03.996] Server  LOG     ✓ Ready in 3.7s
+[00:00:07.041] Server  LOG     ○ Compiling / ...
+[00:00:07.728] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard
+You cannot have two parallel pages that resolve to the same path. Please check /(authenticated)/(creator)/dashboard and /(authenticated)/dashboard.
+
+
+./Documents/Subpay/frontend/app/globals.css:2056:8
+Parsing CSS source code failed
+  2054 |   }
+  2055 | }
+> 2056 | @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap");
+       |        ^
+  2057 | *, *::before, *::after {
+  2058 |   box-sizing: border-box;
+  2059 | }
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/globals.css [Client Component Browser]
+    ./Documents/Subpay/frontend/app/layout.tsx [Server Component]
+
+
+[00:00:09.081] Browser ERROR   uncaughtError: Error: ./Documents/Subpay/frontend/app/(authenticated)/dashboard
+You cannot have two parallel pages that resolve to the same path. Please check /(authenticated)/(creator)/dashboard and /(authenticated)/dashboard.
+
+[00:00:09.251] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/dashboard
+You cannot have two parallel pages that resolve to the same path. Please check /(authenticated)/(creator)/dashboard and /(authenticated)/dashboard.
+[00:00:09.251] Browser ERROR   ./Documents/Subpay/frontend/app/globals.css:2056:8
+Parsing CSS source code failed
+  2054 |   }
+  2055 | }
+> 2056 | @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap");
+       |        ^
+  2057 | *, *::before, *::after {
+  2058 |   box-sizing: border-box;
+  2059 | }
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/globals.css [Client Component Browser]
+    ./Documents/Subpay/frontend/app/layout.tsx [Server Component]
+[00:00:09.893] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/dashboard
+You cannot have two parallel pages that resolve to the same path. Please check /(authenticated)/(creator)/dashboard and /(authenticated)/dashboard.
+[00:00:09.893] Browser ERROR   ./Documents/Subpay/frontend/app/globals.css:2056:8
+Parsing CSS source code failed
+  2054 |   }
+  2055 | }
+> 2056 | @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap");
+       |        ^
+  2057 | *, *::before, *::after {
+  2058 |   box-sizing: border-box;
+  2059 | }
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/globals.css [Client Component Browser]
+    ./Documents/Subpay/frontend/app/layout.tsx [Server Component]
+[00:00:56.330] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/globals.css:2056:8
+Parsing CSS source code failed
+  2054 |   }
+  2055 | }
+> 2056 | @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap");
+       |        ^
+  2057 | *, *::before, *::after {
+  2058 |   box-sizing: border-box;
+  2059 | }
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/globals.css [Client Component Browser]
+    ./Documents/Subpay/frontend/app/layout.tsx [Server Component]
+
+
+[00:00:56.648] Browser ERROR   uncaughtError: Error: ./Documents/Subpay/frontend/app/globals.css:2056:8
+Parsing CSS source code failed
+  2054 |   }
+  2055 | }
+> 2056 | @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap");
+       |        ^
+  2057 | *, *::before, *::after {
+  2058 |   box-sizing: border-box;
+  2059 | }
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/globals.css [Client Component Browser]
+    ./Documents/Subpay/frontend/app/layout.tsx [Server Component]
+
+
+[00:00:56.802] Browser ERROR   ./Documents/Subpay/frontend/app/globals.css:2056:8
+Parsing CSS source code failed
+  2054 |   }
+  2055 | }
+> 2056 | @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap");
+       |        ^
+  2057 | *, *::before, *::after {
+  2058 |   box-sizing: border-box;
+  2059 | }
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/globals.css [Client Component Browser]
+    ./Documents/Subpay/frontend/app/layout.tsx [Server Component]
+[00:00:56.802] Browser ERROR   ./Documents/Subpay/frontend/app/globals.css:2056:8
+Parsing CSS source code failed
+  2054 |   }
+  2055 | }
+> 2056 | @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap");
+       |        ^
+  2057 | *, *::before, *::after {
+  2058 |   box-sizing: border-box;
+  2059 | }
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/globals.css [Client Component Browser]
+    ./Documents/Subpay/frontend/app/layout.tsx [Server Component]
+[00:05:07.594] Browser ERROR   ./Documents/Subpay/frontend/app/globals.css:1990:8
+Parsing CSS source code failed
+  1988 |   }
+  1989 | }
+> 1990 | @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap");
+       |        ^
+  1991 | *, *::before, *::after {
+  1992 |   box-sizing: border-box;
+  1993 | }
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/globals.css [Client Component Browser]
+    ./Documents/Subpay/frontend/app/layout.tsx [Server Component]
+[00:05:09.218] Browser ERROR   ./Documents/Subpay/frontend/app/globals.css:1990:8
+Parsing CSS source code failed
+  1988 |   }
+  1989 | }
+> 1990 | @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap");
+       |        ^
+  1991 | *, *::before, *::after {
+  1992 |   box-sizing: border-box;
+  1993 | }
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/globals.css [Client Component Browser]
+    ./Documents/Subpay/frontend/app/layout.tsx [Server Component]
+[00:05:23.882] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/globals.css:1990:8
+Parsing CSS source code failed
+  1988 |   }
+  1989 | }
+> 1990 | @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap");
+       |        ^
+  1991 | *, *::before, *::after {
+  1992 |   box-sizing: border-box;
+  1993 | }
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/globals.css [Client Component Browser]
+    ./Documents/Subpay/frontend/app/layout.tsx [Server Component]
+
+
+[00:05:24.022] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/globals.css:1990:8
+Parsing CSS source code failed
+  1988 |   }
+  1989 | }
+> 1990 | @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap");
+       |        ^
+  1991 | *, *::before, *::after {
+  1992 |   box-sizing: border-box;
+  1993 | }
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/globals.css [Client Component Browser]
+    ./Documents/Subpay/frontend/app/layout.tsx [Server Component]
+
+
+[00:05:24.337] Browser ERROR   uncaughtError: Error: ./Documents/Subpay/frontend/app/globals.css:1990:8
+Parsing CSS source code failed
+  1988 |   }
+  1989 | }
+> 1990 | @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap");
+       |        ^
+  1991 | *, *::before, *::after {
+  1992 |   box-sizing: border-box;
+  1993 | }
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/globals.css [Client Component Browser]
+    ./Documents/Subpay/frontend/app/layout.tsx [Server Component]
+
+
+[00:05:24.490] Browser ERROR   ./Documents/Subpay/frontend/app/globals.css:1990:8
+Parsing CSS source code failed
+  1988 |   }
+  1989 | }
+> 1990 | @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap");
+       |        ^
+  1991 | *, *::before, *::after {
+  1992 |   box-sizing: border-box;
+  1993 | }
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/globals.css [Client Component Browser]
+    ./Documents/Subpay/frontend/app/layout.tsx [Server Component]
+[00:05:24.490] Browser ERROR   ./Documents/Subpay/frontend/app/globals.css:1990:8
+Parsing CSS source code failed
+  1988 |   }
+  1989 | }
+> 1990 | @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap");
+       |        ^
+  1991 | *, *::before, *::after {
+  1992 |   box-sizing: border-box;
+  1993 | }
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/globals.css [Client Component Browser]
+    ./Documents/Subpay/frontend/app/layout.tsx [Server Component]
+[00:05:58.534] Browser ERROR   ./Documents/Subpay/frontend/app/globals.css:1990:8
+Parsing CSS source code failed
+  1988 |   }
+  1989 | }
+> 1990 | @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap");
+       |        ^
+  1991 | *, *::before, *::after {
+  1992 |   box-sizing: border-box;
+  1993 | }
+
+@import rules must precede all rules aside from @charset and @layer statements
+
+Import trace:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/globals.css [Client Component Browser]
+    ./Documents/Subpay/frontend/app/layout.tsx [Server Component]
+[00:06:00.261] Server  LOG     ✓ Compiled in 62ms
+[00:06:01.237] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/button'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Avatar, Badge, Card, ContentTypeIcon, HubCard,
+  7 |   LockedOverlay, SectionLabel, SidebarItem, Tag,
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:06:01.453] Browser ERROR   uncaughtError: Error: ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/button'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Avatar, Badge, Card, ContentTypeIcon, HubCard,
+  7 |   LockedOverlay, SectionLabel, SidebarItem, Tag,
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:06:01.599] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/button'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Avatar, Badge, Card, ContentTypeIcon, HubCard,
+  7 |   LockedOverlay, SectionLabel, SidebarItem, Tag,
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:01.599] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/button'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Avatar, Badge, Card, ContentTypeIcon, HubCard,
+  7 |   LockedOverlay, SectionLabel, SidebarItem, Tag,
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:03.682] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/button'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Avatar, Badge, Card, ContentTypeIcon, HubCard,
+  7 |   LockedOverlay, SectionLabel, SidebarItem, Tag,
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:05.185] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/button'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Avatar, Badge, Card, ContentTypeIcon, HubCard,
+  7 |   LockedOverlay, SectionLabel, SidebarItem, Tag,
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:33.313] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/button'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Avatar, Badge, Card, ContentTypeIcon, HubCard,
+  7 |   LockedOverlay, SectionLabel, SidebarItem, Tag,
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:06:46.645] Server  LOG     ✓ Compiled in 90ms
+[00:08:55.266] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/page"
+[00:08:55.472] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/page"
+[00:08:55.646] Browser ERROR   uncaughtError: Error: The default export is not a React Component in "/dashboard/page"
+[00:09:26.547] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/page"
+[00:09:26.720] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/page"
+[00:09:26.862] Browser ERROR   uncaughtError: Error: The default export is not a React Component in "/dashboard/page"
+[00:10:04.038] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/button'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Avatar, Badge, SectionLabel, SidebarItem, StatCard, Tag,
+  7 | } from "@/components/ui/hubora-ui"
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:10:04.044] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/button'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Avatar, Badge, SectionLabel, SidebarItem, StatCard, Tag,
+  7 | } from "@/components/ui/hubora-ui"
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:10:04.052] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/button'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Avatar, Badge, SectionLabel, SidebarItem, StatCard, Tag,
+  7 | } from "@/components/ui/hubora-ui"
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:10:04.058] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/button'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Avatar, Badge, SectionLabel, SidebarItem, StatCard, Tag,
+  7 | } from "@/components/ui/hubora-ui"
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:10:04.165] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve '@/components/ui/button'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import {
+  6 |   Avatar, Badge, SectionLabel, SidebarItem, StatCard, Tag,
+  7 | } from "@/components/ui/hubora-ui"
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:10:10.498] Server  LOG     ✓ Compiled in 114ms
+[00:15:40.335] Server  LOG     ✓ Compiled in 155ms
+[00:15:52.042] Server  LOG     ✓ Compiled in 92ms
+[00:16:09.459] Server  LOG     ✓ Compiled in 70ms
+[00:16:24.222] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:16:24.223] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:16:24.224] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:16:24.225] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:16:24.229] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:16:24.238] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:16:24.241] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:16:24.242] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:16:24.245] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:16:24.246] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:16:24.247] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:16:24.248] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:16:24.254] Server  LOG     ✓ Compiled in 59ms
+[00:16:24.372] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:16:45.924] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Avatar, Badge, ContentTypeIcon, HubCard, LockedOverlay, SectionLabel, SidebarItem, Tag } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:16:45.926] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Avatar, Badge, ContentTypeIcon, HubCard, LockedOverlay, SectionLabel, SidebarItem, Tag } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:16:45.927] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Avatar, Badge, ContentTypeIcon, HubCard, LockedOverlay, SectionLabel, SidebarItem, Tag } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:16:45.928] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Avatar, Badge, ContentTypeIcon, HubCard, LockedOverlay, SectionLabel, SidebarItem, Tag } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:16:45.957] Server  LOG     ✓ Compiled in 102ms
+[00:16:46.061] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Avatar, Badge, ContentTypeIcon, HubCard, LockedOverlay, SectionLabel, SidebarItem, Tag } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(member)/feed/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:16:50.514] Server  LOG     ✓ Compiled in 24ms
+[00:17:14.120] Server  LOG     ✓ Compiled in 89ms
+[00:17:38.512] Server  LOG     ✓ Compiled in 115ms
+[00:17:58.113] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Avatar, Badge, SectionLabel, SidebarItem, StatCard, Tag } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:17:58.115] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Avatar, Badge, SectionLabel, SidebarItem, StatCard, Tag } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:17:58.116] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Avatar, Badge, SectionLabel, SidebarItem, StatCard, Tag } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:17:58.119] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Avatar, Badge, SectionLabel, SidebarItem, StatCard, Tag } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:17:58.146] Server  LOG     ✓ Compiled in 75ms
+[00:17:58.251] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Avatar, Badge, SectionLabel, SidebarItem, StatCard, Tag } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:18:01.426] Server  LOG     ✓ Compiled in 79ms
+[00:25:39.859] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:39.861] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:39.862] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:39.863] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:39.867] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:39.867] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:39.869] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:39.875] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:39.878] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:39.881] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:39.883] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:39.884] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:39.886] Server  LOG     ✓ Compiled in 85ms
+[00:25:39.990] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:25:43.703] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/utton'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/utton"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/utton' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:43.705] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/utton'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/utton"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/utton' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:43.705] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/utton'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/utton"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/utton' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:43.706] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/utton'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/utton"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/utton' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:43.708] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/utton'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/utton"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/utton' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:43.709] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/utton'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/utton"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/utton' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:43.710] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/utton'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/utton"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/utton' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:43.712] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/utton'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/utton"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/utton' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:43.713] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/utton'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/utton"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/utton' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:43.715] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/utton'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/utton"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/utton' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:43.716] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/utton'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/utton"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/utton' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:43.718] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/utton'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/utton"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/utton' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:25:43.736] Server  LOG     ✓ Compiled in 27ms
+[00:25:43.839] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/utton'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/utton"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 |
+
+Import map: aliased to relative './components/ui/utton' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:26:39.885] Server  LOG     ✓ Compiled in 50ms
+[00:27:24.770] Server  LOG     ✓ Compiled in 106ms
+[00:41:22.768] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 | import GridMotion from "@/components/ui/grid-motion"
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.771] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 | import GridMotion from "@/components/ui/grid-motion"
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.773] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 | import GridMotion from "@/components/ui/grid-motion"
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.775] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 | import GridMotion from "@/components/ui/grid-motion"
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.777] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.780] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.781] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.783] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.788] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 | import GridMotion from "@/components/ui/grid-motion"
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.789] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 | import GridMotion from "@/components/ui/grid-motion"
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.791] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 | import GridMotion from "@/components/ui/grid-motion"
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.793] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 | import GridMotion from "@/components/ui/grid-motion"
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.794] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.796] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.796] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.798] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.800] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 | import GridMotion from "@/components/ui/grid-motion"
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.806] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 | import GridMotion from "@/components/ui/grid-motion"
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.810] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 | import GridMotion from "@/components/ui/grid-motion"
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.812] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 | import GridMotion from "@/components/ui/grid-motion"
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.814] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.815] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.817] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.819] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:22.822] Server  LOG     ✓ Compiled in 159ms
+[00:41:22.927] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:5:1
+Module not found: Can't resolve '@/components/ui/button'
+  3 |
+  4 | import { useState } from "react"
+> 5 | import { Button } from "@/components/ui/button"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { Input } from "@/components/ui/hubora-ui"
+  7 | import { cn } from "@/lib/utils"
+  8 | import GridMotion from "@/components/ui/grid-motion"
+
+Import map: aliased to relative './components/ui/button' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:41:22.927] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:41:29.087] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:29.105] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:29.108] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:29.111] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:29.125] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:29.131] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:29.133] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:29.134] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:29.139] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:29.146] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:29.147] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:29.148] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:41:29.149] Server  LOG     ✓ Compiled in 116ms
+[00:41:29.253] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:41:50.355] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:8:1
+Module not found: Can't resolve '@/components/ui/grid-motion'
+   6 | import { Input } from "@/components/ui/hubora-ui"
+   7 | import { cn } from "@/lib/utils"
+>  8 | import GridMotion from "@/components/ui/grid-motion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | type Tab = "register" | "login"
+  11 | type Role = "member" | "creator"
+
+Import map: aliased to relative './components/ui/grid-motion' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:41:58.420] Browser ERROR   uncaughtError: Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `AuthPage`.
+[00:42:00.425] Server  ERROR   ⨯ ./Documents/Subpay/frontend/components/ui/grid-motion.tsx:5:1
+Module not found: Can't resolve 'gsap'
+  3 |
+  4 | import { useEffect, useRef } from "react"
+> 5 | import { gsap } from "gsap"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface GridMotionProps {
+  8 |   items?: string[]
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:42:00.426] Server  ERROR   ⨯ ./Documents/Subpay/frontend/components/ui/grid-motion.tsx:5:1
+Module not found: Can't resolve 'gsap'
+  3 |
+  4 | import { useEffect, useRef } from "react"
+> 5 | import { gsap } from "gsap"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface GridMotionProps {
+  8 |   items?: string[]
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:42:00.426] Server  ERROR   ⨯ ./Documents/Subpay/frontend/components/ui/grid-motion.tsx:5:1
+Module not found: Can't resolve 'gsap'
+  3 |
+  4 | import { useEffect, useRef } from "react"
+> 5 | import { gsap } from "gsap"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface GridMotionProps {
+  8 |   items?: string[]
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:42:00.427] Server  ERROR   ⨯ ./Documents/Subpay/frontend/components/ui/grid-motion.tsx:5:1
+Module not found: Can't resolve 'gsap'
+  3 |
+  4 | import { useEffect, useRef } from "react"
+> 5 | import { gsap } from "gsap"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface GridMotionProps {
+  8 |   items?: string[]
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:42:00.429] Server  ERROR   ⨯ ./Documents/Subpay/frontend/components/ui/grid-motion.tsx:5:1
+Module not found: Can't resolve 'gsap'
+  3 |
+  4 | import { useEffect, useRef } from "react"
+> 5 | import { gsap } from "gsap"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface GridMotionProps {
+  8 |   items?: string[]
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:42:00.429] Server  ERROR   ⨯ ./Documents/Subpay/frontend/components/ui/grid-motion.tsx:5:1
+Module not found: Can't resolve 'gsap'
+  3 |
+  4 | import { useEffect, useRef } from "react"
+> 5 | import { gsap } from "gsap"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface GridMotionProps {
+  8 |   items?: string[]
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:42:00.430] Server  ERROR   ⨯ ./Documents/Subpay/frontend/components/ui/grid-motion.tsx:5:1
+Module not found: Can't resolve 'gsap'
+  3 |
+  4 | import { useEffect, useRef } from "react"
+> 5 | import { gsap } from "gsap"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface GridMotionProps {
+  8 |   items?: string[]
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:42:00.436] Server  ERROR   ⨯ ./Documents/Subpay/frontend/components/ui/grid-motion.tsx:5:1
+Module not found: Can't resolve 'gsap'
+  3 |
+  4 | import { useEffect, useRef } from "react"
+> 5 | import { gsap } from "gsap"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface GridMotionProps {
+  8 |   items?: string[]
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:42:00.437] Server  ERROR   ⨯ ./Documents/Subpay/frontend/components/ui/grid-motion.tsx:5:1
+Module not found: Can't resolve 'gsap'
+  3 |
+  4 | import { useEffect, useRef } from "react"
+> 5 | import { gsap } from "gsap"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface GridMotionProps {
+  8 |   items?: string[]
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:42:00.438] Server  ERROR   ⨯ ./Documents/Subpay/frontend/components/ui/grid-motion.tsx:5:1
+Module not found: Can't resolve 'gsap'
+  3 |
+  4 | import { useEffect, useRef } from "react"
+> 5 | import { gsap } from "gsap"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface GridMotionProps {
+  8 |   items?: string[]
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:42:00.440] Server  ERROR   ⨯ ./Documents/Subpay/frontend/components/ui/grid-motion.tsx:5:1
+Module not found: Can't resolve 'gsap'
+  3 |
+  4 | import { useEffect, useRef } from "react"
+> 5 | import { gsap } from "gsap"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface GridMotionProps {
+  8 |   items?: string[]
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:42:00.442] Server  ERROR   ⨯ ./Documents/Subpay/frontend/components/ui/grid-motion.tsx:5:1
+Module not found: Can't resolve 'gsap'
+  3 |
+  4 | import { useEffect, useRef } from "react"
+> 5 | import { gsap } from "gsap"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface GridMotionProps {
+  8 |   items?: string[]
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:42:00.459] Server  LOG     ✓ Compiled in 68ms
+[00:42:00.563] Browser ERROR   ./Documents/Subpay/frontend/components/ui/grid-motion.tsx:5:1
+Module not found: Can't resolve 'gsap'
+  3 |
+  4 | import { useEffect, useRef } from "react"
+> 5 | import { gsap } from "gsap"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface GridMotionProps {
+  8 |   items?: string[]
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:42:15.349] Browser ERROR   ./Documents/Subpay/frontend/components/ui/grid-motion.tsx:5:1
+Module not found: Can't resolve 'gsap'
+  3 |
+  4 | import { useEffect, useRef } from "react"
+> 5 | import { gsap } from "gsap"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface GridMotionProps {
+  8 |   items?: string[]
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:42:19.011] Browser ERROR   ./Documents/Subpay/frontend/components/ui/grid-motion.tsx:5:1
+Module not found: Can't resolve 'gsap'
+  3 |
+  4 | import { useEffect, useRef } from "react"
+> 5 | import { gsap } from "gsap"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface GridMotionProps {
+  8 |   items?: string[]
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:42:22.980] Browser ERROR   ./Documents/Subpay/frontend/components/ui/grid-motion.tsx:5:1
+Module not found: Can't resolve 'gsap'
+  3 |
+  4 | import { useEffect, useRef } from "react"
+> 5 | import { gsap } from "gsap"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | interface GridMotionProps {
+  8 |   items?: string[]
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/components/ui/grid-motion.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:42:24.088] Server  LOG     ✓ Compiled in 164ms
+[00:42:24.443] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:43:23.535] Server  LOG     ✓ Compiled in 139ms
+[00:43:24.535] Server  LOG     ✓ Compiled in 23ms
+[00:54:55.025] Server  LOG     ✓ Compiled in 113ms
+[00:57:51.185] Server  LOG     ✓ Compiled in 59ms
+[00:59:33.944] Server  LOG     ✓ Compiled in 69ms
+[00:59:51.166] Server  LOG     ✓ Compiled in 63ms
+[01:18:49.705] Server  LOG     ✓ Compiled in 198ms
+[01:19:11.620] Server  LOG     ✓ Compiled in 113ms
+[01:19:18.302] Server  LOG     ✓ Compiled in 33ms
+[01:19:45.700] Server  LOG     ✓ Compiled in 40ms
+[01:19:45.815] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:14:43
+Parsing ecmascript source code failed
+  12 |
+  13 | // 28 local creator clip images — place these in /public/authclips/
+> 14 | const AUTH_IMAGES = Array.from({ length:  }, (_, i) => `/authclips/auth${i + 1}.jpeg`)
+     |                                           ^
+  15 |
+  16 | export default function AuthPage() {
+  17 |   const [tab, setTab] = useState<Tab>("register")
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+[01:20:07.518] Server  LOG     ✓ Compiled in 59ms
+[01:20:12.009] Server  LOG     ✓ Compiled in 42ms
+[01:20:33.233] Server  LOG     ✓ Compiled in 43ms
+[01:21:02.695] Server  LOG     ✓ Compiled in 54ms
+[01:21:13.664] Server  LOG     ✓ Compiled in 160ms
+[01:21:21.083] Server  LOG     ✓ Compiled in 113ms
+[01:21:28.539] Server  LOG     ✓ Compiled in 26ms
+[01:21:50.987] Server  LOG     ✓ Compiled in 48ms
+[01:21:58.452] Server  LOG     ✓ Compiled in 26ms
+[01:24:09.225] Server  LOG     ✓ Compiled in 183ms
+[01:24:09.334] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:107:9
+Parsing ecmascript source code failed
+  105 |           </p>
+  106 |         </div>
+> 107 |       </div>
+      |         ^^^
+  108 |
+  109 |       {/* ── RIGHT — GridMotion (lavender bg) ── */}
+  110 |       <div className="hidden lg:block flex-1 relative bg-[#F5F3FF] overflow-hidden">
+
+Expected corresponding JSX closing tag for <main>
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+[01:24:09.835] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:107:9
+Parsing ecmascript source code failed
+  105 |           </p>
+  106 |         </div>
+> 107 |       </div>
+      |         ^^^
+  108 |
+  109 |       {/* ── RIGHT — GridMotion (lavender bg) ── */}
+  110 |       <div className="hidden lg:block flex-1 relative bg-[#F5F3FF] overflow-hidden">
+
+Expected corresponding JSX closing tag for <main>
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+[01:24:18.174] Server  LOG     ✓ Compiled in 26ms
+[01:24:23.913] Server  LOG     ✓ Compiled in 51ms
+[01:24:24.017] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:107:9
+Parsing ecmascript source code failed
+  105 |           </p>
+  106 |         </div>
+> 107 |       </div>
+      |         ^^^
+  108 |
+  109 |       {/* ── RIGHT — GridMotion (lavender bg) ── */}
+  110 |       <div className="hidden lg:block flex-1 relative bg-[#F5F3FF] overflow-hidden">
+
+Expected corresponding JSX closing tag for <main>
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+[01:24:55.113] Server  LOG     ✓ Compiled in 30ms
+[01:24:55.219] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:108:7
+Parsing ecmascript source code failed
+  106 |           </p>
+  107 |         </div>
+> 108 |       </div>
+      |       ^
+  109 |
+  110 |       {/* ── RIGHT — GridMotion (lavender bg) ── */}
+  111 |       <div className="hidden lg:block flex-1 relative bg-[#F5F3FF] overflow-hidden">
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+[01:24:55.219] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:108:8
+Parsing ecmascript source code failed
+  106 |           </p>
+  107 |         </div>
+> 108 |       </div>
+      |        ^^^^^
+  109 |
+  110 |       {/* ── RIGHT — GridMotion (lavender bg) ── */}
+  111 |       <div className="hidden lg:block flex-1 relative bg-[#F5F3FF] overflow-hidden">
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+[01:24:57.320] Server  LOG     ✓ Compiled in 28ms
+[01:24:57.424] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:61:13
+Parsing ecmascript source code failed
+  59 |                 : "Good to see you again. Sign in to continue."}
+  60 |             </p>
+> 61 |           </div>
+     |             ^^^
+  62 |
+  63 |           {/* Card */}
+  64 |           <div className="bg-white rounded-3xl overflow-hidden" style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.1)" }}>
+
+Expected corresponding JSX closing tag for <main>
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+[01:24:59.068] Server  LOG     ✓ Compiled in 26ms
+[01:24:59.170] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:54:13
+Parsing ecmascript source code failed
+  52 | </div>
+  53 |
+> 54 |             <h1 className="font-display text-[26px] font-bold tracking-tight text-white leading-tight">
+     |             ^
+  55 |               {tab === "register" ? "Create your account" : "Welcome back"}
+  56 |             </h1>
+  57 |             <p className="font-body text-[14px] mt-2 leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+[01:25:01.585] Server  LOG     ✓ Compiled in 24ms
+[01:25:01.687] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:62:13
+Parsing ecmascript source code failed
+  60 |                 : "Good to see you again. Sign in to continue."}
+  61 |             </p>
+> 62 |           </div>
+     |             ^^^
+  63 |
+  64 |           {/* Card */}
+  65 |           <div className="bg-white rounded-3xl overflow-hidden" style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.1)" }}>
+
+Expected corresponding JSX closing tag for <main>
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+[01:25:09.771] Server  LOG     ✓ Compiled in 71ms
+[01:25:09.875] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:109:7
+Parsing ecmascript source code failed
+  107 |           </p>
+  108 |         </div>
+> 109 |       </div>
+      |       ^
+  110 |
+  111 |       {/* ── RIGHT — GridMotion (lavender bg) ── */}
+  112 |       <div className="hidden lg:block flex-1 relative bg-[#F5F3FF] overflow-hidden">
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+[01:25:09.875] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:109:8
+Parsing ecmascript source code failed
+  107 |           </p>
+  108 |         </div>
+> 109 |       </div>
+      |        ^^^^^
+  110 |
+  111 |       {/* ── RIGHT — GridMotion (lavender bg) ── */}
+  112 |       <div className="hidden lg:block flex-1 relative bg-[#F5F3FF] overflow-hidden">
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+[01:25:36.685] Server  LOG     ✓ Compiled in 68ms
+[01:25:36.795] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:108:9
+Parsing ecmascript source code failed
+  106 |           </p>
+  107 |         </div>
+> 108 |       </div>
+      |         ^^^
+  109 |
+  110 |       {/* ── RIGHT — GridMotion (lavender bg) ── */}
+  111 |       <div className="hidden lg:block flex-1 relative bg-[#F5F3FF] overflow-hidden">
+
+Expected corresponding JSX closing tag for <main>
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+[01:25:49.750] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:107:9
+Parsing ecmascript source code failed
+  105 |           </p>
+  106 |         </div>
+> 107 |       </div>
+      |         ^^^
+  108 |
+  109 |       {/* ── RIGHT — GridMotion (lavender bg) ── */}
+  110 |       <div className="hidden lg:block flex-1 relative bg-[#F5F3FF] overflow-hidden">
+
+Expected corresponding JSX closing tag for <main>
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+[01:26:09.616] Server  LOG     ✓ Compiled in 55ms
+[01:26:09.726] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:37:13
+Parsing ecmascript source code failed
+  35 |                 : "Good to see you again. Sign in to continue."}
+  36 |             </p>
+> 37 |           </div>
+     |             ^^^
+  38 |
+  39 |           {/* Card */}
+  40 |           <div className="bg-white rounded-3xl overflow-hidden" style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.1)" }}>
+
+Expected corresponding JSX closing tag for <main>
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+[01:26:27.535] Server  LOG     ✓ Compiled in 60ms
+[01:26:27.669] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:84:7
+Parsing ecmascript source code failed
+  82 |           </p>
+  83 |         </div>
+> 84 |       </div>
+     |       ^
+  85 |
+  86 |       {/* ── RIGHT — GridMotion (lavender bg) ── */}
+  87 |       <div className="hidden lg:block flex-1 relative bg-[#F5F3FF] overflow-hidden">
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+[01:26:27.671] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:84:8
+Parsing ecmascript source code failed
+  82 |           </p>
+  83 |         </div>
+> 84 |       </div>
+     |        ^^^^^
+  85 |
+  86 |       {/* ── RIGHT — GridMotion (lavender bg) ── */}
+  87 |       <div className="hidden lg:block flex-1 relative bg-[#F5F3FF] overflow-hidden">
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+[01:26:36.884] Server  LOG     ✓ Compiled in 55ms
+[01:26:36.987] Browser ERROR   ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx:107:9
+Parsing ecmascript source code failed
+  105 |           </p>
+  106 |         </div>
+> 107 |       </div>
+      |         ^^^
+  108 |
+  109 |       {/* ── RIGHT — GridMotion (lavender bg) ── */}
+  110 |       <div className="hidden lg:block flex-1 relative bg-[#F5F3FF] overflow-hidden">
+
+Expected corresponding JSX closing tag for <main>
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(auth)/auth/page.tsx [Server Component]
+[01:30:19.689] Server  LOG     ✓ Compiled in 110ms
+[01:30:42.355] Server  LOG     ✓ Compiled in 67ms
+[01:31:27.440] Server  LOG     ✓ Compiled in 34ms
+[01:31:30.459] Server  LOG     ✓ Compiled in 81ms
+[01:31:35.094] Server  LOG     ✓ Compiled in 65ms
+[01:31:36.314] Server  LOG     ✓ Compiled in 66ms
+[01:31:42.364] Server  LOG     ✓ Compiled in 29ms
+[01:31:43.715] Server  LOG     ✓ Compiled in 36ms
+[01:31:45.541] Server  LOG     ✓ Compiled in 59ms
+[01:31:53.521] Server  LOG     ✓ Compiled in 37ms
+[01:31:59.038] Server  LOG     ✓ Compiled in 28ms
+[01:32:06.563] Server  LOG     ✓ Compiled in 34ms
+[01:32:12.209] Server  LOG     ✓ Compiled in 88ms
+[01:32:18.507] Server  LOG     ✓ Compiled in 31ms
+[01:32:23.571] Server  LOG     ✓ Compiled in 52ms
+[01:32:28.529] Server  LOG     ✓ Compiled in 26ms
+[01:36:53.892] Server  LOG     ✓ Compiled in 118ms
+[01:37:48.036] Server  LOG     ✓ Compiled in 32ms
+[01:37:52.262] Server  LOG     ✓ Compiled in 32ms
+[01:37:54.815] Server  LOG     ✓ Compiled in 74ms
+[01:37:59.157] Server  LOG     ✓ Compiled in 27ms
+[01:38:27.311] Server  LOG     ✓ Compiled in 40ms
+[01:38:33.822] Server  LOG     ✓ Compiled in 28ms
+[01:38:34.892] Server  LOG     ✓ Compiled in 33ms
+[01:38:54.537] Server  LOG     ✓ Compiled in 74ms
+[01:38:55.850] Server  LOG     ✓ Compiled in 23ms
+[01:39:01.525] Server  LOG     ✓ Compiled in 28ms
