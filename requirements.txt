@@ -1,0 +1,25 @@
+# [tool.poetry]
+# name = "fastapi-auth"
+# version = "2.0.0"
+# description = "FastAPI Full Auth: JWT + Email Verification + Password Reset + OAuth"
+# authors = ["Timilehin Festus-Osho"]
+
+# [tool.poetry.dependencies]
+fastapi
+uvicorn
+sqlalchemy
+alembic
+psycopg2-binary
+pydantic[email]
+pydantic-settings
+passlib[bcrypt]
+python-jose[cryptography]
+python-multipart
+fastapi-mail
+httpx
+itsdangerous
+
+
+# [tool.poetry.dev-dependencies]
+pytest 
+pytest-asyncio 
