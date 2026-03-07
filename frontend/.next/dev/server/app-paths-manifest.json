@@ -1,7 +1,5 @@
 {
   "/(auth)/auth/page": "app/(auth)/auth/page.js",
-  "/(authenticated)/(creator)/dashboard/page": "app/(authenticated)/(creator)/dashboard/page.js",
   "/(authenticated)/(member)/feed/page": "app/(authenticated)/(member)/feed/page.js",
-  "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js"
 }

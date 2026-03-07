@@ -182,10 +182,10 @@ export default function AuthPage() {
 function RegisterForm({ role, setRole }: { role: Role; setRole: (r: Role) => void }) {
   return (
     <div className="flex flex-col gap-5">
-      <div className="grid grid-cols-2 gap-3">
+      {/* <div className="grid grid-cols-2 gap-3">
         <Input label="First Name" type="text" placeholder="Ada" />
         <Input label="Last Name"  type="text" placeholder="Okonkwo" />
-      </div>
+      </div> */}
       <Input label="Email Address" type="email"    placeholder="ada@email.com" />
       <Input label="Password"      type="password" placeholder="Min. 8 characters" />
 
