@@ -1,3 +1,1487 @@
-[00:00:02.730] Server  LOG     ✓ Ready in 2.3s
-[00:00:04.366] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:16.582] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:00.923] Server  LOG     ✓ Ready in 685ms
+[00:09:01.518] Server  LOG     ✓ Compiled in 362ms
+[00:18:18.792] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve './AppSidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "./AppSidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:18:18.815] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve './AppSidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "./AppSidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:18:18.829] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve './AppSidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "./AppSidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:18:18.836] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve './AppSidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "./AppSidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:18:18.852] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve './AppSidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "./AppSidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:18:18.862] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve './AppSidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "./AppSidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:18:18.866] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve './AppSidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "./AppSidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:18:18.891] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve './AppSidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "./AppSidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:18:18.904] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve './AppSidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "./AppSidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:18:18.908] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve './AppSidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "./AppSidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:18:18.912] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve './AppSidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "./AppSidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:18:18.933] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve './AppSidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "./AppSidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:18:18.958] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve './AppSidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "./AppSidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:18:32.270] Browser ERROR   uncaughtError: ReferenceError: AppSidebar is not defined
+[00:19:06.332] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:19:06.354] Server  LOG     ✓ Compiled in 58ms
+[00:19:06.481] Server  ERROR   ⨯ ReferenceError: AppSidebar is not defined
+[00:19:06.747] Browser ERROR   uncaughtError: ReferenceError: AppSidebar is not defined
+[00:19:27.882] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:19:27.895] Server  LOG     ✓ Compiled in 59ms
+[00:20:36.833] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/common/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/common/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+Import map: aliased to relative './components/dashboard/common/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:20:36.835] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/common/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/common/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+Import map: aliased to relative './components/dashboard/common/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:20:36.841] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/common/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/common/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+Import map: aliased to relative './components/dashboard/common/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:20:36.845] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/common/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/common/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+Import map: aliased to relative './components/dashboard/common/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:20:36.858] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/common/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/common/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+Import map: aliased to relative './components/dashboard/common/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:20:36.865] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/common/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/common/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+Import map: aliased to relative './components/dashboard/common/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:20:36.868] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/common/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/common/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+Import map: aliased to relative './components/dashboard/common/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:20:36.872] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/common/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/common/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+Import map: aliased to relative './components/dashboard/common/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:20:36.876] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/common/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/common/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+Import map: aliased to relative './components/dashboard/common/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:20:36.877] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/common/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/common/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+Import map: aliased to relative './components/dashboard/common/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:20:36.881] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/common/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/common/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+Import map: aliased to relative './components/dashboard/common/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:20:36.883] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/common/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/common/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+Import map: aliased to relative './components/dashboard/common/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:20:36.891] Server  LOG     ✓ Compiled in 109ms
+[00:20:36.993] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/common/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/common/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const cn = (...classes) => classes.filter(Boolean).join(" ")
+  7 |
+
+Import map: aliased to relative './components/dashboard/common/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/(creator)/dashboard/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:21:36.092] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/layout"
+[00:21:36.239] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/layout"
+[00:21:36.506] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/layout"
+[00:21:36.642] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/layout"
+[00:21:36.778] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/layout"
+[00:21:36.894] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/layout"
+[00:21:37.018] Browser ERROR   uncaughtError: Error: The default export is not a React Component in "/dashboard/layout"
+[00:22:25.353] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:22:25.355] Server  WARN    ⚠ Fast Refresh had to perform a full reload when ./Documents/Subpay/frontend/node_modules/.pnpm/next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3/node_modules/next/dist/shared/lib/router/router.js changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:22:25.355] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:22:33.525] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/layout"
+[00:22:33.707] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/layout"
+[00:22:33.932] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/layout"
+[00:22:34.081] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/layout"
+[00:22:34.215] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/layout"
+[00:22:34.331] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/layout"
+[00:22:34.495] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/layout"
+[00:22:34.615] Server  ERROR   ⨯ Error: The default export is not a React Component in "/dashboard/layout"
+[00:22:34.668] Browser ERROR   uncaughtError: Error: The default export is not a React Component in "/dashboard/layout"
+[00:22:57.943] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:22:57.943] Server  WARN    ⚠ Fast Refresh had to perform a full reload when ./Documents/Subpay/frontend/node_modules/.pnpm/next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3/node_modules/next/dist/shared/lib/router/router.js changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:22:57.944] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:22:58.053] Server  LOG     ✓ Compiled in 0ms
+[00:23:26.694] Server  LOG     ✓ Compiled in 216ms
+[00:25:52.506] Server  LOG     ✓ Compiled in 69ms
+[00:55:50.859] Server  LOG     ✓ Compiled in 97ms
+[00:55:50.962] Browser ERROR   uncaughtError: ReferenceError: AppSidebar is not defined
+[00:56:06.394] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:56:06.419] Server  LOG     ✓ Compiled in 35ms
+[00:56:09.365] Server  LOG     ✓ Compiled in 37ms
+[00:56:52.683] Server  LOG     ✓ Compiled in 52ms
+[00:56:57.597] Server  LOG     ✓ Compiled in 38ms
+[00:56:57.707] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/dashboard/hub/page.tsx:170:83
+Parsing ecmascript source code failed
+  168 |           <div className="flex items-start justify-between mb-8 gap-4 flex-wrap">
+  169 |             <div>
+> 170 |               <h1 className="text-[26px] text-[#2D0052] leading-tight font-bold">{</h1>
+      |                                                                                   ^
+  171 |               <p className="text-[13px] text-[#A08DBE] mt-1">ArtByLola &nbsp;·&nbsp; Updated just now</p>
+  172 |             </div>
+  173 |             <div className="flex items-center gap-2.5 flex-wrap">
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/hub/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/hub/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/hub/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/hub/page.tsx [Server Component]
+[00:56:57.707] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/dashboard/hub/page.tsx:170:84
+Parsing ecmascript source code failed
+  168 |           <div className="flex items-start justify-between mb-8 gap-4 flex-wrap">
+  169 |             <div>
+> 170 |               <h1 className="text-[26px] text-[#2D0052] leading-tight font-bold">{</h1>
+      |                                                                                    ^^^^
+  171 |               <p className="text-[13px] text-[#A08DBE] mt-1">ArtByLola &nbsp;·&nbsp; Updated just now</p>
+  172 |             </div>
+  173 |             <div className="flex items-center gap-2.5 flex-wrap">
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/hub/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/hub/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/hub/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/hub/page.tsx [Server Component]
+[00:57:08.567] Server  LOG     ✓ Compiled in 55ms
+[00:57:11.703] Server  LOG     ✓ Compiled in 20ms
+[00:57:14.461] Server  LOG     ✓ Compiled in 22ms
+[00:57:16.118] Server  LOG     ✓ Compiled in 72ms
+[00:57:34.354] Server  LOG     ✓ Compiled in 31ms
+[00:57:39.015] Server  LOG     ✓ Compiled in 36ms
+[00:57:48.384] Server  LOG     ✓ Compiled in 55ms
+[01:01:14.130] Server  WARN    ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[01:01:14.406] Server  LOG     ✓ Compiled in 236ms
+[01:01:15.144] Browser ERROR   ./Documents/Subpay/frontend/middleware.ts
+Middleware is missing expected function export name
+This function is what Next.js runs for every request handled by this middleware.
+
+Why this happens:
+- The file exists but doesn't export a function.
+- The export is not a function (e.g., an object or constant).
+- There's a syntax error preventing the export from being recognized.
+
+To fix it:
+- Ensure this file has either a default or "middleware" function export.
+
+Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[01:01:15.433] Browser ERROR   ./Documents/Subpay/frontend/middleware.ts
+Middleware is missing expected function export name
+This function is what Next.js runs for every request handled by this middleware.
+
+Why this happens:
+- The file exists but doesn't export a function.
+- The export is not a function (e.g., an object or constant).
+- There's a syntax error preventing the export from being recognized.
+
+To fix it:
+- Ensure this file has either a default or "middleware" function export.
+
+Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[01:01:15.610] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:15.633] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:15.644] Browser ERROR   ./Documents/Subpay/frontend/middleware.ts
+Middleware is missing expected function export name
+This function is what Next.js runs for every request handled by this middleware.
+
+Why this happens:
+- The file exists but doesn't export a function.
+- The export is not a function (e.g., an object or constant).
+- There's a syntax error preventing the export from being recognized.
+
+To fix it:
+- Ensure this file has either a default or "middleware" function export.
+
+Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[01:01:15.848] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:15.852] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:15.859] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:15.865] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:15.886] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:15.928] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.026] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.042] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.049] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.058] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.063] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.083] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.095] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.101] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.108] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.111] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.131] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.134] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.149] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.160] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.166] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.190] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.198] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.201] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.280] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.301] Browser ERROR   uncaughtError: Error: ./Documents/Subpay/frontend/middleware.ts
+Middleware is missing expected function export name
+This function is what Next.js runs for every request handled by this middleware.
+
+Why this happens:
+- The file exists but doesn't export a function.
+- The export is not a function (e.g., an object or constant).
+- There's a syntax error preventing the export from being recognized.
+
+To fix it:
+- Ensure this file has either a default or "middleware" function export.
+
+Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+
+
+[01:01:16.342] Server  ERROR   ⨯ Error: The Middleware file "/middleware" must export a function named `middleware` or a default function.
+[01:01:16.500] Browser ERROR   ./Documents/Subpay/frontend/middleware.ts
+Middleware is missing expected function export name
+This function is what Next.js runs for every request handled by this middleware.
+
+Why this happens:
+- The file exists but doesn't export a function.
+- The export is not a function (e.g., an object or constant).
+- There's a syntax error preventing the export from being recognized.
+
+To fix it:
+- Ensure this file has either a default or "middleware" function export.
+
+Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[01:01:16.500] Browser ERROR   ./Documents/Subpay/frontend/middleware.ts
+Middleware is missing expected function export name
+This function is what Next.js runs for every request handled by this middleware.
+
+Why this happens:
+- The file exists but doesn't export a function.
+- The export is not a function (e.g., an object or constant).
+- There's a syntax error preventing the export from being recognized.
+
+To fix it:
+- Ensure this file has either a default or "middleware" function export.
+
+Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[01:01:16.881] Server  LOG     ✓ Compiled in 265ms
+[01:23:49.491] Server  LOG     ✓ Compiled in 684ms
+[01:25:08.292] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/AppSidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/AppSidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/AppSidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:08.298] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/AppSidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/AppSidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/AppSidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:08.301] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/AppSidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/AppSidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/AppSidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:08.303] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/AppSidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/AppSidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/AppSidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:08.319] Server  LOG     ✓ Compiled in 173ms
+[01:25:08.425] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/AppSidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/AppSidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/AppSidebar' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[01:25:15.451] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:15.462] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:15.464] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:15.464] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:15.590] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[01:25:18.634] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[01:25:21.067] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/dashboard/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:21.072] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/dashboard/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:21.073] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/dashboard/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:21.074] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/dashboard/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:21.200] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/dashboard/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[01:25:23.015] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/common/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/common/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/dashboard/common/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:23.015] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/common/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/common/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/dashboard/common/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:23.017] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/common/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/common/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/dashboard/common/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:23.018] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/common/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/common/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/dashboard/common/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:23.151] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/common/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/common/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/dashboard/common/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[01:25:27.586] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/dashboard/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:27.587] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/dashboard/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:27.588] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/dashboard/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:27.589] Server  ERROR   ⨯ ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/dashboard/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:25:27.717] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx:4:1
+Module not found: Can't resolve '@/components/dashboard/Sidebar'
+  2 |
+  3 | import { useState } from "react"
+> 4 | import AppSidebar from "@/components/dashboard/Sidebar"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | /**
+  7 |  * app/(hubora)/layout.tsx
+
+Import map: aliased to relative './components/dashboard/Sidebar' inside of [project]/Documents/Subpay/frontend
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/dashboard/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[01:25:30.188] Server  LOG     ✓ Compiled in 44ms
+[01:26:34.356] Server  LOG     ✓ Compiled in 73ms
+[01:46:43.888] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:00:13.933] Server  LOG     ✓ Compiled in 128ms
+[02:03:44.837] Browser ERROR   uncaughtError: ReferenceError: AppSidebar is not defined
+[02:03:58.322] Server  LOG     ✓ Compiled in 131ms
+[02:03:58.323] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[02:03:58.490] Browser ERROR   uncaughtError: ReferenceError: AppSidebar is not defined
+[02:03:58.935] Server  ERROR   ⨯ ReferenceError: AppSidebar is not defined
+[02:03:59.435] Browser ERROR   uncaughtError: ReferenceError: AppSidebar is not defined
+[02:04:01.081] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[02:04:01.112] Server  LOG     ✓ Compiled in 41ms
+[02:04:18.816] Server  LOG     ✓ Compiled in 98ms
+[02:05:20.581] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:42:14.238] Server  LOG     ✓ Compiled in 300ms
+[03:08:43.181] Server  ERROR   ⨯ Error: The default export is not a React Component in "/explore/page"
+[03:08:43.515] Server  ERROR   ⨯ Error: The default export is not a React Component in "/explore/page"
+[03:08:43.631] Server  LOG     ✓ Compiled in 37ms
+[03:09:07.807] Server  LOG     ✓ Compiled in 72ms
+[03:09:16.103] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[03:10:22.889] Server  LOG     ✓ Compiled in 114ms
+[03:11:06.632] Server  LOG     ✓ Compiled in 107ms
+[03:11:09.780] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior

@@ -2,5 +2,5 @@
   "version": 3,
   "sources": [],
   "sections": [
-    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///Users/ayo/Documents/Subpay/frontend/app/page.tsx"],"sourcesContent":["import { redirect } from \"next/navigation\";\n\nexport default function RootPage() {\n  redirect(\"/feed\");\n}"],"names":[],"mappings":";;;;AAAA;AAAA;;AAEe,SAAS;IACtB,IAAA,qYAAQ,EAAC;AACX"}}]
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///Users/ayo/Documents/Subpay/frontend/app/page.tsx"],"sourcesContent":["import { redirect } from \"next/navigation\"\n\nexport default function RootPage() {\n  redirect(\"/feed\")\n}"],"names":[],"mappings":";;;;AAAA;AAAA;;AAEe,SAAS;IACtB,IAAA,qYAAQ,EAAC;AACX"}}]
 }
