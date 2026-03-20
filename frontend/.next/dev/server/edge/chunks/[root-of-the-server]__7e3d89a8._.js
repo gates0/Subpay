@@ -37,7 +37,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$front
  */ const SESSION_COOKIE = "hubora_session";
 // Routes that are always public (no auth needed)
 const PUBLIC_PATHS = [
-    "/auth"
+    "/auth",
+    "/auth/callback"
 ];
 // Routes that live inside the authenticated shell
 const PROTECTED_PREFIX = [

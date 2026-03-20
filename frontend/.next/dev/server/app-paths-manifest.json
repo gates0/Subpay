@@ -1,14 +1,17 @@
 {
   "/(auth)/auth/page": "app/(auth)/auth/page.js",
-  "/(authenticated)/(creator)/dashboard/page": "app/(authenticated)/(creator)/dashboard/page.js",
-  "/(authenticated)/(member)/feed/page": "app/(authenticated)/(member)/feed/page.js",
   "/(authenticated)/communities/page": "app/(authenticated)/communities/page.js",
+  "/(authenticated)/content/page": "app/(authenticated)/content/page.js",
   "/(authenticated)/creator_dashboard/page": "app/(authenticated)/creator_dashboard/page.js",
-  "/(authenticated)/dashboard/hub/page": "app/(authenticated)/dashboard/hub/page.js",
+  "/(authenticated)/creator_hub/page": "app/(authenticated)/creator_hub/page.js",
+  "/(authenticated)/earnings/page": "app/(authenticated)/earnings/page.js",
   "/(authenticated)/explore/page": "app/(authenticated)/explore/page.js",
   "/(authenticated)/feed/page": "app/(authenticated)/feed/page.js",
   "/(authenticated)/notifications/page": "app/(authenticated)/notifications/page.js",
+  "/(authenticated)/onboarding/page": "app/(authenticated)/onboarding/page.js",
+  "/(authenticated)/plans/page": "app/(authenticated)/plans/page.js",
   "/(authenticated)/saved/page": "app/(authenticated)/saved/page.js",
+  "/(authenticated)/subscribers/page": "app/(authenticated)/subscribers/page.js",
   "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js"
 }

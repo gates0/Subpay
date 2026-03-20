@@ -641,7 +641,7 @@ const NAV_CREATOR = [
         key: "hub",
         label: "My Hub",
         icon: Icon.hub,
-        href: "/hub"
+        href: "/creator_hub"
     },
     {
         key: "content",

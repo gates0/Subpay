@@ -16,7 +16,7 @@ import { NextRequest, NextResponse } from "next/server"
 const SESSION_COOKIE = "hubora_session"
 
 // Routes that are always public (no auth needed)
-const PUBLIC_PATHS = ["/auth"]
+const PUBLIC_PATHS = ["/auth", "/auth/callback"]
 
 // Routes that live inside the authenticated shell
 const PROTECTED_PREFIX = ["/feed", "/explore", "/communities", "/saved", "/notifications", "/dashboard", "/hub", "/content", "/plans", "/subscribers", "/earnings"]

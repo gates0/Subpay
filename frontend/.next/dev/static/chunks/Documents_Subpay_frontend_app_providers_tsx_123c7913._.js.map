@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/ayo/Documents/Subpay/frontend/app/providers.tsx"],"sourcesContent":["\"use client\"\n\nimport { QueryClient, QueryClientProvider } from \"@tanstack/react-query\"\nimport { ReactQueryDevtools } from \"@tanstack/react-query-devtools\"\nimport { useState } from \"react\"\n\nexport function Providers({ children }: { children: React.ReactNode }) {\n  const [queryClient] = useState(() => new QueryClient())\n\n  return (\n    <QueryClientProvider client={queryClient}>\n      {children}\n      <ReactQueryDevtools initialIsOpen={false} />\n    </QueryClientProvider>\n  )\n}"],"names":[],"mappings":";;;;;AAEA;AAAA;AACA;AACA;;;AAJA;;;;AAMO,SAAS,UAAU,EAAE,QAAQ,EAAiC;;IACnE,MAAM,CAAC,YAAY,GAAG,IAAA,6WAAQ;8BAAC,IAAM,IAAI,2SAAW;;IAEpD,qBACE,iYAAC,mVAAmB;QAAC,QAAQ;;YAC1B;0BACD,iYAAC,qaAAkB;gBAAC,eAAe;;;;;;;;;;;;AAGzC;GATgB;KAAA"}}]
+}

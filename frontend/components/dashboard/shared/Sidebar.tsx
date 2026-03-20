@@ -42,7 +42,7 @@ const NAV_DISCOVER = [
 
 const NAV_CREATOR = [
   { key: "dashboard",   label: "Dashboard",    icon: Icon.grid,        href: "/creator_dashboard" },
-  { key: "hub",         label: "My Hub",        icon: Icon.hub,         href: "/hub" },
+  { key: "hub",         label: "My Hub",        icon: Icon.hub,         href: "/creator_hub" },
   { key: "content",     label: "Content",       icon: Icon.content,     href: "/content" },
   { key: "plans",       label: "Plans",         icon: Icon.plans,       href: "/plans" },
   { key: "subscribers", label: "Subscribers",   icon: Icon.subscribers, href: "/subscribers" },
