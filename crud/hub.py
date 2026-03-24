@@ -1,3 +1,4 @@
+import uuid
 from sqlalchemy.orm import Session
 
 from models.hub import Hub
@@ -10,7 +11,7 @@ def get_hub_by_id(db: Session, hub_id: int) -> Hub | None:
     return db.query(Hub).filter(Hub.id == hub_id).first()
 
 
-def get_hub_by_creator_id(db: Session, creator_id: int) -> Hub | None:
+def get_hub_by_creator_id(db: Session, creator_id: uuid.UUID) -> Hub | None:
     return db.query(Hub).filter(Hub.creator_id == creator_id).first()
 
 

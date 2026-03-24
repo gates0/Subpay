@@ -1,5 +1,6 @@
 # → app/schemas/user.py
 
+import uuid
 from datetime import datetime
 from enum import Enum
 from typing import Optional
@@ -75,6 +76,7 @@ class OnboardingComplete(BaseModel):
     the member → creator upgrade path).
     """
     username: str = Field(..., min_length=3, max_length=50)
+    full_name: Optional[str] = Field(None, min_length=1, max_length=100)
     role: UserRole
 
     @field_validator("username")
@@ -133,7 +135,7 @@ class UserChangePassword(BaseModel):
 
 class UserResponse(BaseModel):
     """Full profile — returned to the authenticated user themselves."""
-    id: int
+    id: uuid.UUID
     email: EmailStr
     username: Optional[str]     = None   # None until onboarding complete
     role: Optional[UserRole] = None  # None until onboarding complete
@@ -151,7 +153,7 @@ class UserResponse(BaseModel):
 
 class UserPublicResponse(BaseModel):
     """Public profile — safe to return to anyone."""
-    id: int
+    id: uuid.UUID
     username: str
     full_name: Optional[str] = None
     bio: Optional[str] = None

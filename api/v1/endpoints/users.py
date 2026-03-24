@@ -1,3 +1,5 @@
+import uuid
+
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 
@@ -94,7 +96,7 @@ def delete_account(
 
 @router.get("/{user_id}", response_model=UserPublicResponse)
 def get_user_profile(
-    user_id: int,
+    user_id: uuid.UUID,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_onboarded_user),
 ):

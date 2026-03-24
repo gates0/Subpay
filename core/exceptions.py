@@ -264,3 +264,25 @@ onboarding_username_taken_exception = HTTPException(
     status_code=status.HTTP_409_CONFLICT,
     detail="This username is already taken. Please choose another.",
 )
+
+# ── Comment Exceptions ────────────────────────────────────────────────────────
+
+comment_not_found_exception = HTTPException(
+    status_code=status.HTTP_404_NOT_FOUND,
+    detail="Comment not found.",
+)
+
+comment_not_owned_exception = HTTPException(
+    status_code=status.HTTP_403_FORBIDDEN,
+    detail="You do not have permission to modify this comment.",
+)
+
+comment_is_reply_exception = HTTPException(
+    status_code=status.HTTP_400_BAD_REQUEST,
+    detail="Replies cannot be nested. You can only reply to top-level comments.",
+)
+
+comment_access_denied_exception = HTTPException(
+    status_code=status.HTTP_403_FORBIDDEN,
+    detail="This comment has been deleted and cannot be edited.",
+)

@@ -1,5 +1,6 @@
 # → app/crud/user.py
 
+import uuid
 from datetime import datetime, timezone
 
 from sqlalchemy.orm import Session
@@ -17,7 +18,7 @@ from schemas.user import UserRegister, UserUpdateProfile
 
 # ── Lookups ───────────────────────────────────────────────────────────────────
 
-def get_user_by_id(db: Session, user_id: int) -> User | None:
+def get_user_by_id(db: Session, user_id: uuid.UUID) -> User | None:
     return db.query(User).filter(User.id == user_id).first()
 
 
@@ -122,7 +123,9 @@ def get_or_create_oauth_user(
 
 # ── Onboarding ────────────────────────────────────────────────────────────────
 
-def complete_onboarding(db: Session, user: User, username: str, role: str) -> User:
+def complete_onboarding(
+    db: Session, user: User, username: str, role: str, full_name: str | None = None
+) -> User:
     """
     Called once — sets username + role and flips is_onboarded to True.
     If role is creator, the hub is created here.
@@ -131,6 +134,8 @@ def complete_onboarding(db: Session, user: User, username: str, role: str) -> Us
     user.username = username.lower()
     user.role = role
     user.is_onboarded = True
+    if full_name is not None:
+        user.full_name = full_name
     db.commit()
     db.refresh(user)
 

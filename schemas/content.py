@@ -12,6 +12,7 @@ from pydantic import BaseModel, Field
 class ContentType(str, Enum):
     video = "video"
     image = "image"
+    audio = "audio"
     pdf = "pdf"
     text = "text"
 
@@ -54,16 +55,18 @@ class ContentResponse(BaseModel):
     """Full response — returned to the creator for their own content."""
     id: int
     hub_id: int
-    plan_id: Optional[int]     = None
+    plan_id: Optional[int] = None
     plan: Optional[PlanGateSummary] = None
     title: str
-    description: Optional[str]     = None
+    description: Optional[str] = None
     content_type: ContentType
-    text_body: Optional[str]     = None
-    file_url: Optional[str]     = None
-    thumbnail_url: Optional[str]     = None
+    text_body: Optional[str] = None
+    file_url: Optional[str]  = None
+    thumbnail_url: Optional[str] = None
     is_published: bool
     is_pinned: bool
+    view_count: int = 0
+    like_count: int  = 0
     created_at: datetime
     updated_at: datetime
 
@@ -85,6 +88,16 @@ class ContentPublicResponse(BaseModel):
     file_url: Optional[str]     = None
     thumbnail_url: Optional[str]     = None
     is_pinned: bool
+    view_count: int  = 0
+    like_count: int  = 0
+    is_liked: bool = False
     created_at: datetime
 
     model_config = {"from_attributes": True}
+
+
+class LikeToggleResponse(BaseModel):
+    content_id: int
+    is_liked: bool
+    like_count: int
+    message: str

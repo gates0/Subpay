@@ -1,6 +1,7 @@
 # → app/crud/payment.py
 
 import json
+import uuid
 from sqlalchemy import func
 from sqlalchemy.orm import Session, joinedload
 
@@ -23,7 +24,7 @@ def get_transaction_by_id(db: Session, transaction_id: int) -> Transaction | Non
     )
 
 
-def get_transactions_by_user(db: Session, user_id: int) -> list[Transaction]:
+def get_transactions_by_user(db: Session, user_id: uuid.UUID) -> list[Transaction]:
     return (
         db.query(Transaction)
         .options(joinedload(Transaction.plan), joinedload(Transaction.hub))
@@ -48,7 +49,7 @@ def get_transactions_by_hub(db: Session, hub_id: int) -> list[Transaction]:
 def create_pending_transaction(
     db: Session,
     *,
-    user_id: int,
+    user_id: uuid.UUID,
     plan_id: int,
     hub_id: int,
     reference: str,

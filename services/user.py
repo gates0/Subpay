@@ -1,3 +1,5 @@
+import uuid
+
 from sqlalchemy.orm import Session
 
 from core.exceptions import (
@@ -24,7 +26,7 @@ def get_my_profile(current_user: User) -> User:
     return current_user
 
 
-def get_public_profile(db: Session, user_id: int) -> User:
+def get_public_profile(db: Session, user_id: uuid.UUID) -> User:
     user = get_user_by_id(db, user_id)
     # Only surface users who are active AND have completed onboarding.
     # Un-onboarded users have no username/role and must not appear publicly.

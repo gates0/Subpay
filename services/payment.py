@@ -102,7 +102,7 @@ async def initialize_payment(
         reference=reference,
         callback_url=resolved_cb,
         metadata={
-            "user_id": current_user.id,
+            "user_id": str(current_user.id),
             "plan_id": plan.id,
             "hub_id":  hub.id,
             "transaction_id": transaction.id,
@@ -169,6 +169,7 @@ async def verify_payment(db: Session, reference: str) -> Transaction:
     mark_transaction_success(db, transaction, subscription.id, paystack_data)
 
     # Notify the member their payment went through
+    _hub = get_hub_by_id(db, transaction.hub_id)
     notify_payment_success(
         db,
         user_id=transaction.user_id,

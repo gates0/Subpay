@@ -33,6 +33,15 @@ from crud.hub import get_hub_by_creator_id, get_hub_by_id
 from crud.subscription import get_subscribers_by_hub
 from crud.plan import get_plan_by_id
 from crud.subscription import get_active_subscription
+from crud.content_engagement import (
+    get_like_count,
+    get_like_counts_batch,
+    get_like_entry,
+    get_liked_content_ids,
+    get_view_count,
+    get_view_counts_batch,
+    record_view,
+)
 from models.content import Content
 from models.user import User
 from schemas.content import ContentCreate, ContentUpdate
@@ -192,7 +201,9 @@ def list_hub_content_for_member(
 
     # Creators can always see all their own published content without a subscription
     if current_user.role == "creator" and hub.creator_id == current_user.id:
-        return get_contents_by_hub(db, hub_id=hub_id, published_only=True)
+        items = get_contents_by_hub(db, hub_id=hub_id, published_only=True)
+        _attach_engagement(db, items, viewer_id=current_user.id)
+        return items
 
     # Everyone else must have an active subscription
     subscription = get_active_subscription(db, member_id=current_user.id, hub_id=hub_id)
@@ -202,10 +213,12 @@ def list_hub_content_for_member(
     all_published = get_contents_by_hub(db, hub_id=hub_id, published_only=True)
 
     # Filter: return free content (plan_id is None) + content matching their plan
-    return [
+    items = [
         item for item in all_published
         if item.plan_id is None or item.plan_id == subscription.plan_id
     ]
+    _attach_engagement(db, items, viewer_id=current_user.id)
+    return items
 
 
 # ── Member: Get a Single Content Item ────────────────────────────────────────
@@ -223,6 +236,7 @@ def get_hub_content_for_member(
 
     # Creators bypass the access check on their own hub
     if current_user.role == "creator" and hub.creator_id == current_user.id:
+        _attach_engagement(db, [content], viewer_id=current_user.id)
         return content
 
     subscription = get_active_subscription(db, member_id=current_user.id, hub_id=hub_id)
@@ -233,7 +247,29 @@ def get_hub_content_for_member(
     if content.plan_id is not None and content.plan_id != subscription.plan_id:
         raise content_access_denied_exception
 
+    # Record unique view and attach engagement stats
+    record_view(db, user_id=current_user.id, content_id=content_id)
+    _attach_engagement(db, [content], viewer_id=current_user.id)
     return content
+
+
+
+def _attach_engagement(db, items: list, viewer_id: int) -> None:
+    """
+    Attach view_count, like_count, and is_liked to a list of Content ORM objects
+    in-place using 3 batch queries total regardless of list length.
+    Pydantic reads these as regular attributes via from_attributes=True.
+    """
+    if not items:
+        return
+    ids = [item.id for item in items]
+    view_counts  = get_view_counts_batch(db, ids)
+    like_counts  = get_like_counts_batch(db, ids)
+    liked_ids    = get_liked_content_ids(db, viewer_id, ids)
+    for item in items:
+        item.view_count = view_counts.get(item.id, 0)
+        item.like_count = like_counts.get(item.id, 0)
+        item.is_liked   = item.id in liked_ids
 
 
 # ── Private Helpers ───────────────────────────────────────────────────────────

@@ -1,5 +1,7 @@
 # → app/dependencies.py
 
+import uuid
+
 from fastapi import Depends
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from jose import JWTError
@@ -56,7 +58,7 @@ def get_current_user(
     except JWTError:
         raise credentials_exception
 
-    user = get_user_by_id(db, int(user_id))
+    user = get_user_by_id(db, uuid.UUID(user_id))
     if not user:
         raise credentials_exception
     return user

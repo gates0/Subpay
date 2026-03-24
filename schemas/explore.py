@@ -1,5 +1,6 @@
 # → app/schemas/explore.py
 
+import uuid
 from datetime import datetime
 from enum import Enum
 from typing import Optional
@@ -20,7 +21,7 @@ class HubSortBy(str, Enum):
 
 class ExploreCreatorSummary(BaseModel):
     """Creator info embedded in a hub card."""
-    id:         int
+    id:         uuid.UUID
     username:   str
     avatar_url: Optional[str] = None
 
@@ -86,7 +87,7 @@ class CreatorExploreResponse(BaseModel):
     A creator's public profile as shown on the explore/creators page.
     Includes their hub summary so the UI can link directly to the hub.
     """
-    id:         int
+    id:         uuid.UUID
     username:   str
     full_name:  Optional[str] = None
     bio:        Optional[str] = None

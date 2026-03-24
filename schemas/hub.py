@@ -1,3 +1,4 @@
+import uuid
 from datetime import datetime
 from typing import Optional
 
@@ -18,7 +19,7 @@ class HubUpdate(BaseModel):
 
 class HubCreatorSummary(BaseModel):
     """Minimal creator info embedded inside hub responses."""
-    id: int
+    id: uuid.UUID
     username: str
     avatar_url: Optional[str] = None
 

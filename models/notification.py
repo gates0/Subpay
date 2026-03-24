@@ -2,7 +2,9 @@
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Boolean, DateTime, ForeignKey, Integer, String, Text
+import uuid
+
+from sqlalchemy import UUID, Boolean, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from db.session import Base
@@ -14,8 +16,8 @@ class Notification(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
 
     # Who receives this notification
-    user_id: Mapped[int] = mapped_column(
-        Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True
+    user_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True
     )
 
     # Notification type — used by the frontend to decide icon/colour/routing

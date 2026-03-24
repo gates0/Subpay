@@ -49,7 +49,7 @@ def build_authorization_url(provider: str, state: str) -> str:
     The state parameter is a random string used to prevent CSRF attacks.
     """
     config = get_provider_config(provider)
-    callback_url = f"{settings.OAUTH_CALLBACK_BASE_URL}/auth/{provider}/callback"
+    callback_url = f"{settings.OAUTH_CALLBACK_BASE_URL}/api/v1/oauth/{provider}/callback"
 
     params = {
         "client_id": config["client_id"],

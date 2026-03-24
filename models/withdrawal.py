@@ -2,7 +2,9 @@
 
 from datetime import datetime, timezone
 
-from sqlalchemy import DateTime, ForeignKey, Integer, Numeric, String, Text
+import uuid
+
+from sqlalchemy import UUID, DateTime, ForeignKey, Integer, Numeric, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from db.session import Base
@@ -14,8 +16,8 @@ class Withdrawal(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
 
     # Which creator requested the payout
-    creator_id: Mapped[int] = mapped_column(
-        Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True
+    creator_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True
     )
     hub_id: Mapped[int] = mapped_column(
         Integer, ForeignKey("hubs.id", ondelete="CASCADE"), nullable=False, index=True

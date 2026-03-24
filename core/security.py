@@ -1,4 +1,5 @@
 import secrets
+import uuid
 from datetime import datetime, timedelta, timezone
 from typing import Literal
 
@@ -39,7 +40,7 @@ def _create_token(
     return jwt.encode(payload, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
 
 
-def create_access_token(user_id: int) -> str:
+def create_access_token(user_id: uuid.UUID) -> str:
     return _create_token(
         subject=user_id,
         token_type="access",
@@ -47,7 +48,7 @@ def create_access_token(user_id: int) -> str:
     )
 
 
-def create_refresh_token(user_id: int) -> str:
+def create_refresh_token(user_id: uuid.UUID) -> str:
     return _create_token(
         subject=user_id,
         token_type="refresh",
@@ -60,7 +61,7 @@ def decode_token(token: str) -> dict:
     return jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
 
 
-def create_token_pair(user_id: int) -> dict:
+def create_token_pair(user_id: uuid.UUID) -> dict:
     return {
         "access_token": create_access_token(user_id),
         "refresh_token": create_refresh_token(user_id),

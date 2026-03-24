@@ -1,5 +1,6 @@
 # → app/services/notification.py
 
+import uuid
 from typing import Optional
 
 from sqlalchemy.orm import Session
@@ -30,7 +31,7 @@ from schemas.notification import NotificationCountResponse, NotificationType
 def notify(
     db: Session,
     *,
-    user_id: int,
+    user_id: uuid.UUID,
     type: NotificationType,
     title: str,
     body: str,
@@ -74,7 +75,7 @@ def notify(
 # ║  title/body strings themselves. All business copy lives here.                ║
 # ╚══════════════════════════════════════════════════════════════════════════════╝
 
-def notify_payment_success(db: Session, *, user_id: int, hub_name: str, hub_id: int) -> None:
+def notify_payment_success(db: Session, *, user_id: uuid.UUID, hub_name: str, hub_id: int) -> None:
     notify(
         db,
         user_id=user_id,
@@ -86,7 +87,7 @@ def notify_payment_success(db: Session, *, user_id: int, hub_name: str, hub_id: 
     )
 
 
-def notify_payment_failed(db: Session, *, user_id: int, hub_name: str) -> None:
+def notify_payment_failed(db: Session, *, user_id: uuid.UUID, hub_name: str) -> None:
     notify(
         db,
         user_id=user_id,
@@ -99,7 +100,7 @@ def notify_payment_failed(db: Session, *, user_id: int, hub_name: str) -> None:
 
 
 def notify_new_subscriber(
-    db: Session, *, creator_id: int, subscriber_username: str, hub_id: int
+    db: Session, *, creator_id: uuid.UUID, subscriber_username: str, hub_id: int
 ) -> None:
     notify(
         db,
@@ -113,7 +114,7 @@ def notify_new_subscriber(
 
 
 def notify_subscriber_cancelled(
-    db: Session, *, creator_id: int, subscriber_username: str, hub_id: int
+    db: Session, *, creator_id: uuid.UUID, subscriber_username: str, hub_id: int
 ) -> None:
     notify(
         db,
@@ -129,7 +130,7 @@ def notify_subscriber_cancelled(
 def notify_new_content(
     db: Session,
     *,
-    user_id: int,
+    user_id: uuid.UUID,
     hub_name: str,
     content_title: str,
     hub_id: int,
@@ -147,7 +148,7 @@ def notify_new_content(
 
 
 def notify_subscription_expiring(
-    db: Session, *, user_id: int, hub_name: str, days_left: int, hub_id: int
+    db: Session, *, user_id: uuid.UUID, hub_name: str, days_left: int, hub_id: int
 ) -> None:
     notify(
         db,
@@ -161,7 +162,7 @@ def notify_subscription_expiring(
 
 
 def notify_subscription_cancelled(
-    db: Session, *, user_id: int, hub_name: str, hub_id: int
+    db: Session, *, user_id: uuid.UUID, hub_name: str, hub_id: int
 ) -> None:
     notify(
         db,
@@ -175,7 +176,7 @@ def notify_subscription_cancelled(
 
 
 def notify_withdrawal_update(
-    db: Session, *, creator_id: int, status: str, amount: float, currency: str
+    db: Session, *, creator_id: uuid.UUID, status: str, amount: float, currency: str
 ) -> None:
     status_messages = {
         "processing": "Your withdrawal request is being processed.",

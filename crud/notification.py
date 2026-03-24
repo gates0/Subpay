@@ -1,5 +1,6 @@
 # → app/crud/notification.py
 
+import uuid
 from typing import Optional
 
 from sqlalchemy.orm import Session
@@ -13,7 +14,7 @@ def get_notification_by_id(db: Session, notification_id: int) -> Notification | 
     return db.query(Notification).filter(Notification.id == notification_id).first()
 
 
-def get_notifications_by_user(db: Session, user_id: int) -> list[Notification]:
+def get_notifications_by_user(db: Session, user_id: uuid.UUID) -> list[Notification]:
     return (
         db.query(Notification)
         .filter(Notification.user_id == user_id)
@@ -22,7 +23,7 @@ def get_notifications_by_user(db: Session, user_id: int) -> list[Notification]:
     )
 
 
-def get_unread_count(db: Session, user_id: int) -> int:
+def get_unread_count(db: Session, user_id: uuid.UUID) -> int:
     return (
         db.query(Notification)
         .filter(Notification.user_id == user_id, Notification.is_read == False)
@@ -35,7 +36,7 @@ def get_unread_count(db: Session, user_id: int) -> int:
 def create_notification(
     db: Session,
     *,
-    user_id: int,
+    user_id: uuid.UUID,
     type: str,
     title: str,
     body: str,
@@ -66,7 +67,7 @@ def mark_as_read(db: Session, notification: Notification) -> Notification:
     return notification
 
 
-def mark_all_as_read(db: Session, user_id: int) -> int:
+def mark_all_as_read(db: Session, user_id: uuid.UUID) -> int:
     """Marks all unread notifications as read. Returns count of rows updated."""
     updated = (
         db.query(Notification)

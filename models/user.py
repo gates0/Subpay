@@ -1,8 +1,9 @@
 # → app/models/user.py
 
+import uuid
 from datetime import datetime, timezone
 
-from sqlalchemy import Boolean, DateTime, Integer, String
+from sqlalchemy import UUID, Boolean, DateTime, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from db.session import Base
@@ -11,7 +12,7 @@ from db.session import Base
 class User(Base):
     __tablename__ = "users"
 
-    id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, index=True)
     email: Mapped[str] = mapped_column(String, unique=True, index=True, nullable=False)
 
     # NULL until the user completes onboarding.
@@ -62,3 +63,7 @@ class User(Base):
     transactions  = relationship("Transaction",  back_populates="user")
     withdrawals   = relationship("Withdrawal",   back_populates="creator")
     notifications = relationship("Notification", back_populates="user",     cascade="all, delete-orphan")
+    comments      = relationship("Comment",      back_populates="author",     cascade="all, delete-orphan")
+    saved_contents = relationship("SavedContent", back_populates="user",    cascade="all, delete-orphan")
+    content_views = relationship("ContentView", back_populates="user", cascade="all, delete-orphan")
+    content_likes = relationship("ContentLike", back_populates="user", cascade="all, delete-orphan")

@@ -35,6 +35,8 @@ class Settings(BaseSettings):
     GITHUB_CLIENT_SECRET: str
     GITHUB_REDIRECT_URI: str
 
+    FRONTEND_OAUTH_REDIRECT_URL: str = "http://localhost:3000/feed"
+
     # ── Paystack ──────────────────────────────────────────────────────────────
     PAYSTACK_SECRET_KEY: str = ""
     # URL Paystack redirects users to after payment.

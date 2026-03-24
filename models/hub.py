@@ -1,6 +1,8 @@
 from datetime import datetime, timezone
 
-from sqlalchemy import Boolean, DateTime, ForeignKey, Integer, String, Text
+import uuid
+
+from sqlalchemy import UUID, Boolean, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from db.session import Base
@@ -12,8 +14,8 @@ class Hub(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
 
     # Every hub belongs to exactly one creator
-    creator_id: Mapped[int] = mapped_column(
-        Integer, ForeignKey("users.id", ondelete="CASCADE"), unique=True, nullable=False, index=True
+    creator_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), unique=True, nullable=False, index=True
     )
 
     # Identity

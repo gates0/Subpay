@@ -58,3 +58,7 @@ class Content(Base):
     # Relationships
     hub  = relationship("Hub",  back_populates="contents")
     plan = relationship("Plan", back_populates="contents")
+    comments = relationship("Comment", back_populates="content", cascade="all, delete-orphan")
+    saved_by = relationship("SavedContent", back_populates="content", cascade="all, delete-orphan")
+    views    = relationship("ContentView", back_populates="content", cascade="all, delete-orphan")
+    likes    = relationship("ContentLike", back_populates="content", cascade="all, delete-orphan")

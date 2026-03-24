@@ -17,7 +17,7 @@ from services.oauth import (
     fetch_user_info,
 )
 
-router = APIRouter(prefix="/auth", tags=["oauth"])
+router = APIRouter(prefix="/oauth", tags=["oauth"])
 
 # ── In-memory state store ─────────────────────────────────────────────────────
 # Stores { state_token: provider } for CSRF validation.
@@ -110,7 +110,7 @@ async def oauth_callback(
     # The frontend reads these from the URL query params.
     # If is_onboarded=false, the frontend must redirect to the onboarding screen.
     redirect_url = (
-        # f"{settings.FRONTEND_OAUTH_REDIRECT_URL}"
+        f"{settings.FRONTEND_OAUTH_REDIRECT_URL}"
         f"?access_token={tokens['access_token']}"
         f"&refresh_token={tokens['refresh_token']}"
         f"&token_type=bearer"

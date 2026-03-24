@@ -7,3 +7,6 @@ from models.content import Content  # noqa: F401
 from models.transaction import Transaction  # noqa: F401
 from models.withdrawal import Withdrawal  # noqa: F401
 from models.notification import Notification  # noqa: F401
+from models.comment import Comment  # noqa: F401
+from models.saved_content import SavedContent  # noqa: F401
+from models.content_engagement import ContentView, ContentLike  # noqa: F401

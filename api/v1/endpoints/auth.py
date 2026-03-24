@@ -1,5 +1,7 @@
 # → app/api/v1/auth.py
 
+import uuid
+
 from fastapi import APIRouter, BackgroundTasks, Depends, Query, status
 from jose import JWTError
 from sqlalchemy.orm import Session
@@ -94,7 +96,7 @@ def verify_email(token: str = Query(...), db: Session = Depends(get_db)):
     if not user_id:
         raise invalid_token_exception
 
-    user = get_user_by_id(db, int(user_id))
+    user = get_user_by_id(db, uuid.UUID(user_id))
     if not user:
         raise invalid_token_exception
 
@@ -154,7 +156,7 @@ def refresh_tokens(body: TokenRefreshRequest, db: Session = Depends(get_db)):
     except JWTError:
         raise credentials_exception
 
-    user = get_user_by_id(db, int(user_id))
+    user = get_user_by_id(db, uuid.UUID(user_id))
     if not user or not user.is_active:
         raise credentials_exception
 
@@ -204,7 +206,7 @@ def do_reset_password(data: PasswordResetConfirm, db: Session = Depends(get_db))
     if not user_id:
         raise invalid_token_exception
 
-    user = get_user_by_id(db, int(user_id))
+    user = get_user_by_id(db, uuid.UUID(user_id))
     if not user or not user.is_active:
         raise invalid_token_exception
 
