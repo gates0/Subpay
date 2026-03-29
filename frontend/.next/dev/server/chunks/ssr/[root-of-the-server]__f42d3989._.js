@@ -940,10 +940,14 @@ const tokenStorage = {
     set: (access, refresh)=>{
         localStorage.setItem("access_token", access);
         localStorage.setItem("refresh_token", refresh);
+        // Set the session cookie so middleware can detect auth
+        document.cookie = "hubora_session=1; path=/; max-age=604800; SameSite=Lax";
     },
     clear: ()=>{
         localStorage.removeItem("access_token");
         localStorage.removeItem("refresh_token");
+        // Clear the session cookie
+        document.cookie = "hubora_session=; path=/; max-age=0";
     }
 };
 class ApiError extends Error {

@@ -9,6 +9,7 @@ import GridMotion from "@/components/ui/grid-motion";
 import { useRegister, useLogin } from "@/hooks/useAuth";
 import { authApi } from "@/lib/api/Auth";
 import { tokenStorage, ApiError } from "@/lib/apiClient";
+import { router } from "next/client";
 
 type Tab = "register" | "login";
 type Role = "member" | "creator";
@@ -371,11 +372,10 @@ function RegisterForm({
     if (password.length < 8)
       return setError("Password must be at least 8 characters.");
 
+    // ✅ after
     try {
       await register.mutateAsync({ email, password });
-      const tokens = await login.mutateAsync({ email, password });
-      document.cookie = `hubora_session=${tokens.access_token}; path=/; max-age=${60 * 60 * 24 * 7}; SameSite=Lax`;
-      onSuccess(tokens.is_onboarded);
+      router.push(`/verify-email?email=${encodeURIComponent(email)}`);
     } catch (err) {
       setError(
         err instanceof ApiError
@@ -383,6 +383,8 @@ function RegisterForm({
           : "Something went wrong. Please try again.",
       );
     }
+
+    const isPending = register.isPending;
   }
 
   const isPending = register.isPending || login.isPending;

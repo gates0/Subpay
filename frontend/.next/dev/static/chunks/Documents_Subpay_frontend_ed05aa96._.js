@@ -824,10 +824,14 @@ const tokenStorage = {
     set: (access, refresh)=>{
         localStorage.setItem("access_token", access);
         localStorage.setItem("refresh_token", refresh);
+        // Set the session cookie so middleware can detect auth
+        document.cookie = "hubora_session=1; path=/; max-age=604800; SameSite=Lax";
     },
     clear: ()=>{
         localStorage.removeItem("access_token");
         localStorage.removeItem("refresh_token");
+        // Clear the session cookie
+        document.cookie = "hubora_session=; path=/; max-age=0";
     }
 };
 class ApiError extends Error {
@@ -1179,6 +1183,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+;
 function OnboardingPage() {
     _s();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
@@ -1190,6 +1195,17 @@ function OnboardingPage() {
     const { data: usernameCheck, isFetching: checkingUsername } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useOnboarding$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCheckUsername"])(username);
     const usernameAvailable = usernameCheck?.available;
     const usernameUnavailable = username.length >= 3 && usernameCheck?.available === false;
+    const { data: status } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useOnboarding$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useOnboardingStatus"])();
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "OnboardingPage.useEffect": ()=>{
+            if (status?.is_onboarded) {
+                router.replace("/feed");
+            }
+        }
+    }["OnboardingPage.useEffect"], [
+        status,
+        router
+    ]);
     async function handleSubmit(e) {
         e.preventDefault();
         setError("");
@@ -1246,7 +1262,7 @@ function OnboardingPage() {
                                         fillOpacity: "0.9"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                        lineNumber: 68,
+                                        lineNumber: 77,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
@@ -1259,7 +1275,7 @@ function OnboardingPage() {
                                         fillOpacity: "0.9"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                        lineNumber: 69,
+                                        lineNumber: 78,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
@@ -1272,7 +1288,7 @@ function OnboardingPage() {
                                         fillOpacity: "0.9"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                        lineNumber: 70,
+                                        lineNumber: 79,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
@@ -1285,7 +1301,7 @@ function OnboardingPage() {
                                         fillOpacity: "0.5"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                        lineNumber: 71,
+                                        lineNumber: 80,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
@@ -1298,18 +1314,18 @@ function OnboardingPage() {
                                         fillOpacity: "0.3"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                        lineNumber: 72,
+                                        lineNumber: 81,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                lineNumber: 67,
+                                lineNumber: 76,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                            lineNumber: 60,
+                            lineNumber: 69,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1322,13 +1338,13 @@ function OnboardingPage() {
                             children: "Hubora"
                         }, void 0, false, {
                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                            lineNumber: 75,
+                            lineNumber: 84,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                    lineNumber: 59,
+                    lineNumber: 68,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1343,7 +1359,7 @@ function OnboardingPage() {
                             children: "Set up your account"
                         }, void 0, false, {
                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                            lineNumber: 87,
+                            lineNumber: 96,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1355,13 +1371,13 @@ function OnboardingPage() {
                             children: "Just two things and you're in."
                         }, void 0, false, {
                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                            lineNumber: 93,
+                            lineNumber: 102,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                    lineNumber: 86,
+                    lineNumber: 95,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -1392,7 +1408,7 @@ function OnboardingPage() {
                                                     disabled: isPending
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                    lineNumber: 112,
+                                                    lineNumber: 121,
                                                     columnNumber: 17
                                                 }, this),
                                                 username.length >= 3 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1412,7 +1428,7 @@ function OnboardingPage() {
                                                                 strokeWidth: "2"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                lineNumber: 130,
+                                                                lineNumber: 139,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1422,13 +1438,13 @@ function OnboardingPage() {
                                                                 strokeLinecap: "round"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                lineNumber: 131,
+                                                                lineNumber: 140,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                        lineNumber: 129,
+                                                        lineNumber: 138,
                                                         columnNumber: 23
                                                     }, this) : usernameAvailable ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                                                         children: [
@@ -1446,7 +1462,7 @@ function OnboardingPage() {
                                                                         fillOpacity: "0.12"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                        lineNumber: 136,
+                                                                        lineNumber: 145,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1457,13 +1473,13 @@ function OnboardingPage() {
                                                                         strokeLinejoin: "round"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                        lineNumber: 137,
+                                                                        lineNumber: 146,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                lineNumber: 135,
+                                                                lineNumber: 144,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1474,7 +1490,7 @@ function OnboardingPage() {
                                                                 children: "Available"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                lineNumber: 139,
+                                                                lineNumber: 148,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
@@ -1494,7 +1510,7 @@ function OnboardingPage() {
                                                                         fillOpacity: "0.12"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                        lineNumber: 144,
+                                                                        lineNumber: 153,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1504,13 +1520,13 @@ function OnboardingPage() {
                                                                         strokeLinecap: "round"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                        lineNumber: 145,
+                                                                        lineNumber: 154,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                lineNumber: 143,
+                                                                lineNumber: 152,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1521,20 +1537,20 @@ function OnboardingPage() {
                                                                 children: "Taken"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                lineNumber: 147,
+                                                                lineNumber: 156,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                    lineNumber: 127,
+                                                    lineNumber: 136,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                            lineNumber: 111,
+                                            lineNumber: 120,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1546,13 +1562,13 @@ function OnboardingPage() {
                                             children: "Letters, numbers, hyphens and underscores only. Stored in lowercase."
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                            lineNumber: 153,
+                                            lineNumber: 162,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                    lineNumber: 110,
+                                    lineNumber: 119,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1566,7 +1582,7 @@ function OnboardingPage() {
                                             children: "I want to join as a…"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                            lineNumber: 160,
+                                            lineNumber: 169,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1597,7 +1613,7 @@ function OnboardingPage() {
                                                                         fill: isActive ? "#6C36F5" : "#9CA3AF"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                        lineNumber: 187,
+                                                                        lineNumber: 196,
                                                                         columnNumber: 29
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1607,13 +1623,13 @@ function OnboardingPage() {
                                                                         strokeLinecap: "round"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                        lineNumber: 188,
+                                                                        lineNumber: 197,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                lineNumber: 186,
+                                                                lineNumber: 195,
                                                                 columnNumber: 27
                                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                                                 width: "18",
@@ -1631,7 +1647,7 @@ function OnboardingPage() {
                                                                         fillOpacity: "0.5"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                        lineNumber: 192,
+                                                                        lineNumber: 201,
                                                                         columnNumber: 29
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
@@ -1644,7 +1660,7 @@ function OnboardingPage() {
                                                                         fillOpacity: "0.75"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                        lineNumber: 193,
+                                                                        lineNumber: 202,
                                                                         columnNumber: 29
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
@@ -1656,18 +1672,18 @@ function OnboardingPage() {
                                                                         fill: isActive ? "#6C36F5" : "#9CA3AF"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                        lineNumber: 194,
+                                                                        lineNumber: 203,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                lineNumber: 191,
+                                                                lineNumber: 200,
                                                                 columnNumber: 27
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                            lineNumber: 179,
+                                                            lineNumber: 188,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1681,7 +1697,7 @@ function OnboardingPage() {
                                                                     children: r
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                    lineNumber: 200,
+                                                                    lineNumber: 209,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1693,13 +1709,13 @@ function OnboardingPage() {
                                                                     children: r === "member" ? "Discover and subscribe to creators" : "Publish content and earn from fans"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                    lineNumber: 206,
+                                                                    lineNumber: 215,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                            lineNumber: 199,
+                                                            lineNumber: 208,
                                                             columnNumber: 23
                                                         }, this),
                                                         isActive && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1720,29 +1736,29 @@ function OnboardingPage() {
                                                                     strokeLinejoin: "round"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                    lineNumber: 220,
+                                                                    lineNumber: 229,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                                lineNumber: 219,
+                                                                lineNumber: 228,
                                                                 columnNumber: 27
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                            lineNumber: 215,
+                                                            lineNumber: 224,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, r, true, {
                                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                    lineNumber: 167,
+                                                    lineNumber: 176,
                                                     columnNumber: 21
                                                 }, this);
                                             })
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                            lineNumber: 163,
+                                            lineNumber: 172,
                                             columnNumber: 15
                                         }, this),
                                         role === "creator" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1754,13 +1770,13 @@ function OnboardingPage() {
                                             children: "A hub will be created for you automatically. You can always upgrade from member to creator later, but not the other way around."
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                            lineNumber: 230,
+                                            lineNumber: 239,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                    lineNumber: 159,
+                                    lineNumber: 168,
                                     columnNumber: 13
                                 }, this),
                                 error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1771,13 +1787,13 @@ function OnboardingPage() {
                                     children: error
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                    lineNumber: 241,
+                                    lineNumber: 250,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                            lineNumber: 107,
+                            lineNumber: 116,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1809,7 +1825,7 @@ function OnboardingPage() {
                                                         strokeWidth: "2"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                        lineNumber: 260,
+                                                        lineNumber: 269,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1819,25 +1835,25 @@ function OnboardingPage() {
                                                         strokeLinecap: "round"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                        lineNumber: 261,
+                                                        lineNumber: 270,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                                lineNumber: 259,
+                                                lineNumber: 268,
                                                 columnNumber: 19
                                             }, this),
                                             "Setting up your account…"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                        lineNumber: 258,
+                                        lineNumber: 267,
                                         columnNumber: 17
                                     }, this) : `Continue as ${role}`
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                    lineNumber: 249,
+                                    lineNumber: 258,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1849,38 +1865,39 @@ function OnboardingPage() {
                                     children: "This is a one-time setup. Your role choice is permanent."
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                                    lineNumber: 268,
+                                    lineNumber: 277,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                            lineNumber: 248,
+                            lineNumber: 257,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-                    lineNumber: 102,
+                    lineNumber: 111,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-            lineNumber: 56,
+            lineNumber: 65,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx",
-        lineNumber: 52,
+        lineNumber: 61,
         columnNumber: 5
     }, this);
 }
-_s(OnboardingPage, "iqxto3yJwBoIuWkN2HB5/U9VNE0=", false, function() {
+_s(OnboardingPage, "nxUBTByI5V4aqJ409sJ9ooJAJvc=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useOnboarding$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCompleteOnboarding"],
-        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useOnboarding$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCheckUsername"]
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useOnboarding$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCheckUsername"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useOnboarding$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useOnboardingStatus"]
     ];
 });
 _c = OnboardingPage;

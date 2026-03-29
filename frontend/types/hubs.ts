@@ -1,34 +1,20 @@
-export interface HubCreatorSummary {
+export interface ExploreCreatorSummary {
   id: number;
   username: string;
   avatar_url?: string | null;
 }
 
-export interface HubPublicResponse {
+export interface HubExploreResponse {
   id: number;
   name: string;
   description?: string | null;
   banner_url?: string | null;
   avatar_url?: string | null;
-  creator: HubCreatorSummary;
+  creator: ExploreCreatorSummary;
+  subscriber_count: number;
+  content_count: number;
+  plan_count: number;
+  starting_from?: number | null;
+  currency?: string | null;
   created_at: string;
-}
-
-export interface HubPrivateResponse extends HubPublicResponse {
-  is_active: boolean;
-  updated_at: string;
-}
-
-export interface HubUpdate {
-  name?: string | null;
-  description?: string | null;
-  banner_url?: string | null;
-  avatar_url?: string | null;
-}
-
-export interface HubStatsResponse {
-  hub_id: number;
-  total_subscribers: number;
-  total_content_items: number;
-  total_plans: number;
 }

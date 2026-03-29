@@ -6,18 +6,20 @@ export const tokenStorage = {
   getAccess: (): string | null =>
     typeof window !== "undefined" ? localStorage.getItem("access_token") : null,
   getRefresh: (): string | null =>
-    typeof window !== "undefined"
-      ? localStorage.getItem("refresh_token")
-      : null,
+    typeof window !== "undefined" ? localStorage.getItem("refresh_token") : null,
   set: (access: string, refresh: string) => {
-    localStorage.setItem("access_token", access);
-    localStorage.setItem("refresh_token", refresh);
+    localStorage.setItem("access_token", access)
+    localStorage.setItem("refresh_token", refresh)
+    // Set the session cookie so middleware can detect auth
+    document.cookie = "hubora_session=1; path=/; max-age=604800; SameSite=Lax"
   },
   clear: () => {
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("refresh_token");
+    localStorage.removeItem("access_token")
+    localStorage.removeItem("refresh_token")
+    // Clear the session cookie
+    document.cookie = "hubora_session=; path=/; max-age=0"
   },
-};
+}
 
 // ─── Error Type ───────────────────────────────────────────────────────────────
 
