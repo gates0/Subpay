@@ -5,9 +5,13 @@ In development, point MAIL_SERVER to Mailtrap (https://mailtrap.io) to
 capture outgoing emails without delivering them. In production, use
 Resend, Postmark, SendGrid, or any SMTP provider.
 """
+import logging
+
 from fastapi_mail import ConnectionConfig, FastMail, MessageSchema, MessageType
 
 from config import settings
+
+logger = logging.getLogger(__name__)
 
 _mail_config = ConnectionConfig(
     MAIL_USERNAME=settings.MAIL_USERNAME,
@@ -44,7 +48,12 @@ async def send_verification_email(to_email: str, token: str) -> None:
         body=body,
         subtype=MessageType.html,
     )
-    await _fm.send_message(message)
+    try:
+        await _fm.send_message(message)
+        logger.info("Verification email sent to %s", to_email)
+    except Exception as exc:
+        logger.error("Failed to send verification email to %s: %s", to_email, exc, exc_info=True)
+        raise
 
 
 async def send_password_reset_email(to_email: str, token: str) -> None:
@@ -67,4 +76,9 @@ async def send_password_reset_email(to_email: str, token: str) -> None:
         body=body,
         subtype=MessageType.html,
     )
-    await _fm.send_message(message)
+    try:
+        await _fm.send_message(message)
+        logger.info("Password reset email sent to %s", to_email)
+    except Exception as exc:
+        logger.error("Failed to send password reset email to %s: %s", to_email, exc, exc_info=True)
+        raise
