@@ -5,13 +5,13 @@ from config import settings
 
 DATABASE_URL = settings.DATABASE_URL
 
-# if DATABASE_URL.startswith("postgres://"):
-#     DATABASE_URL = DATABASE_URL.replace(
-#         "postgres://",
-#         "postgresql+psycopg2://",
-#         1
-#     )
-engine = create_engine(DATABASE_URL)
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace(
+        "postgres://",
+        "postgresql+psycopg2://",
+        1
+    )
+engine = create_engine(DATABASE_URL, connect_args={"sslmode": "require"})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
