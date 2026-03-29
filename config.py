@@ -14,7 +14,8 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
     OAUTH_CALLBACK_BASE_URL: str = "http://localhost:8002"
-    APP_BASE_URL: str = "http://localhost:8002"
+    # APP_BASE_URL: str = "http://localhost:8002"
+    APP_BASE_URL: str = "https://subpay.onrender.com"
 
     # Email
     MAIL_USERNAME: str
