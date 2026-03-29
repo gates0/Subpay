@@ -1,13 +1,18 @@
+import logging
+import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from api.v1.router import router as v1_router
-from config import settings
 from db.base import Base
 from db.session import engine
 
-import os
-from fastapi.staticfiles import StaticFiles
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+)
 
 # Create tables (use Alembic in production instead)
 Base.metadata.create_all(bind=engine)
