@@ -24,6 +24,7 @@ from crud.content import (
     delete_content,
     get_content_by_id,
     get_contents_by_hub,
+    get_contents_by_plan,
     get_published_content_by_id,
     toggle_pin,
     toggle_publish,
@@ -93,6 +94,36 @@ async def create_hub_content(
         file_url = await _save_upload(file, data.content_type)
 
     return create_content(db, hub_id=hub.id, data=data, file_url=file_url)
+
+
+# ── Creator: List Content by Plan ────────────────────────────────────────────
+
+def list_my_plan_content(
+    db: Session, current_user: User, plan_id: int, cumulative: bool = True
+) -> list[Content]:
+    _require_creator(current_user)
+    hub = _get_creator_hub(db, current_user)
+    plan = get_plan_by_id(db, plan_id)
+    if not plan or plan.hub_id != hub.id:
+        from core.exceptions import content_plan_not_on_hub_exception
+        raise content_plan_not_on_hub_exception
+
+    if cumulative:
+        # Return content from this plan AND all lower-priced plans (i.e. what a
+        # subscriber on this tier would actually see, excluding free/untagged content)
+        plan_price = float(plan.price)
+        hub_plans = get_plans_by_hub(db, hub_id=hub.id, active_only=False)
+        accessible_ids = [p.id for p in hub_plans if float(p.price) <= plan_price]
+        items = []
+        for pid in accessible_ids:
+            items.extend(get_contents_by_plan(db, hub_id=hub.id, plan_id=pid))
+        # Pinned first, then newest first
+        items.sort(key=lambda c: (not c.is_pinned, c.created_at), reverse=False)
+    else:
+        items = get_contents_by_plan(db, hub_id=hub.id, plan_id=plan_id)
+
+    _attach_engagement(db, items, viewer_id=current_user.id)
+    return items
 
 
 # ── Creator: List Own Hub Content (all — includes drafts) ─────────────────────

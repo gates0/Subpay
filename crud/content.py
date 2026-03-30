@@ -39,6 +39,17 @@ def get_contents_by_hub(
     return query.order_by(Content.is_pinned.desc(), Content.created_at.desc()).all()
 
 
+def get_contents_by_plan(db: Session, hub_id: int, plan_id: int) -> list[Content]:
+    """Return all content (including drafts) gated to a specific plan on this hub."""
+    return (
+        db.query(Content)
+        .options(joinedload(Content.plan))
+        .filter(Content.hub_id == hub_id, Content.plan_id == plan_id)
+        .order_by(Content.is_pinned.desc(), Content.created_at.desc())
+        .all()
+    )
+
+
 def get_published_content_by_id(db: Session, content_id: int, hub_id: int) -> Content | None:
     """Fetch a single published content item scoped to a hub."""
     return (
