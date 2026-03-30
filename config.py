@@ -22,9 +22,9 @@ class Settings(BaseSettings):
     MAIL_PASSWORD: str
     MAIL_FROM: str
     MAIL_SERVER: str = "smtp.gmail.com"
-    MAIL_PORT: int = 587
-    MAIL_STARTTLS: bool = True
-    MAIL_SSL_TLS: bool = False
+    MAIL_PORT: int = 465
+    MAIL_STARTTLS: bool = False
+    MAIL_SSL_TLS: bool = True
 
     # Google OAuth
     GOOGLE_CLIENT_ID: str
