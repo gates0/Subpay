@@ -16,7 +16,7 @@ def get_plans_by_hub(db: Session, hub_id: int, active_only: bool = False) -> lis
     query = db.query(Plan).filter(Plan.hub_id == hub_id)
     if active_only:
         query = query.filter(Plan.is_active == True)
-    return query.order_by(Plan.created_at.asc()).all()
+    return query.order_by(Plan.price.asc()).all()
 
 
 def get_active_plan_by_id(db: Session, plan_id: int) -> Plan | None:

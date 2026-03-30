@@ -25,12 +25,41 @@ from models.user import User
 from schemas.plan import PlanCreate, PlanUpdate
 
 
+# ── Tier Helpers ──────────────────────────────────────────────────────────────
+
+def _attach_tiers(plans: list[Plan]) -> None:
+    """Set a .tier attribute on each plan based on price rank (1 = cheapest).
+    Plans with the same price share the same tier number."""
+    sorted_plans = sorted(plans, key=lambda p: float(p.price))
+    tier = 0
+    prev_price = None
+    for plan in sorted_plans:
+        price = float(plan.price)
+        if price != prev_price:
+            tier += 1
+            prev_price = price
+        plan.tier = tier
+
+
+def _attach_tier_single(db: Session, hub_id: int, plan: Plan) -> None:
+    """Compute and set .tier on a single plan by fetching all hub plans for context."""
+    all_plans = get_plans_by_hub(db, hub_id=hub_id, active_only=False)
+    _attach_tiers(all_plans)
+    for p in all_plans:
+        if p.id == plan.id:
+            plan.tier = p.tier
+            return
+    plan.tier = None
+
+
 # ── Create a Plan ─────────────────────────────────────────────────────────────
 
 def create_my_plan(db: Session, current_user: User, data: PlanCreate) -> Plan:
     _require_creator(current_user)
     hub = _get_creator_hub(db, current_user)
-    return create_plan(db, hub_id=hub.id, data=data)
+    plan = create_plan(db, hub_id=hub.id, data=data)
+    _attach_tier_single(db, hub.id, plan)
+    return plan
 
 
 # ── List All Plans on Own Hub (creator view — includes inactive) ───────────────
@@ -38,14 +67,18 @@ def create_my_plan(db: Session, current_user: User, data: PlanCreate) -> Plan:
 def list_my_plans(db: Session, current_user: User) -> list[Plan]:
     _require_creator(current_user)
     hub = _get_creator_hub(db, current_user)
-    return get_plans_by_hub(db, hub_id=hub.id, active_only=False)
+    plans = get_plans_by_hub(db, hub_id=hub.id, active_only=False)
+    _attach_tiers(plans)
+    return plans
 
 
 # ── List Active Plans on Any Hub (public/member view) ─────────────────────────
 
 def list_hub_plans(db: Session, hub_id: int) -> list[Plan]:
     # Returns only active plans — members should not see deactivated plans
-    return get_plans_by_hub(db, hub_id=hub_id, active_only=True)
+    plans = get_plans_by_hub(db, hub_id=hub_id, active_only=True)
+    _attach_tiers(plans)
+    return plans
 
 
 # ── Get a Single Plan on Own Hub ──────────────────────────────────────────────
@@ -55,6 +88,7 @@ def get_my_plan(db: Session, current_user: User, plan_id: int) -> Plan:
     hub = _get_creator_hub(db, current_user)
     plan = get_plan_by_id(db, plan_id)
     _validate_plan_belongs_to_hub(plan, hub.id)
+    _attach_tier_single(db, hub.id, plan)
     return plan
 
 
@@ -65,7 +99,9 @@ def update_my_plan(db: Session, current_user: User, plan_id: int, data: PlanUpda
     hub = _get_creator_hub(db, current_user)
     plan = get_plan_by_id(db, plan_id)
     _validate_plan_belongs_to_hub(plan, hub.id)
-    return update_plan(db, plan, data)
+    plan = update_plan(db, plan, data)
+    _attach_tier_single(db, hub.id, plan)
+    return plan
 
 
 # ── Toggle a Plan Active / Inactive ──────────────────────────────────────────
@@ -75,7 +111,9 @@ def toggle_my_plan(db: Session, current_user: User, plan_id: int) -> Plan:
     hub = _get_creator_hub(db, current_user)
     plan = get_plan_by_id(db, plan_id)
     _validate_plan_belongs_to_hub(plan, hub.id)
-    return toggle_plan(db, plan)
+    plan = toggle_plan(db, plan)
+    _attach_tier_single(db, hub.id, plan)
+    return plan
 
 
 # ── Delete a Plan ─────────────────────────────────────────────────────────────

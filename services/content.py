@@ -31,7 +31,7 @@ from crud.content import (
 )
 from crud.hub import get_hub_by_creator_id, get_hub_by_id
 from crud.subscription import get_subscribers_by_hub
-from crud.plan import get_plan_by_id
+from crud.plan import get_plan_by_id, get_plans_by_hub
 from crud.subscription import get_active_subscription
 from crud.content_engagement import (
     get_like_count,
@@ -212,10 +212,16 @@ def list_hub_content_for_member(
 
     all_published = get_contents_by_hub(db, hub_id=hub_id, published_only=True)
 
-    # Filter: return free content (plan_id is None) + content matching their plan
+    # Tier-based filter: subscriber can access free content + content gated to any
+    # plan whose price is at or below their own plan's price (cumulative lower tiers).
+    subscriber_plan = get_plan_by_id(db, subscription.plan_id)
+    subscriber_price = float(subscriber_plan.price)
+    hub_plans = get_plans_by_hub(db, hub_id=hub_id, active_only=False)
+    accessible_plan_ids = {p.id for p in hub_plans if float(p.price) <= subscriber_price}
+
     items = [
         item for item in all_published
-        if item.plan_id is None or item.plan_id == subscription.plan_id
+        if item.plan_id is None or item.plan_id in accessible_plan_ids
     ]
     _attach_engagement(db, items, viewer_id=current_user.id)
     return items
@@ -243,9 +249,12 @@ def get_hub_content_for_member(
     if not subscription:
         raise subscription_not_found_exception
 
-    # Check plan gate
-    if content.plan_id is not None and content.plan_id != subscription.plan_id:
-        raise content_access_denied_exception
+    # Tier-based gate: subscriber can access content from equal or lower-priced plans
+    if content.plan_id is not None:
+        content_plan = get_plan_by_id(db, content.plan_id)
+        subscriber_plan = get_plan_by_id(db, subscription.plan_id)
+        if float(content_plan.price) > float(subscriber_plan.price):
+            raise content_access_denied_exception
 
     # Record unique view and attach engagement stats
     record_view(db, user_id=current_user.id, content_id=content_id)
