@@ -51,5 +51,4 @@ def complete_user_onboarding(
         user=current_user,
         username=data.username,
         role=data.role,
-        full_name=data.full_name,
     )

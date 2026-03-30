@@ -50,6 +50,7 @@ def create_user(db: Session, data: UserRegister) -> User:
     user = User(
         email=data.email,
         hashed_password=hash_password(data.password),
+        full_name=data.full_name,
         username=None,
         role=None,
         is_onboarded=False,
@@ -123,9 +124,7 @@ def get_or_create_oauth_user(
 
 # ── Onboarding ────────────────────────────────────────────────────────────────
 
-def complete_onboarding(
-    db: Session, user: User, username: str, role: str, full_name: str | None = None
-) -> User:
+def complete_onboarding(db: Session, user: User, username: str, role: str) -> User:
     """
     Called once — sets username + role and flips is_onboarded to True.
     If role is creator, the hub is created here.
@@ -134,8 +133,6 @@ def complete_onboarding(
     user.username = username.lower()
     user.role = role
     user.is_onboarded = True
-    if full_name is not None:
-        user.full_name = full_name
     db.commit()
     db.refresh(user)
 

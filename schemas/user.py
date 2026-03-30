@@ -19,11 +19,12 @@ class UserRole(str, Enum):
 
 class UserRegister(BaseModel):
     """
-    Email + password only.
+    Email, password, and full name.
     Username and role are collected separately in POST /onboarding/complete.
     """
-    email:    EmailStr
-    password: str = Field(..., min_length=8)
+    email:     EmailStr
+    password:  str = Field(..., min_length=8)
+    full_name: str = Field(..., min_length=1, max_length=100)
 
 
 class UserLogin(BaseModel):
@@ -76,15 +77,14 @@ class OnboardingComplete(BaseModel):
     the member → creator upgrade path).
     """
     username: str = Field(..., min_length=3, max_length=50)
-    full_name: Optional[str] = Field(None, min_length=1, max_length=100)
     role: UserRole
 
     @field_validator("username")
     @classmethod
     def username_valid(cls, v: str) -> str:
-        if not v.replace("_", "").replace("-", "").isalnum():
+        if not v.replace("_", "").replace("-", "").replace(".", "").isalnum():
             raise ValueError(
-                "Username may only contain letters, numbers, hyphens, and underscores."
+                "Username may only contain letters, numbers, hyphens, underscores, and dots."
             )
         return v.lower()  # store lowercase — prevents "Ada" vs "ada" conflicts
 
@@ -111,9 +111,9 @@ class UserUpdateProfile(BaseModel):
     @field_validator("username")
     @classmethod
     def username_valid(cls, v: Optional[str]) -> Optional[str]:
-        if v and not v.replace("_", "").replace("-", "").isalnum():
+        if v and not v.replace("_", "").replace("-", "").replace(".", "").isalnum():
             raise ValueError(
-                "Username may only contain letters, numbers, hyphens, and underscores."
+                "Username may only contain letters, numbers, hyphens, underscores, and dots."
             )
         return v.lower() if v else v
 
