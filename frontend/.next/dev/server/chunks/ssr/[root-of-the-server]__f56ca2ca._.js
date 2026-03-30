@@ -1303,12 +1303,9 @@ function ProfilePopover({ onClose }) {
         onClose
     ]);
     const handleLogout = ()=>{
-        logout(undefined, {
-            onSettled: ()=>{
-                router.push("/auth");
-            }
-        });
-        onClose();
+        onClose?.();
+        router.push("/auth");
+        logout();
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         ref: ref,
@@ -1328,7 +1325,7 @@ function ProfilePopover({ onClose }) {
                             size: 40
                         }, void 0, false, {
                             fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                            lineNumber: 499,
+                            lineNumber: 496,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1339,7 +1336,7 @@ function ProfilePopover({ onClose }) {
                                     children: me?.username ? `@${me.username}` : "…"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                    lineNumber: 505,
+                                    lineNumber: 502,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1347,24 +1344,24 @@ function ProfilePopover({ onClose }) {
                                     children: me?.email ?? ""
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                    lineNumber: 508,
+                                    lineNumber: 505,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                            lineNumber: 504,
+                            lineNumber: 501,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                    lineNumber: 498,
+                    lineNumber: 495,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                lineNumber: 497,
+                lineNumber: 494,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1382,14 +1379,14 @@ function ProfilePopover({ onClose }) {
                                 children: Icon.hub
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                lineNumber: 526,
+                                lineNumber: 523,
                                 columnNumber: 13
                             }, this),
                             "Become a creator"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                        lineNumber: 519,
+                        lineNumber: 516,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1404,21 +1401,21 @@ function ProfilePopover({ onClose }) {
                                 children: Icon.settings2
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                lineNumber: 537,
+                                lineNumber: 534,
                                 columnNumber: 11
                             }, this),
                             "Settings"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                        lineNumber: 530,
+                        lineNumber: 527,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "mx-3 my-1 h-px bg-[#F5EFFF]"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                        lineNumber: 540,
+                        lineNumber: 537,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1430,26 +1427,26 @@ function ProfilePopover({ onClose }) {
                                 children: Icon.logout
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                lineNumber: 545,
+                                lineNumber: 542,
                                 columnNumber: 11
                             }, this),
                             "Log out"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                        lineNumber: 541,
+                        lineNumber: 538,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                lineNumber: 516,
+                lineNumber: 513,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-        lineNumber: 488,
+        lineNumber: 485,
         columnNumber: 5
     }, this);
 }
@@ -1478,7 +1475,7 @@ function AppSidebar({ open, onClose }) {
                 onClick: onClose
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                lineNumber: 587,
+                lineNumber: 584,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("aside", {
@@ -1509,7 +1506,7 @@ function AppSidebar({ open, onClose }) {
                                             fillOpacity: "0.9"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                            lineNumber: 610,
+                                            lineNumber: 607,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
@@ -1522,7 +1519,7 @@ function AppSidebar({ open, onClose }) {
                                             fillOpacity: "0.9"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                            lineNumber: 619,
+                                            lineNumber: 616,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
@@ -1535,7 +1532,7 @@ function AppSidebar({ open, onClose }) {
                                             fillOpacity: "0.9"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                            lineNumber: 628,
+                                            lineNumber: 625,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
@@ -1548,7 +1545,7 @@ function AppSidebar({ open, onClose }) {
                                             fillOpacity: "0.5"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                            lineNumber: 637,
+                                            lineNumber: 634,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
@@ -1561,18 +1558,18 @@ function AppSidebar({ open, onClose }) {
                                             fillOpacity: "0.3"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                            lineNumber: 646,
+                                            lineNumber: 643,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                    lineNumber: 609,
+                                    lineNumber: 606,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                lineNumber: 605,
+                                lineNumber: 602,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1583,13 +1580,13 @@ function AppSidebar({ open, onClose }) {
                                 children: "Hubora"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                lineNumber: 657,
+                                lineNumber: 654,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                        lineNumber: 601,
+                        lineNumber: 598,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -1602,7 +1599,7 @@ function AppSidebar({ open, onClose }) {
                                     badge: item.key === "notifs" ? unreadCount : undefined
                                 }, item.key, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                    lineNumber: 663,
+                                    lineNumber: 660,
                                     columnNumber: 13
                                 }, this)),
                             me?.role === "creator" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(CreatorHubDropdown, {
@@ -1610,13 +1607,13 @@ function AppSidebar({ open, onClose }) {
                                 onNavigate: navigate
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                lineNumber: 675,
+                                lineNumber: 672,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                        lineNumber: 661,
+                        lineNumber: 658,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1626,7 +1623,7 @@ function AppSidebar({ open, onClose }) {
                                 onClose: ()=>setProfileOpen(false)
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                lineNumber: 682,
+                                lineNumber: 679,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1642,7 +1639,7 @@ function AppSidebar({ open, onClose }) {
                                         size: 28
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                        lineNumber: 699,
+                                        lineNumber: 696,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1653,7 +1650,7 @@ function AppSidebar({ open, onClose }) {
                                                 children: displayName
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                                lineNumber: 705,
+                                                lineNumber: 702,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1661,13 +1658,13 @@ function AppSidebar({ open, onClose }) {
                                                 children: roleLabel
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                                lineNumber: 708,
+                                                lineNumber: 705,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                        lineNumber: 704,
+                                        lineNumber: 701,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1675,25 +1672,25 @@ function AppSidebar({ open, onClose }) {
                                         children: Icon.chevDown
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                        lineNumber: 712,
+                                        lineNumber: 709,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                                lineNumber: 685,
+                                lineNumber: 682,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                        lineNumber: 680,
+                        lineNumber: 677,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx",
-                lineNumber: 593,
+                lineNumber: 590,
                 columnNumber: 7
             }, this)
         ]

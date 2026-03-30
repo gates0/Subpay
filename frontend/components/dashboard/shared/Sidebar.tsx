@@ -476,12 +476,9 @@ function ProfilePopover({ onClose }: { onClose: () => void }) {
   }, [onClose]);
 
   const handleLogout = () => {
-    logout(undefined, {
-      onSettled: () => {
-        router.push("/auth");
-      },
-    });
-    onClose();
+    onClose?.();
+    router.push("/auth"); 
+    logout();
   };
 
   return (

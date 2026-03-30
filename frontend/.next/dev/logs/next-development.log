@@ -321,3 +321,259 @@ Import traces:
 [96:31:24.943] Browser ERROR   uncaughtError: ReferenceError: useMe is not defined
 [96:31:38.687] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
 [96:31:38.765] Server  LOG     ✓ Compiled in 47ms
+[137:41:19.391] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[137:42:07.702] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[137:57:20.864] Server  LOG     ✓ Compiled in 183ms
+[138:05:39.035] Server  LOG     ✓ Compiled in 160ms
+[138:10:36.797] Server  LOG     ✓ Compiled in 49ms
+[138:10:37.998] Server  LOG     ✓ Compiled in 32ms
+[138:10:39.101] Server  LOG     ✓ Compiled in 29ms
+[138:10:39.494] Browser ERROR   uncaughtError: ReferenceError: Cannot access 'usernameCheck' before initialization
+[138:10:41.950] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[138:10:42.006] Server  LOG     ✓ Compiled in 30ms
+[138:10:55.899] Server  LOG     ✓ Compiled in 29ms
+[138:10:56.492] Browser LOG     usernameCheck raw: undefined
+[138:10:56.492] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:10:56.492] Browser LOG     usernameCheck raw: undefined
+[138:10:56.492] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:11:02.257] Server  LOG     usernameCheck raw: undefined
+[138:11:02.544] Browser LOG     usernameCheck raw: undefined
+[138:11:02.544] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:11:19.103] Server  LOG     usernameCheck raw: undefined
+[138:11:19.679] Browser LOG     usernameCheck raw: undefined
+[138:11:19.679] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:12:08.958] Browser LOG     usernameCheck raw: undefined
+[138:12:08.958] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:12:08.958] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[138:12:10.064] Browser LOG     usernameCheck raw: undefined
+[138:12:10.064] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:16:10.291] Server  LOG     ✓ Compiled in 57ms
+[138:16:10.492] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx:278:22
+Parsing ecmascript source code failed
+  276 |                         <span className="text-red-500" style={{ fontSize: "11px" }}>Taken</span>
+  277 |                       </>
+> 278 |                     )}
+      |                      ^
+  279 |                   </div>
+  280 |                 )}
+  281 |               </div>
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Server Component]
+[138:16:50.923] Server  LOG     ✓ Compiled in 52ms
+[138:16:51.498] Browser LOG     usernameCheck raw: undefined
+[138:16:51.498] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:16:51.498] Browser LOG     usernameCheck raw: undefined
+[138:16:51.498] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:16:51.498] Browser LOG     usernameCheck raw: undefined
+[138:16:51.498] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:16:56.160] Server  LOG     ✓ Compiled in 40ms
+[138:16:56.492] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx:278:22
+Parsing ecmascript source code failed
+  276 |                         <span className="text-red-500" style={{ fontSize: "11px" }}>Taken</span>
+  277 |                       </>
+> 278 |                     )}
+      |                      ^
+  279 |                   </div>
+  280 |                 )}
+  281 |               </div>
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Server Component]
+[138:16:57.493] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx:278:22
+Parsing ecmascript source code failed
+  276 |                         <span className="text-red-500" style={{ fontSize: "11px" }}>Taken</span>
+  277 |                       </>
+> 278 |                     )}
+      |                      ^
+  279 |                   </div>
+  280 |                 )}
+  281 |               </div>
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Server Component]
+[138:17:26.495] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx:278:23
+Parsing ecmascript source code failed
+  276 |                         <span className="text-red-500" style={{ fontSize: "11px" }}>Taken</span>
+  277 |                       </>
+> 278 |                     ):}
+      |                       ^
+  279 |                   </div>
+  280 |                 )}
+  281 |               </div>
+
+Expected '</', got '}'
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Server Component]
+[138:17:29.415] Browser LOG     usernameCheck raw: undefined
+[138:17:29.415] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:17:29.415] Browser LOG     usernameCheck raw: undefined
+[138:17:29.415] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:17:29.539] Browser LOG     usernameCheck raw: undefined
+[138:17:29.540] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:17:32.177] Server  LOG     usernameCheck raw: undefined
+[138:17:32.752] Browser LOG     usernameCheck raw: undefined
+[138:17:32.752] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:17:33.136] Browser LOG     usernameCheck raw: undefined
+[138:17:33.136] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:17:33.485] Browser LOG     usernameCheck raw: undefined
+[138:17:33.485] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:17:37.798] Browser LOG     usernameCheck raw: undefined
+[138:17:37.799] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:17:38.286] Browser LOG     usernameCheck raw: undefined
+[138:17:38.286] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:17:38.286] Browser LOG     usernameCheck raw: undefined
+[138:17:38.286] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:17:38.423] Browser LOG     usernameCheck raw: undefined
+[138:17:38.423] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:17:38.810] Browser LOG     usernameCheck raw: undefined
+[138:17:38.810] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:17:39.316] Browser LOG     usernameCheck raw: undefined
+[138:17:39.316] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:17:39.316] Browser LOG     usernameCheck raw: undefined
+[138:17:39.316] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:17:39.559] Browser LOG     usernameCheck raw: undefined
+[138:17:39.559] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:17:39.961] Browser LOG     usernameCheck raw: undefined
+[138:17:39.961] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:17:40.662] Browser LOG     usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:17:40.662] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:18:26.356] Server  LOG     ✓ Compiled in 102ms
+[138:18:26.493] Browser ERROR   ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx:278:22
+Parsing ecmascript source code failed
+  276 |                         <span className="text-red-500" style={{ fontSize: "11px" }}>Taken</span>
+  277 |                       </>
+> 278 |                     ): null}
+      |                      ^
+  279 |                   </div>
+  280 |                 )}
+  281 |               </div>
+
+Expected '</', got ':'
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/onboarding/page.tsx [Server Component]
+[138:18:31.497] Browser LOG     usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:18:31.497] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:18:31.497] Browser LOG     usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:18:31.497] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:18:31.497] Browser LOG     usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:18:31.497] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:18:32.493] Browser LOG     usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:18:32.493] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:18:36.097] Browser LOG     usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:18:36.097] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:18:38.496] Browser LOG     usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:18:38.496] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:18:40.947] Browser LOG     usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:18:40.947] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:18:41.984] Browser LOG     usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:18:41.984] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:18:43.198] Browser LOG     usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:18:43.198] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: {"available":true,"username":"adaeze"}
+[138:18:43.333] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[138:24:58.493] Browser ERROR   ./Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx:483:5
+Parsing ecmascript source code failed
+  481 |     logout();
+  482 |       },
+> 483 |     });
+      |     ^
+  484 |     onClose();
+  485 |   };
+  486 |
+
+Unexpected token `}`. Expected yield, an identifier, [ or {
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/layout.tsx [Client Component Browser]
+    ./Documents/Subpay/frontend/app/(authenticated)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Subpay/frontend/components/dashboard/shared/Sidebar.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/layout.tsx [Client Component SSR]
+    ./Documents/Subpay/frontend/app/(authenticated)/layout.tsx [Server Component]
+[138:25:01.433] Server  LOG     ✓ Compiled in 23ms
+[138:27:20.137] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[138:29:00.166] Browser LOG     usernameCheck raw: undefined
+[138:29:00.166] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:29:00.166] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[138:29:00.527] Browser LOG     usernameCheck raw: undefined
+[138:29:00.527] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:29:01.156] Browser LOG     usernameCheck raw: undefined
+[138:29:01.157] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:29:03.811] Browser LOG     usernameCheck raw: undefined
+[138:29:03.811] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:29:03.946] Browser LOG     usernameCheck raw: undefined
+[138:29:03.946] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:29:04.111] Browser LOG     usernameCheck raw: undefined
+[138:29:04.112] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:29:04.261] Browser LOG     usernameCheck raw: undefined
+[138:29:04.261] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:29:04.501] Browser LOG     usernameCheck raw: undefined
+[138:29:04.501] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:29:04.501] Browser LOG     usernameCheck raw: undefined
+[138:29:04.501] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:29:04.671] Browser LOG     usernameCheck raw: undefined
+[138:29:04.672] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:29:05.072] Browser LOG     usernameCheck raw: undefined
+[138:29:05.072] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:29:05.750] Browser LOG     usernameCheck raw: {"available":true,"username":"ayomide"}
+[138:29:05.750] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: {"available":true,"username":"ayomide"}
+[138:29:06.019] Browser LOG     usernameCheck raw: {"available":true,"username":"ayomide"}
+[138:29:06.019] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: {"available":true,"username":"ayomide"}
+[138:29:06.124] Browser LOG     usernameCheck raw: {"available":true,"username":"ayomide"}
+[138:29:06.124] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: {"available":true,"username":"ayomide"}
+[138:29:06.525] Browser LOG     usernameCheck raw: undefined
+[138:29:06.525] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: undefined
+[138:29:07.303] Browser LOG     usernameCheck raw: {"available":true,"username":"ayomide12"}
+[138:29:07.303] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: {"available":true,"username":"ayomide12"}
+[138:29:10.561] Browser LOG     usernameCheck raw: {"available":true,"username":"ayomide12"}
+[138:29:10.561] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: {"available":true,"username":"ayomide12"}
+[138:29:11.398] Browser LOG     usernameCheck raw: {"available":true,"username":"ayomide12"}
+[138:29:11.398] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: {"available":true,"username":"ayomide12"}
+[138:30:22.221] Browser LOG     usernameCheck raw: {"available":true,"username":"ayomide12"}
+[138:30:22.222] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: {"available":true,"username":"ayomide12"}
+[138:30:24.194] Browser LOG     usernameCheck raw: {"available":true,"username":"ayomide12"}
+[138:30:24.194] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: {"available":true,"username":"ayomide12"}
+[138:30:24.735] Browser LOG     usernameCheck raw: {"available":true,"username":"ayomide12"}
+[138:30:24.735] Browser LOG     [2;38;2;124;124;124m%s[0m usernameCheck raw: {"available":true,"username":"ayomide12"}
+[138:30:43.513] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior

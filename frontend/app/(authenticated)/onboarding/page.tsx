@@ -145,6 +145,8 @@ export default function OnboardingPage() {
 
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
+  
+
   // Redirect if already onboarded
   const { data: status } = useOnboardingStatus()
   useEffect(() => {
@@ -168,6 +170,8 @@ export default function OnboardingPage() {
 
   // Whether the check is still in-flight (typing or fetching)
   const usernameChecking = username !== debouncedUsername || checkingUsername
+
+  console.log("usernameCheck raw:", usernameCheck) 
 
   const { mutateAsync: complete, isPending } = useCompleteOnboarding()
 
@@ -263,7 +267,7 @@ export default function OnboardingPage() {
                         </svg>
                         <span className="text-[#10B981]" style={{ fontSize: "11px" }}>Available</span>
                       </>
-                    ) : (
+                    ) : usernameUnavailable ? (
                       <>
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                           <circle cx="7" cy="7" r="6" fill="#EF4444" fillOpacity="0.12" />
@@ -271,7 +275,7 @@ export default function OnboardingPage() {
                         </svg>
                         <span className="text-red-500" style={{ fontSize: "11px" }}>Taken</span>
                       </>
-                    )}
+                    ): null}
                   </div>
                 )}
               </div>
