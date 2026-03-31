@@ -1,36 +1,46 @@
 """
-Email service using fastapi-mail.
+Email service using Resend (https://resend.com).
 
-In development, point MAIL_SERVER to Mailtrap (https://mailtrap.io) to
-capture outgoing emails without delivering them. In production, use
-Resend, Postmark, SendGrid, or any SMTP provider.
+Resend uses HTTP — not SMTP — so it works on Render and any other host
+that blocks outbound port 587/465.
+
+Setup:
+  1. Sign up at https://resend.com (free tier: 3,000 emails/month)
+  2. Create an API key in the Resend dashboard
+  3. Add RESEND_API_KEY=re_... to your Render environment variables
+  4. Verify your sending domain in Resend (or use onboarding@resend.dev for testing)
+  5. Set MAIL_FROM to an address on your verified domain
 """
 import logging
 
-from fastapi_mail import ConnectionConfig, FastMail, MessageSchema, MessageType
+import httpx
 
 from config import settings
 
 logger = logging.getLogger(__name__)
 
-_mail_config = ConnectionConfig(
-    MAIL_USERNAME=settings.MAIL_USERNAME,
-    MAIL_PASSWORD=settings.MAIL_PASSWORD,
-    MAIL_FROM=settings.MAIL_FROM,
-    MAIL_PORT=settings.MAIL_PORT,
-    MAIL_SERVER=settings.MAIL_SERVER,
-    MAIL_STARTTLS=settings.MAIL_STARTTLS,
-    MAIL_SSL_TLS=settings.MAIL_SSL_TLS,
-    USE_CREDENTIALS=True,
-    VALIDATE_CERTS=True,
-)
+_RESEND_URL = "https://api.resend.com/emails"
 
-_fm = FastMail(_mail_config)
+
+async def _send(to_email: str, subject: str, html: str) -> None:
+    headers = {
+        "Authorization": f"Bearer {settings.RESEND_API_KEY}",
+        "Content-Type": "application/json",
+    }
+    payload = {
+        "from": settings.MAIL_FROM,
+        "to": [to_email],
+        "subject": subject,
+        "html": html,
+    }
+    async with httpx.AsyncClient(timeout=10) as client:
+        response = await client.post(_RESEND_URL, json=payload, headers=headers)
+        response.raise_for_status()
 
 
 async def send_verification_email(to_email: str, token: str) -> None:
     verify_url = f"{settings.APP_BASE_URL}/api/v1/auth/verify-email?token={token}"
-    body = f"""
+    html = f"""
     <h2>Verify your email address</h2>
     <p>Click the link below to verify your account. This link expires in 24 hours.</p>
     <a href="{verify_url}" style="
@@ -42,14 +52,8 @@ async def send_verification_email(to_email: str, token: str) -> None:
     <p>{verify_url}</p>
     <p>If you did not create an account, you can safely ignore this email.</p>
     """
-    message = MessageSchema(
-        subject="Verify your email address",
-        recipients=[to_email],
-        body=body,
-        subtype=MessageType.html,
-    )
     try:
-        await _fm.send_message(message)
+        await _send(to_email, "Verify your email address", html)
         logger.info("Verification email sent to %s", to_email)
     except Exception as exc:
         logger.error("Failed to send verification email to %s: %s", to_email, exc, exc_info=True)
@@ -57,7 +61,7 @@ async def send_verification_email(to_email: str, token: str) -> None:
 
 async def send_password_reset_email(to_email: str, token: str) -> None:
     reset_url = f"{settings.APP_BASE_URL}/api/v1/auth/reset-password?token={token}"
-    body = f"""
+    html = f"""
     <h2>Reset your password</h2>
     <p>Click the link below to set a new password. This link expires in 1 hour.</p>
     <a href="{reset_url}" style="
@@ -69,14 +73,8 @@ async def send_password_reset_email(to_email: str, token: str) -> None:
     <p>{reset_url}</p>
     <p>If you did not request a password reset, you can safely ignore this email.</p>
     """
-    message = MessageSchema(
-        subject="Reset your password",
-        recipients=[to_email],
-        body=body,
-        subtype=MessageType.html,
-    )
     try:
-        await _fm.send_message(message)
+        await _send(to_email, "Reset your password", html)
         logger.info("Password reset email sent to %s", to_email)
     except Exception as exc:
         logger.error("Failed to send password reset email to %s: %s", to_email, exc, exc_info=True)

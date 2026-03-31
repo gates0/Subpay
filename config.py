@@ -17,14 +17,9 @@ class Settings(BaseSettings):
     # APP_BASE_URL: str = "http://localhost:8002"
     APP_BASE_URL: str = "https://subpay.onrender.com"
 
-    # Email
-    MAIL_USERNAME: str
-    MAIL_PASSWORD: str
-    MAIL_FROM: str
-    MAIL_SERVER: str = "smtp.gmail.com"
-    MAIL_PORT: int = 465
-    MAIL_STARTTLS: bool = False
-    MAIL_SSL_TLS: bool = True
+    # Email (Resend — https://resend.com)
+    RESEND_API_KEY: str
+    MAIL_FROM: str  # must be on a domain verified in Resend
 
     # Google OAuth
     GOOGLE_CLIENT_ID: str
