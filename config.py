@@ -35,9 +35,18 @@ class Settings(BaseSettings):
 
     # ── Paystack ──────────────────────────────────────────────────────────────
     PAYSTACK_SECRET_KEY: str = ""
-    # URL Paystack redirects users to after payment.
-    # Your frontend should call POST /payments/verify?reference=xxx on this page.
-    PAYMENT_CALLBACK_URL: str = "http://localhost:3000/payment/callback"
+    # Backend callback — Paystack redirects here after payment.
+    # This endpoint verifies the payment then redirects to the frontend.
+    PAYMENT_CALLBACK_URL: str = "https://subpay.onrender.com/api/v1/payments/callback"
+
+    # Frontend pages to land on after the backend callback processes the result
+    FRONTEND_PAYMENT_SUCCESS_URL: str = "http://localhost:3000/payment/success"
+    FRONTEND_PAYMENT_FAILURE_URL: str = "http://localhost:3000/payment/failed"
+
+    # ── Cloudinary (media storage) ────────────────────────────────────────────
+    CLOUDINARY_CLOUD_NAME: str = ""
+    CLOUDINARY_API_KEY: str = ""
+    CLOUDINARY_API_SECRET: str = ""
 
     # ── Platform fee (optional — deduct before creator earnings) ─────────────
     # e.g. 0.10 = 10% platform cut. Set to 0.0 to disable.

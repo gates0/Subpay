@@ -1,6 +1,7 @@
 # → app/api/v1/payments.py
 
-from fastapi import APIRouter, Depends, Header, HTTPException, Request, status
+from fastapi import APIRouter, Depends, Header, HTTPException, Query, Request, status
+from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 
 from dependencies import get_current_onboarded_user, get_db
@@ -13,7 +14,7 @@ from schemas.payment import (
     WithdrawalRequest,
     WithdrawalResponse,
 )
-from schemas.user import MessageResponse
+from config import settings
 from services.payment import (
     get_my_earnings,
     get_my_hub_transactions,
@@ -56,21 +57,43 @@ async def initialize(
     )
 
 
-# ── VERIFY PAYMENT (client-side redirect callback) ────────────────────────────
+# ── PAYSTACK REDIRECT CALLBACK (browser redirect after payment) ───────────────
+
+@router.get("/callback")
+async def payment_callback(
+    reference: str = Query(..., alias="reference"),
+    db: Session = Depends(get_db),
+):
+    """
+    Paystack redirects the user's browser here after payment.
+    We verify the payment then redirect to the appropriate frontend page.
+
+    Set PAYMENT_CALLBACK_URL=https://yourdomain.com/api/v1/payments/callback
+    in your environment variables.
+    """
+    try:
+        await verify_payment(db, reference)
+        return RedirectResponse(
+            url=f"{settings.FRONTEND_PAYMENT_SUCCESS_URL}?reference={reference}",
+            status_code=status.HTTP_302_FOUND,
+        )
+    except HTTPException:
+        return RedirectResponse(
+            url=f"{settings.FRONTEND_PAYMENT_FAILURE_URL}?reference={reference}",
+            status_code=status.HTTP_302_FOUND,
+        )
+
+
+# ── VERIFY PAYMENT (manual / client-side fallback) ────────────────────────────
 
 @router.post("/verify", response_model=TransactionResponse)
 async def verify(
     reference: str,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_onboarded_user),
 ):
     """
-    Verify a payment after the user returns from Paystack's hosted page.
-
-    Pass the `reference` returned by `/payments/initialize` (or from the
-    Paystack redirect query param `?trxref=...`).
-
-    On success: the subscription is created and the transaction is marked success.
+    Manually verify a payment by reference. Useful as a fallback if the
+    automatic callback redirect was missed.
     Idempotent — safe to call more than once for the same reference.
     """
     return await verify_payment(db, reference)

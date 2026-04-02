@@ -48,17 +48,33 @@ from models.user import User
 from schemas.content import ContentCreate, ContentUpdate
 from services.notification import notify_new_content
 
-# ── File storage config ───────────────────────────────────────────────────────
-# In production replace this with S3/Cloudinary/GCS uploads.
-# The MEDIA_ROOT directory is created on startup if it doesn't exist.
+# ── Cloudinary config ─────────────────────────────────────────────────────────
 
-MEDIA_ROOT = "media"
+import cloudinary
+import cloudinary.uploader
+
+from config import settings
+
+cloudinary.config(
+    cloud_name=settings.CLOUDINARY_CLOUD_NAME,
+    api_key=settings.CLOUDINARY_API_KEY,
+    api_secret=settings.CLOUDINARY_API_SECRET,
+    secure=True,
+)
+
 ALLOWED_EXTENSIONS = {
     "video": {".mp4", ".mov", ".avi", ".mkv", ".webm"},
     "image": {".jpg", ".jpeg", ".png", ".gif", ".webp"},
     "pdf":   {".pdf"},
 }
 MAX_FILE_SIZE_BYTES = 500 * 1024 * 1024  # 500 MB
+
+# Cloudinary resource type per content type
+_CLOUDINARY_RESOURCE_TYPE = {
+    "video": "video",
+    "image": "image",
+    "pdf":   "raw",
+}
 
 
 # ── Creator: Create Content ───────────────────────────────────────────────────
@@ -334,42 +350,51 @@ def _validate_content_on_hub(content: Content | None, hub_id: int) -> None:
 
 
 async def _save_upload(file: UploadFile, content_type: str) -> str:
-    """
-    Save an uploaded file to MEDIA_ROOT and return its relative URL path.
-    In production, replace this body with an S3/Cloudinary upload call
-    and return the remote URL instead.
-    """
+    """Upload a file to Cloudinary and return its secure URL."""
     ext = os.path.splitext(file.filename or "")[1].lower()
     allowed = ALLOWED_EXTENSIONS.get(content_type, set())
     if ext not in allowed:
         raise content_wrong_type_for_upload_exception
 
-    # Read file into memory to check size before writing
     file_bytes = await file.read()
     if len(file_bytes) > MAX_FILE_SIZE_BYTES:
         from core.exceptions import content_file_too_large_exception
         raise content_file_too_large_exception
 
-    # Build a unique filename and save under MEDIA_ROOT/<content_type>/
-    dest_dir = os.path.join(MEDIA_ROOT, content_type)
-    os.makedirs(dest_dir, exist_ok=True)
+    public_id = f"content/{content_type}/{uuid.uuid4().hex}"
+    resource_type = _CLOUDINARY_RESOURCE_TYPE[content_type]
 
-    unique_name = f"{uuid.uuid4().hex}{ext}"
-    dest_path   = os.path.join(dest_dir, unique_name)
-
-    with open(dest_path, "wb") as f:
-        f.write(file_bytes)
-
-    # Return a URL-style path; your static file server will expose /media/
-    return f"/{dest_dir}/{unique_name}"
+    result = cloudinary.uploader.upload(
+        file_bytes,
+        public_id=public_id,
+        resource_type=resource_type,
+        overwrite=False,
+    )
+    return result["secure_url"]
 
 
 def _delete_file(file_url: str) -> None:
-    """
-    Delete the physical file when content is deleted.
-    Silently ignores missing files.
-    """
-    # Strip leading slash to get relative path
-    relative_path = file_url.lstrip("/")
-    if os.path.exists(relative_path):
-        os.remove(relative_path)
+    """Delete a file from Cloudinary by its secure URL. Silently ignores errors."""
+    # Derive the public_id from the URL:
+    # e.g. https://res.cloudinary.com/<cloud>/video/upload/v.../content/video/<name>
+    # public_id is everything after /upload/v<version>/ (without extension for image/video)
+    try:
+        # Split on "/upload/" and take the part after the version segment
+        after_upload = file_url.split("/upload/", 1)[1]
+        # Strip the version prefix (v1234567890/)
+        if after_upload.startswith("v") and "/" in after_upload:
+            after_upload = after_upload.split("/", 1)[1]
+        # For image/video Cloudinary ignores the extension in public_id; strip it
+        public_id, _ = os.path.splitext(after_upload)
+
+        # Determine resource type from the URL path
+        if "/video/upload/" in file_url:
+            resource_type = "video"
+        elif "/image/upload/" in file_url:
+            resource_type = "image"
+        else:
+            resource_type = "raw"
+
+        cloudinary.uploader.destroy(public_id, resource_type=resource_type)
+    except Exception:
+        pass  # silently ignore missing or malformed URLs
