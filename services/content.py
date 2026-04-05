@@ -1,10 +1,11 @@
 # → app/services/content.py
 
+import io
 import os
 import uuid
 from typing import Optional
 
-from fastapi import UploadFile
+from fastapi import HTTPException, UploadFile
 from sqlalchemy.orm import Session
 
 from core.exceptions import (
@@ -364,12 +365,18 @@ async def _save_upload(file: UploadFile, content_type: str) -> str:
     public_id = f"content/{content_type}/{uuid.uuid4().hex}"
     resource_type = _CLOUDINARY_RESOURCE_TYPE[content_type]
 
-    result = cloudinary.uploader.upload(
-        file_bytes,
-        public_id=public_id,
-        resource_type=resource_type,
-        overwrite=False,
-    )
+    try:
+        result = cloudinary.uploader.upload(
+            io.BytesIO(file_bytes),
+            public_id=public_id,
+            resource_type=resource_type,
+            overwrite=False,
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"File upload failed: {str(e)}",
+        )
     return result["secure_url"]
 
 
