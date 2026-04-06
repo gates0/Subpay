@@ -40,8 +40,8 @@ class Settings(BaseSettings):
     PAYMENT_CALLBACK_URL: str = "https://subpay.onrender.com/api/v1/payments/callback"
 
     # Frontend pages to land on after the backend callback processes the result
-    FRONTEND_PAYMENT_SUCCESS_URL: str = "http://localhost:3002/payment/success"
-    FRONTEND_PAYMENT_FAILURE_URL: str = "http://localhost:3002/payment/failed"
+    FRONTEND_PAYMENT_SUCCESS_URL: str = "http://localhost:3002/communities"
+    FRONTEND_PAYMENT_FAILURE_URL: str = "http://localhost:3002/communities"
 
     # ── Cloudinary (media storage) ────────────────────────────────────────────
     CLOUDINARY_CLOUD_NAME: str = ""
