@@ -31,7 +31,7 @@ class Settings(BaseSettings):
     GITHUB_CLIENT_SECRET: str
     GITHUB_REDIRECT_URI: str
 
-    FRONTEND_OAUTH_REDIRECT_URL: str = "http://localhost:3000/feed"
+    FRONTEND_OAUTH_REDIRECT_URL: str = "http://localhost:3002/feed"
 
     # ── Paystack ──────────────────────────────────────────────────────────────
     PAYSTACK_SECRET_KEY: str = ""
@@ -40,8 +40,8 @@ class Settings(BaseSettings):
     PAYMENT_CALLBACK_URL: str = "https://subpay.onrender.com/api/v1/payments/callback"
 
     # Frontend pages to land on after the backend callback processes the result
-    FRONTEND_PAYMENT_SUCCESS_URL: str = "http://localhost:3000/payment/success"
-    FRONTEND_PAYMENT_FAILURE_URL: str = "http://localhost:3000/payment/failed"
+    FRONTEND_PAYMENT_SUCCESS_URL: str = "http://localhost:3002/payment/success"
+    FRONTEND_PAYMENT_FAILURE_URL: str = "http://localhost:3002/payment/failed"
 
     # ── Cloudinary (media storage) ────────────────────────────────────────────
     CLOUDINARY_CLOUD_NAME: str = ""
