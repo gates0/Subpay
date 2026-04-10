@@ -48,7 +48,7 @@ async def create_content(
     content_type: ContentType = Form(...),
     description:  Optional[str] = Form(None),
     text_body:    Optional[str] = Form(None),
-    plan_ids:     list[int]    = Form(default=[]),
+    plan_ids:     Optional[str] = Form(None),
     file:         Optional[UploadFile] = File(None),
     db:           Session = Depends(get_db),
     current_user: User    = Depends(get_current_onboarded_user),
@@ -65,12 +65,16 @@ async def create_content(
     Optionally pass one or more `plan_ids` to gate this content to specific plans.
     Leave empty to make it accessible to all active subscribers.
     """
+    parsed_plan_ids: list[int] = []
+    if plan_ids:
+        parsed_plan_ids = [int(i.strip()) for i in plan_ids.split(",") if i.strip()]
+
     data = ContentCreate(
         title=title,
         description=description,
         content_type=content_type,
         text_body=text_body,
-        plan_ids=plan_ids,
+        plan_ids=parsed_plan_ids,
     )
     return await create_hub_content(db, current_user, data, file)
 
