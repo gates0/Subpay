@@ -64,7 +64,6 @@ class PlanResponse(BaseModel):
     currency: str
     billing_cycle: str
     is_active: bool
-    tier: Optional[int] = None  # 1 = cheapest; computed from price rank within the hub
     created_at: datetime
     updated_at: datetime
 

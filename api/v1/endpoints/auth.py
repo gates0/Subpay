@@ -3,6 +3,9 @@
 import uuid
 
 from fastapi import APIRouter, BackgroundTasks, Depends, Query, status
+from fastapi.responses import RedirectResponse
+
+from config import settings
 from jose import JWTError
 from sqlalchemy.orm import Session
 
@@ -83,14 +86,11 @@ async def register(
 
 # ── Email Verification ────────────────────────────────────────────────────────
 
-@router.get("/verify-email", response_model=MessageResponse)
+@router.get("/verify-email")
 def verify_email(token: str = Query(...), db: Session = Depends(get_db)):
     """
     Verify a user's email address using the signed token sent via email.
-
-    The frontend's verification page should call this automatically when the
-    user lands on it with the token in the URL query string:
-        GET /api/v1/auth/verify-email?token=<token>
+    Redirects to the frontend onboarding page on success.
     """
     user_id = verify_signed_token(token, salt=EMAIL_VERIFY_SALT, max_age_seconds=EMAIL_VERIFY_MAX_AGE)
     if not user_id:
@@ -100,11 +100,10 @@ def verify_email(token: str = Query(...), db: Session = Depends(get_db)):
     if not user:
         raise invalid_token_exception
 
-    if user.is_verified:
-        return {"message": "Email already verified"}
+    if not user.is_verified:
+        verify_user_email(db, user)
 
-    verify_user_email(db, user)
-    return {"message": "Email verified successfully"}
+    return RedirectResponse(url=settings.FRONTEND_VERIFY_REDIRECT_URL, status_code=status.HTTP_302_FOUND)
 
 
 @router.post("/resend-verification", response_model=MessageResponse)

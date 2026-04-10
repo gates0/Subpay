@@ -3,6 +3,7 @@
 from sqlalchemy.orm import Session, joinedload
 
 from models.content import Content
+from models.plan import Plan
 from schemas.content import ContentCreate, ContentUpdate
 
 
@@ -11,7 +12,7 @@ from schemas.content import ContentCreate, ContentUpdate
 def get_content_by_id(db: Session, content_id: int) -> Content | None:
     return (
         db.query(Content)
-        .options(joinedload(Content.plan))
+        .options(joinedload(Content.plans))
         .filter(Content.id == content_id)
         .first()
     )
@@ -29,7 +30,7 @@ def get_contents_by_hub(
     """
     query = (
         db.query(Content)
-        .options(joinedload(Content.plan))
+        .options(joinedload(Content.plans))
         .filter(Content.hub_id == hub_id)
     )
     if published_only:
@@ -40,11 +41,14 @@ def get_contents_by_hub(
 
 
 def get_contents_by_plan(db: Session, hub_id: int, plan_id: int) -> list[Content]:
-    """Return all content (including drafts) gated to a specific plan on this hub."""
+    """Return all content (including drafts) tagged to a specific plan on this hub."""
     return (
         db.query(Content)
-        .options(joinedload(Content.plan))
-        .filter(Content.hub_id == hub_id, Content.plan_id == plan_id)
+        .options(joinedload(Content.plans))
+        .filter(
+            Content.hub_id == hub_id,
+            Content.plans.any(Plan.id == plan_id),
+        )
         .order_by(Content.is_pinned.desc(), Content.created_at.desc())
         .all()
     )
@@ -54,7 +58,7 @@ def get_published_content_by_id(db: Session, content_id: int, hub_id: int) -> Co
     """Fetch a single published content item scoped to a hub."""
     return (
         db.query(Content)
-        .options(joinedload(Content.plan))
+        .options(joinedload(Content.plans))
         .filter(
             Content.id == content_id,
             Content.hub_id == hub_id,
@@ -74,7 +78,6 @@ def create_content(
 ) -> Content:
     content = Content(
         hub_id=hub_id,
-        plan_id=data.plan_id,
         title=data.title,
         description=data.description,
         content_type=data.content_type,
@@ -82,6 +85,8 @@ def create_content(
         file_url=file_url,
         is_published=False,  # always starts as a draft
     )
+    if data.plan_ids:
+        content.plans = db.query(Plan).filter(Plan.id.in_(data.plan_ids)).all()
     db.add(content)
     db.commit()
     db.refresh(content)
@@ -92,8 +97,15 @@ def create_content(
 
 def update_content(db: Session, content: Content, data: ContentUpdate) -> Content:
     update_data = data.model_dump(exclude_unset=True)
+
+    # Handle plan_ids separately — it maps to the plans relationship, not a column
+    if "plan_ids" in update_data:
+        plan_ids = update_data.pop("plan_ids")
+        content.plans = db.query(Plan).filter(Plan.id.in_(plan_ids)).all() if plan_ids else []
+
     for field, value in update_data.items():
         setattr(content, field, value)
+
     db.commit()
     db.refresh(content)
     return content

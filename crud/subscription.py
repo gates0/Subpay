@@ -51,7 +51,7 @@ def get_subscribers_by_hub(db: Session, hub_id: int) -> list[Subscription]:
 def get_active_subscription(
     db: Session, member_id: int, hub_id: int
 ) -> Subscription | None:
-    """Check if a member already has an active subscription to a hub."""
+    """Return the first active subscription a member has to a hub (if any)."""
     return (
         db.query(Subscription)
         .filter(
@@ -60,6 +60,21 @@ def get_active_subscription(
             Subscription.status == "active",
         )
         .first()
+    )
+
+
+def get_active_subscriptions_for_hub(
+    db: Session, member_id: int, hub_id: int
+) -> list[Subscription]:
+    """Return all active subscriptions a member has to a specific hub."""
+    return (
+        db.query(Subscription)
+        .filter(
+            Subscription.member_id == member_id,
+            Subscription.hub_id == hub_id,
+            Subscription.status == "active",
+        )
+        .all()
     )
 
 

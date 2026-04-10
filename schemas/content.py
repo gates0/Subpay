@@ -29,7 +29,7 @@ class ContentCreate(BaseModel):
     description: Optional[str] = Field(None, max_length=2000)
     content_type: ContentType
     text_body: Optional[str] = Field(None, description="Required when content_type is 'text'")
-    plan_id: Optional[int] = Field(None, description="Gate this content to a specific plan. NULL = all subscribers.")
+    plan_ids: list[int] = Field(default_factory=list, description="Gate this content to one or more plans. Empty = all subscribers.")
 
 
 class ContentUpdate(BaseModel):
@@ -38,7 +38,7 @@ class ContentUpdate(BaseModel):
     description: Optional[str] = Field(None, max_length=2000)
     text_body: Optional[str] = None
     thumbnail_url: Optional[str] = Field(None, max_length=1000)
-    plan_id: Optional[int] = None
+    plan_ids: Optional[list[int]] = Field(None, description="Replace the plan gates. Pass empty list to remove all gates.")
 
 
 # ── Response Schemas ──────────────────────────────────────────────────────────
@@ -55,8 +55,7 @@ class ContentResponse(BaseModel):
     """Full response — returned to the creator for their own content."""
     id: int
     hub_id: int
-    plan_id: Optional[int] = None
-    plan: Optional[PlanGateSummary] = None
+    plans: list[PlanGateSummary] = []
     title: str
     description: Optional[str] = None
     content_type: ContentType
@@ -80,7 +79,7 @@ class ContentPublicResponse(BaseModel):
     """
     id: int
     hub_id: int
-    plan: Optional[PlanGateSummary] = None
+    plans: list[PlanGateSummary] = []
     title: str
     description: Optional[str]     = None
     content_type: ContentType

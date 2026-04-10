@@ -45,5 +45,5 @@ class Plan(Base):
     # Relationships
     hub = relationship("Hub", back_populates="plans")
     subscribers = relationship("Subscription", back_populates="plan")
-    contents = relationship("Content", back_populates="plan")
+    contents = relationship("Content", secondary="content_plans", back_populates="plans")
     transactions = relationship("Transaction", back_populates="plan")

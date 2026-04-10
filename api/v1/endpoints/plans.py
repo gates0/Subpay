@@ -1,6 +1,6 @@
 # → app/api/v1/plans.py
 
-from fastapi import APIRouter, Depends, Query, status
+from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 
 from dependencies import get_current_active_user, get_db
@@ -118,18 +118,11 @@ def delete_plan(
 @router.get("/hubs/me/plans/{plan_id}/content", response_model=list[ContentResponse])
 def list_plan_content(
     plan_id: int,
-    cumulative: bool = Query(True, description="If false, return only content explicitly tagged to this plan"),
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_active_user),
 ):
-    """
-    List all content (including drafts) gated to a specific plan on the creator's hub.
-
-    - `cumulative=false` (default) → only content explicitly tagged to this plan.
-    - `cumulative=true` → this plan's content **plus** all lower-tier (cheaper) plans' content,
-      reflecting exactly what a subscriber on this tier would be able to access.
-    """
-    return list_my_plan_content(db, current_user, plan_id, cumulative)
+    """List all content (including drafts) tagged to a specific plan on the creator's hub."""
+    return list_my_plan_content(db, current_user, plan_id)
 
 
 # ── LIST ACTIVE PLANS ON ANY HUB (public/member view) ────────────────────────

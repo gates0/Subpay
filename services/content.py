@@ -32,9 +32,8 @@ from crud.content import (
     update_content,
 )
 from crud.hub import get_hub_by_creator_id, get_hub_by_id
-from crud.subscription import get_subscribers_by_hub
-from crud.plan import get_plan_by_id, get_plans_by_hub
-from crud.subscription import get_active_subscription
+from crud.subscription import get_subscribers_by_hub, get_active_subscriptions_for_hub
+from crud.plan import get_plan_by_id
 from crud.content_engagement import (
     get_like_count,
     get_like_counts_batch,
@@ -89,11 +88,12 @@ async def create_hub_content(
     _require_creator(current_user)
     hub = _get_creator_hub(db, current_user)
 
-    # If a plan_id is provided, make sure that plan actually belongs to this hub
-    if data.plan_id:
-        plan = get_plan_by_id(db, data.plan_id)
-        if not plan or plan.hub_id != hub.id:
-            raise content_plan_not_on_hub_exception
+    # Validate every plan_id provided belongs to this hub
+    if data.plan_ids:
+        for pid in data.plan_ids:
+            plan = get_plan_by_id(db, pid)
+            if not plan or plan.hub_id != hub.id:
+                raise content_plan_not_on_hub_exception
 
     file_url: Optional[str] = None
 
@@ -116,29 +116,15 @@ async def create_hub_content(
 # ── Creator: List Content by Plan ────────────────────────────────────────────
 
 def list_my_plan_content(
-    db: Session, current_user: User, plan_id: int, cumulative: bool = True
+    db: Session, current_user: User, plan_id: int
 ) -> list[Content]:
     _require_creator(current_user)
     hub = _get_creator_hub(db, current_user)
     plan = get_plan_by_id(db, plan_id)
     if not plan or plan.hub_id != hub.id:
-        from core.exceptions import content_plan_not_on_hub_exception
         raise content_plan_not_on_hub_exception
 
-    if cumulative:
-        # Return content from this plan AND all lower-priced plans (i.e. what a
-        # subscriber on this tier would actually see, excluding free/untagged content)
-        plan_price = float(plan.price)
-        hub_plans = get_plans_by_hub(db, hub_id=hub.id, active_only=False)
-        accessible_ids = [p.id for p in hub_plans if float(p.price) <= plan_price]
-        items = []
-        for pid in accessible_ids:
-            items.extend(get_contents_by_plan(db, hub_id=hub.id, plan_id=pid))
-        # Pinned first, then newest first
-        items.sort(key=lambda c: (not c.is_pinned, c.created_at), reverse=False)
-    else:
-        items = get_contents_by_plan(db, hub_id=hub.id, plan_id=plan_id)
-
+    items = get_contents_by_plan(db, hub_id=hub.id, plan_id=plan_id)
     _attach_engagement(db, items, viewer_id=current_user.id)
     return items
 
@@ -171,11 +157,12 @@ def update_my_content(
     content = get_content_by_id(db, content_id)
     _validate_content_on_hub(content, hub.id)
 
-    # If changing the plan gate, verify the new plan belongs to this hub
-    if data.plan_id is not None:
-        plan = get_plan_by_id(db, data.plan_id)
-        if not plan or plan.hub_id != hub.id:
-            raise content_plan_not_on_hub_exception
+    # Validate any new plan gates belong to this hub
+    if data.plan_ids is not None:
+        for pid in data.plan_ids:
+            plan = get_plan_by_id(db, pid)
+            if not plan or plan.hub_id != hub.id:
+                raise content_plan_not_on_hub_exception
 
     return update_content(db, content, data)
 
@@ -188,7 +175,6 @@ def delete_my_content(db: Session, current_user: User, content_id: int) -> dict:
     content = get_content_by_id(db, content_id)
     _validate_content_on_hub(content, hub.id)
 
-    # Remove the physical file from disk if one exists
     if content.file_url:
         _delete_file(content.file_url)
 
@@ -253,23 +239,21 @@ def list_hub_content_for_member(
         _attach_engagement(db, items, viewer_id=current_user.id)
         return items
 
-    # Everyone else must have an active subscription
-    subscription = get_active_subscription(db, member_id=current_user.id, hub_id=hub_id)
-    if not subscription:
+    # Everyone else must have at least one active subscription to this hub
+    active_subs = get_active_subscriptions_for_hub(db, member_id=current_user.id, hub_id=hub_id)
+    if not active_subs:
         raise subscription_not_found_exception
 
     all_published = get_contents_by_hub(db, hub_id=hub_id, published_only=True)
 
-    # Tier-based filter: subscriber can access free content + content gated to any
-    # plan whose price is at or below their own plan's price (cumulative lower tiers).
-    subscriber_plan = get_plan_by_id(db, subscription.plan_id)
-    subscriber_price = float(subscriber_plan.price)
-    hub_plans = get_plans_by_hub(db, hub_id=hub_id, active_only=False)
-    accessible_plan_ids = {p.id for p in hub_plans if float(p.price) <= subscriber_price}
-
+    # Access rule:
+    # - Content with no plan gates → visible to all active subscribers
+    # - Content with plan gates → visible only if the member holds an active
+    #   subscription to at least one of those plans
+    subscribed_plan_ids = {sub.plan_id for sub in active_subs}
     items = [
         item for item in all_published
-        if item.plan_id is None or item.plan_id in accessible_plan_ids
+        if not item.plans or any(p.id in subscribed_plan_ids for p in item.plans)
     ]
     _attach_engagement(db, items, viewer_id=current_user.id)
     return items
@@ -293,22 +277,20 @@ def get_hub_content_for_member(
         _attach_engagement(db, [content], viewer_id=current_user.id)
         return content
 
-    subscription = get_active_subscription(db, member_id=current_user.id, hub_id=hub_id)
-    if not subscription:
+    active_subs = get_active_subscriptions_for_hub(db, member_id=current_user.id, hub_id=hub_id)
+    if not active_subs:
         raise subscription_not_found_exception
 
-    # Tier-based gate: subscriber can access content from equal or lower-priced plans
-    if content.plan_id is not None:
-        content_plan = get_plan_by_id(db, content.plan_id)
-        subscriber_plan = get_plan_by_id(db, subscription.plan_id)
-        if float(content_plan.price) > float(subscriber_plan.price):
+    # If the content is gated to specific plans, the member must hold one of them
+    if content.plans:
+        subscribed_plan_ids = {sub.plan_id for sub in active_subs}
+        if not any(p.id in subscribed_plan_ids for p in content.plans):
             raise content_access_denied_exception
 
     # Record unique view and attach engagement stats
     record_view(db, user_id=current_user.id, content_id=content_id)
     _attach_engagement(db, [content], viewer_id=current_user.id)
     return content
-
 
 
 def _attach_engagement(db, items: list, viewer_id: int) -> None:
@@ -382,19 +364,12 @@ async def _save_upload(file: UploadFile, content_type: str) -> str:
 
 def _delete_file(file_url: str) -> None:
     """Delete a file from Cloudinary by its secure URL. Silently ignores errors."""
-    # Derive the public_id from the URL:
-    # e.g. https://res.cloudinary.com/<cloud>/video/upload/v.../content/video/<name>
-    # public_id is everything after /upload/v<version>/ (without extension for image/video)
     try:
-        # Split on "/upload/" and take the part after the version segment
         after_upload = file_url.split("/upload/", 1)[1]
-        # Strip the version prefix (v1234567890/)
         if after_upload.startswith("v") and "/" in after_upload:
             after_upload = after_upload.split("/", 1)[1]
-        # For image/video Cloudinary ignores the extension in public_id; strip it
         public_id, _ = os.path.splitext(after_upload)
 
-        # Determine resource type from the URL path
         if "/video/upload/" in file_url:
             resource_type = "video"
         elif "/image/upload/" in file_url:

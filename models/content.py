@@ -2,10 +2,19 @@
 
 from datetime import datetime, timezone
 
-from sqlalchemy import Boolean, DateTime, ForeignKey, Integer, String, Text
+from sqlalchemy import Boolean, DateTime, ForeignKey, Integer, String, Table, Text, Column
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from db.session import Base
+
+
+# Association table — many-to-many between content and plans
+content_plans = Table(
+    "content_plans",
+    Base.metadata,
+    Column("content_id", Integer, ForeignKey("contents.id", ondelete="CASCADE"), primary_key=True),
+    Column("plan_id", Integer, ForeignKey("plans.id", ondelete="CASCADE"), primary_key=True),
+)
 
 
 class Content(Base):
@@ -18,12 +27,6 @@ class Content(Base):
         Integer, ForeignKey("hubs.id", ondelete="CASCADE"), nullable=False, index=True
     )
 
-    # Optional plan gate — if set, only subscribers of this plan can access this content.
-    # If NULL, all active subscribers of the hub can access it.
-    plan_id: Mapped[int | None] = mapped_column(
-        Integer, ForeignKey("plans.id", ondelete="SET NULL"), nullable=True, index=True
-    )
-
     # Identity
     title: Mapped[str] = mapped_column(String(200), nullable=False)
     description: Mapped[str | None] = mapped_column(Text, nullable=True)
@@ -34,8 +37,7 @@ class Content(Base):
     # For text content — body stored directly in DB
     text_body: Mapped[str | None] = mapped_column(Text, nullable=True)
 
-    # For file-based content (video / image / pdf) — path relative to media root
-    # In production swap this for an S3/Cloudinary URL
+    # For file-based content (video / image / pdf)
     file_url: Mapped[str | None] = mapped_column(String(1000), nullable=True)
 
     # Optional thumbnail for videos/PDFs
@@ -56,8 +58,8 @@ class Content(Base):
     )
 
     # Relationships
-    hub  = relationship("Hub",  back_populates="contents")
-    plan = relationship("Plan", back_populates="contents")
+    hub      = relationship("Hub",  back_populates="contents")
+    plans    = relationship("Plan", secondary=content_plans, back_populates="contents")
     comments = relationship("Comment", back_populates="content", cascade="all, delete-orphan")
     saved_by = relationship("SavedContent", back_populates="content", cascade="all, delete-orphan")
     views    = relationship("ContentView", back_populates="content", cascade="all, delete-orphan")

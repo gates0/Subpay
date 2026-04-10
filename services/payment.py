@@ -12,7 +12,6 @@ from core.exceptions import (
     plan_not_found_exception,
     withdrawal_insufficient_balance_exception,
     cannot_subscribe_to_own_hub_exception,
-    subscription_already_active_exception,
 )
 from crud.hub import get_hub_by_creator_id, get_hub_by_id
 from crud.payment import (
@@ -28,7 +27,7 @@ from crud.payment import (
     mark_transaction_success,
 )
 from crud.plan import get_active_plan_by_id
-from crud.subscription import create_subscription, get_active_subscription
+from crud.subscription import create_subscription
 from models.transaction import Transaction
 from models.withdrawal import Withdrawal
 from models.user import User
@@ -72,10 +71,6 @@ async def initialize_payment(
 
     if hub.creator_id == current_user.id:
         raise cannot_subscribe_to_own_hub_exception
-
-    existing = get_active_subscription(db, member_id=current_user.id, hub_id=hub.id)
-    if existing:
-        raise subscription_already_active_exception
 
     reference    = generate_reference()
     amount       = float(plan.price)
