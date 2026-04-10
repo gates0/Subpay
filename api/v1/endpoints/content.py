@@ -48,7 +48,7 @@ async def create_content(
     content_type: ContentType = Form(...),
     description:  Optional[str] = Form(None),
     text_body:    Optional[str] = Form(None),
-    plan_id:      Optional[int] = Form(None),
+    plan_ids:     list[int]    = Form(default=[]),
     file:         Optional[UploadFile] = File(None),
     db:           Session = Depends(get_db),
     current_user: User    = Depends(get_current_onboarded_user),
@@ -62,15 +62,15 @@ async def create_content(
     Content is always saved as a **draft** (`is_published=false`) and must be
     published separately via `PATCH /hubs/me/content/{id}/publish`.
 
-    Optionally set `plan_id` to gate this content behind a specific plan.
-    Leave it empty to make it accessible to all active subscribers.
+    Optionally pass one or more `plan_ids` to gate this content to specific plans.
+    Leave empty to make it accessible to all active subscribers.
     """
     data = ContentCreate(
         title=title,
         description=description,
         content_type=content_type,
         text_body=text_body,
-        plan_id=plan_id,
+        plan_ids=plan_ids,
     )
     return await create_hub_content(db, current_user, data, file)
 
