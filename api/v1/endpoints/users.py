@@ -1,7 +1,6 @@
 import uuid
-from typing import Optional
 
-from fastapi import APIRouter, Depends, File, Form, UploadFile, status
+from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 
 from dependencies import get_current_onboarded_user, get_db
@@ -14,7 +13,6 @@ from schemas.user import (
     UserResponse,
     UserUpdateProfile,
 )
-from services.cloudinary_service import upload_image
 from services.user import (
     become_creator,
     change_password,
@@ -38,36 +36,15 @@ def get_me(current_user: User = Depends(get_current_onboarded_user)):
 # ── UPDATE OWN PROFILE ────────────────────────────────────────────────────────
 
 @router.put("/me", response_model=UserResponse)
-async def update_me(
-    full_name: Optional[str] = Form(None),
-    username: Optional[str] = Form(None),
-    bio: Optional[str] = Form(None),
-    avatar: Optional[UploadFile] = File(None),
+def update_me(
+    data: UserUpdateProfile,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_onboarded_user),
 ):
     """
-    Update editable profile fields. Send as multipart/form-data.
-    Upload an image file in the `avatar` field to update the profile picture.
-    Only fields included in the request will be changed.
+    Update editable profile fields.
+    Only fields included in the request body will be changed.
     """
-    fields: dict = {}
-    if full_name is not None:
-        fields["full_name"] = full_name
-    if username is not None:
-        fields["username"] = username
-    if bio is not None:
-        fields["bio"] = bio
-    if avatar is not None:
-        contents = await avatar.read()
-        fields["avatar_url"] = upload_image(
-            contents,
-            content_type=avatar.content_type,
-            folder="avatars",
-            public_id=str(current_user.id),
-        )
-
-    data = UserUpdateProfile(**fields)
     return update_profile(db, current_user, data)
 
 

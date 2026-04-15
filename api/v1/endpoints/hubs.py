@@ -1,6 +1,4 @@
-from typing import Optional
-
-from fastapi import APIRouter, Depends, File, Form, Query, UploadFile
+from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
 from dependencies import get_current_active_user, get_db
@@ -12,7 +10,6 @@ from schemas.hub import (
     HubStatsResponse,
     HubUpdate,
 )
-from services.cloudinary_service import upload_image
 from services.hub import (
     get_hub,
     get_hub_overview,
@@ -57,42 +54,15 @@ def get_own_hub(
 # ── UPDATE OWN HUB ────────────────────────────────────────────────────────────
 
 @router.put("/me", response_model=HubPrivateResponse)
-async def update_own_hub(
-    name: Optional[str] = Form(None),
-    description: Optional[str] = Form(None),
-    avatar: Optional[UploadFile] = File(None),
-    banner: Optional[UploadFile] = File(None),
+def update_own_hub(
+    data: HubUpdate,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_active_user),
 ):
     """
-    Update the authenticated creator's hub details. Send as multipart/form-data.
-    Upload image files in the `avatar` and/or `banner` fields to update those images.
-    Only fields included in the request will be changed.
+    Update the authenticated creator's hub details.
+    Only fields included in the request body will be changed.
     """
-    fields: dict = {}
-    if name is not None:
-        fields["name"] = name
-    if description is not None:
-        fields["description"] = description
-    if avatar is not None:
-        contents = await avatar.read()
-        fields["avatar_url"] = upload_image(
-            contents,
-            content_type=avatar.content_type,
-            folder="hub_avatars",
-            public_id=f"hub_avatar_{current_user.id}",
-        )
-    if banner is not None:
-        contents = await banner.read()
-        fields["banner_url"] = upload_image(
-            contents,
-            content_type=banner.content_type,
-            folder="hub_banners",
-            public_id=f"hub_banner_{current_user.id}",
-        )
-
-    data = HubUpdate(**fields)
     return update_my_hub(db, current_user, data)
 
 
