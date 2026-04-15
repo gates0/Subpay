@@ -3,6 +3,7 @@
 from datetime import datetime
 from enum import Enum
 from typing import Optional
+from uuid import UUID
 
 from pydantic import BaseModel
 
@@ -36,7 +37,7 @@ class HubSummary(BaseModel):
 
 
 class MemberSummary(BaseModel):
-    id: int
+    id: UUID
     username: str
     avatar_url: Optional[str] = None
 
