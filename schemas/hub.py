@@ -3,6 +3,8 @@ from datetime import datetime
 from typing import Optional
 
 from pydantic import BaseModel, Field
+from schemas.plan import PlanResponse
+from schemas.content import ContentResponse
 
 
 # ── Request Schemas ───────────────────────────────────────────────────────────
@@ -54,3 +56,19 @@ class HubStatsResponse(BaseModel):
     total_content_items: int
     total_plans: int
     # Revenue and payout info will be added when the payments module is built
+
+
+class HubOverviewResponse(BaseModel):
+    """Full hub overview — everything about a hub in one response."""
+    id: int
+    name: str
+    description: Optional[str] = None
+    banner_url: Optional[str] = None
+    avatar_url: Optional[str] = None
+    creator: HubCreatorSummary
+    created_at: datetime
+    plans: list[PlanResponse] = []
+    contents: list[ContentResponse] = []
+    total_subscribers: int
+
+    model_config = {"from_attributes": True}

@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from dependencies import get_current_active_user, get_db
 from models.user import User
 from schemas.hub import (
+    HubOverviewResponse,
     HubPrivateResponse,
     HubPublicResponse,
     HubStatsResponse,
@@ -11,6 +12,7 @@ from schemas.hub import (
 )
 from services.hub import (
     get_hub,
+    get_hub_overview,
     get_my_hub,
     get_my_hub_stats,
     list_hubs,
@@ -77,6 +79,22 @@ def get_own_hub_stats(
     Revenue stats will be added when the payments module is built.
     """
     return get_my_hub_stats(db, current_user)
+
+
+# ── GET FULL HUB OVERVIEW BY ID (public) ─────────────────────────────────────
+
+@router.get("/{hub_id}/overview", response_model=HubOverviewResponse)
+def get_hub_overview_by_id(
+    hub_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user),
+):
+    """
+    Return everything about a hub in one response:
+    hub details, creator info, all active plans, all published content,
+    and total active subscriber count.
+    """
+    return get_hub_overview(db, hub_id)
 
 
 # ── GET ANY HUB BY ID (public) ────────────────────────────────────────────────

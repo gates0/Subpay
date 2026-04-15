@@ -15,7 +15,7 @@ from crud.hub import (
 )
 from models.hub import Hub
 from models.user import User
-from schemas.hub import HubStatsResponse, HubUpdate
+from schemas.hub import HubStatsResponse, HubUpdate, HubOverviewResponse
 
 
 # ── List All Hubs (public) ────────────────────────────────────────────────────
@@ -64,6 +64,35 @@ def get_my_hub_stats(db: Session, current_user: User) -> HubStatsResponse:
         raise hub_not_found_exception
     stats = get_hub_stats(db, hub.id)
     return HubStatsResponse(**stats)
+
+
+# ── Get Full Hub Overview (public) ───────────────────────────────────────────
+
+def get_hub_overview(db: Session, hub_id: int) -> HubOverviewResponse:
+    hub = get_hub(db, hub_id)  # raises 404 / 403 if not found or inactive
+
+    from models.subscription import Subscription
+
+    total_subscribers = (
+        db.query(Subscription)
+        .filter(Subscription.hub_id == hub_id, Subscription.status == "active")
+        .count()
+    )
+
+    published_contents = [c for c in hub.contents if c.is_published]
+
+    return HubOverviewResponse(
+        id=hub.id,
+        name=hub.name,
+        description=hub.description,
+        banner_url=hub.banner_url,
+        avatar_url=hub.avatar_url,
+        creator=hub.creator,
+        created_at=hub.created_at,
+        plans=hub.plans,
+        contents=published_contents,
+        total_subscribers=total_subscribers,
+    )
 
 
 # ── Internal: Auto-create hub ─────────────────────────────────────────────────
