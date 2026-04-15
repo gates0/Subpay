@@ -40,7 +40,18 @@ def update_profile(db: Session, current_user: User, data: UserUpdateProfile) -> 
         existing = get_user_by_username(db, data.username)
         if existing and existing.id != current_user.id:
             raise username_taken_exception
-    return update_user_profile(db, current_user, data)
+
+    updated_user = update_user_profile(db, current_user, data)
+
+    # Keep the hub avatar in sync with the user's avatar whenever it changes.
+    if data.avatar_url is not None and updated_user.role == "creator":
+        from crud.hub import get_hub_by_creator_id
+        hub = get_hub_by_creator_id(db, updated_user.id)
+        if hub:
+            hub.avatar_url = updated_user.avatar_url
+            db.commit()
+
+    return updated_user
 
 
 def change_password(db: Session, current_user: User, data: UserChangePassword) -> dict:
