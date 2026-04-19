@@ -174,7 +174,7 @@ def search_public_content(
         .join(Hub, Hub.id == Content.hub_id)
         .filter(
             Content.is_published == True,
-            Content.plan_id      == None,   # free/ungated only
+            ~Content.plans.any(),           # free/ungated only (no plan association)
             Hub.is_active        == True,   # don't surface content from inactive hubs
         )
     )
