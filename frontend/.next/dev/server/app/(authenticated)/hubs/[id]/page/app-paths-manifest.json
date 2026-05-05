@@ -1,3 +1,0 @@
-{
-  "/(authenticated)/hubs/[id]/page": "app/(authenticated)/hubs/[id]/page.js"
-}
