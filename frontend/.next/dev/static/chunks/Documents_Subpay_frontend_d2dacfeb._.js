@@ -208,7 +208,31 @@ const contentApi = {
     togglePin: (contentId)=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$apiClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].patch(`/api/v1/hubs/me/content/${contentId}/pin`),
     // Member — subscribed hub content
     listHubContent: (hubId)=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$apiClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].get(`/api/v1/hubs/${hubId}/content`),
-    getHubContentItem: (hubId, contentId)=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$apiClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].get(`/api/v1/hubs/${hubId}/content/${contentId}`)
+    getHubContentItem: (hubId, contentId)=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$apiClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].get(`/api/v1/hubs/${hubId}/content/${contentId}`),
+    // ─── Like toggle ───────────────────────────────────────────────────────
+    toggleLike: (contentId)=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$apiClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].post(`/api/v1/content/${contentId}/like`),
+    // ─── Save / bookmark toggle ────────────────────────────────────────────
+    toggleSave: (contentId)=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$apiClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].post(`/api/v1/content/${contentId}/save`),
+    // ─── Saved content list ────────────────────────────────────────────────
+    getSavedContent: (params = {})=>{
+        const { skip = 0, limit = 20 } = params;
+        return __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$apiClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].get(`/api/v1/users/me/saved?skip=${skip}&limit=${limit}`);
+    },
+    // ─── Comments ──────────────────────────────────────────────────────────
+    getComments: (hubId, contentId, params = {})=>{
+        const { skip = 0, limit = 20 } = params;
+        return __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$apiClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].get(`/api/v1/hubs/${hubId}/content/${contentId}/comments?skip=${skip}&limit=${limit}`);
+    },
+    createComment: (hubId, contentId, body)=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$apiClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].post(`/api/v1/hubs/${hubId}/content/${contentId}/comments`, body),
+    // ─── Replies ───────────────────────────────────────────────────────────
+    getReplies: (hubId, contentId, commentId, params = {})=>{
+        const { skip = 0, limit = 20 } = params;
+        return __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$apiClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].get(`/api/v1/hubs/${hubId}/content/${contentId}/comments/${commentId}/replies?skip=${skip}&limit=${limit}`);
+    },
+    createReply: (hubId, contentId, commentId, body)=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$apiClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].post(`/api/v1/hubs/${hubId}/content/${contentId}/comments/${commentId}/replies`, body),
+    // ─── Edit / delete comments ────────────────────────────────────────────
+    updateComment: (commentId, body)=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$apiClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].patch(`/api/v1/comments/${commentId}`, body),
+    deleteComment: (commentId)=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$apiClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["api"].delete(`/api/v1/comments/${commentId}`)
 };
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
@@ -218,8 +242,16 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "use strict";
 
 __turbopack_context__.s([
+    "useComments",
+    ()=>useComments,
+    "useCreateComment",
+    ()=>useCreateComment,
     "useCreateContent",
     ()=>useCreateContent,
+    "useCreateReply",
+    ()=>useCreateReply,
+    "useDeleteComment",
+    ()=>useDeleteComment,
     "useDeleteContentItem",
     ()=>useDeleteContentItem,
     "useHubContent",
@@ -230,10 +262,20 @@ __turbopack_context__.s([
     ()=>useMyContent,
     "useMyContentItem",
     ()=>useMyContentItem,
+    "useReplies",
+    ()=>useReplies,
+    "useSavedContent",
+    ()=>useSavedContent,
+    "useToggleLike",
+    ()=>useToggleLike,
     "useTogglePin",
     ()=>useTogglePin,
     "useTogglePublish",
     ()=>useTogglePublish,
+    "useToggleSave",
+    ()=>useToggleSave,
+    "useUpdateComment",
+    ()=>useUpdateComment,
     "useUpdateContentItem",
     ()=>useUpdateContentItem
 ]);
@@ -242,7 +284,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$front
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryClientProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Subpay/frontend/node_modules/.pnpm/@tanstack+react-query@5.91.2_react@19.2.3/node_modules/@tanstack/react-query/build/modern/QueryClientProvider.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$api$2f$content$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Subpay/frontend/lib/api/content.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$queryKeys$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Subpay/frontend/lib/queryKeys.ts [app-client] (ecmascript)");
-var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature(), _s2 = __turbopack_context__.k.signature(), _s3 = __turbopack_context__.k.signature(), _s4 = __turbopack_context__.k.signature(), _s5 = __turbopack_context__.k.signature(), _s6 = __turbopack_context__.k.signature(), _s7 = __turbopack_context__.k.signature(), _s8 = __turbopack_context__.k.signature();
+var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature(), _s2 = __turbopack_context__.k.signature(), _s3 = __turbopack_context__.k.signature(), _s4 = __turbopack_context__.k.signature(), _s5 = __turbopack_context__.k.signature(), _s6 = __turbopack_context__.k.signature(), _s7 = __turbopack_context__.k.signature(), _s8 = __turbopack_context__.k.signature(), _s9 = __turbopack_context__.k.signature(), _s10 = __turbopack_context__.k.signature(), _s11 = __turbopack_context__.k.signature(), _s12 = __turbopack_context__.k.signature(), _s13 = __turbopack_context__.k.signature(), _s14 = __turbopack_context__.k.signature(), _s15 = __turbopack_context__.k.signature(), _s16 = __turbopack_context__.k.signature(), _s17 = __turbopack_context__.k.signature();
 ;
 ;
 ;
@@ -278,7 +320,14 @@ function useCreateContent() {
     const qc = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryClientProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQueryClient"])();
     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useMutation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMutation"])({
         mutationFn: {
-            "useCreateContent.useMutation": (fields)=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$api$2f$content$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["contentApi"].createContent(fields)
+            "useCreateContent.useMutation": async ({ fields, publish = false })=>{
+                const created = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$api$2f$content$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["contentApi"].createContent(fields);
+                if (publish) {
+                    const published = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$api$2f$content$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["contentApi"].togglePublish(created.id);
+                    return published;
+                }
+                return created;
+            }
         }["useCreateContent.useMutation"],
         onSuccess: {
             "useCreateContent.useMutation": ()=>{
@@ -425,6 +474,198 @@ _s8(useHubContentItem, "4ZpngI1uv+Uo3WQHEZmTQ5FNM+k=", false, function() {
         __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useQuery$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQuery"]
     ];
 });
+function useToggleLike(hubId, contentId) {
+    _s9();
+    const qc = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryClientProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQueryClient"])();
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useMutation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMutation"])({
+        mutationFn: {
+            "useToggleLike.useMutation": (contentIdArg)=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$api$2f$content$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["contentApi"].toggleLike(contentIdArg)
+        }["useToggleLike.useMutation"],
+        onSuccess: {
+            "useToggleLike.useMutation": (data)=>{
+                qc.setQueryData(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$queryKeys$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["queryKeys"].contentHubItem(hubId, contentId), {
+                    "useToggleLike.useMutation": (old)=>old ? {
+                            ...old,
+                            is_liked: data.is_liked,
+                            like_count: data.like_count
+                        } : old
+                }["useToggleLike.useMutation"]);
+            }
+        }["useToggleLike.useMutation"]
+    });
+}
+_s9(useToggleLike, "ec0A66mtyLA0kdwNsMUsaWj/EHM=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryClientProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQueryClient"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useMutation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMutation"]
+    ];
+});
+function useToggleSave() {
+    _s10();
+    const qc = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryClientProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQueryClient"])();
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useMutation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMutation"])({
+        mutationFn: {
+            "useToggleSave.useMutation": (contentId)=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$api$2f$content$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["contentApi"].toggleSave(contentId)
+        }["useToggleSave.useMutation"],
+        onSuccess: {
+            "useToggleSave.useMutation": ()=>{
+                qc.invalidateQueries({
+                    queryKey: __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$queryKeys$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["queryKeys"].savedContent
+                });
+            }
+        }["useToggleSave.useMutation"]
+    });
+}
+_s10(useToggleSave, "ec0A66mtyLA0kdwNsMUsaWj/EHM=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryClientProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQueryClient"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useMutation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMutation"]
+    ];
+});
+function useSavedContent(params) {
+    _s11();
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useQuery$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQuery"])({
+        queryKey: [
+            ...__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$queryKeys$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["queryKeys"].savedContent,
+            params
+        ],
+        queryFn: {
+            "useSavedContent.useQuery": ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$api$2f$content$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["contentApi"].getSavedContent(params)
+        }["useSavedContent.useQuery"]
+    });
+}
+_s11(useSavedContent, "4ZpngI1uv+Uo3WQHEZmTQ5FNM+k=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useQuery$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQuery"]
+    ];
+});
+function useComments(hubId, contentId, params) {
+    _s12();
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useQuery$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQuery"])({
+        queryKey: [
+            ...__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$queryKeys$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["queryKeys"].comments(hubId, contentId),
+            params
+        ],
+        queryFn: {
+            "useComments.useQuery": ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$api$2f$content$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["contentApi"].getComments(hubId, contentId, params)
+        }["useComments.useQuery"],
+        enabled: !!hubId && !!contentId
+    });
+}
+_s12(useComments, "4ZpngI1uv+Uo3WQHEZmTQ5FNM+k=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useQuery$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQuery"]
+    ];
+});
+function useReplies(hubId, contentId, commentId, params) {
+    _s13();
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useQuery$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQuery"])({
+        queryKey: [
+            ...__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$queryKeys$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["queryKeys"].replies(hubId, contentId, commentId),
+            params
+        ],
+        queryFn: {
+            "useReplies.useQuery": ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$api$2f$content$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["contentApi"].getReplies(hubId, contentId, commentId, params)
+        }["useReplies.useQuery"],
+        enabled: !!hubId && !!contentId && !!commentId
+    });
+}
+_s13(useReplies, "4ZpngI1uv+Uo3WQHEZmTQ5FNM+k=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useQuery$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQuery"]
+    ];
+});
+function useCreateComment(hubId, contentId) {
+    _s14();
+    const qc = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryClientProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQueryClient"])();
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useMutation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMutation"])({
+        mutationFn: {
+            "useCreateComment.useMutation": (body)=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$api$2f$content$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["contentApi"].createComment(hubId, contentId, body)
+        }["useCreateComment.useMutation"],
+        onSuccess: {
+            "useCreateComment.useMutation": ()=>{
+                qc.invalidateQueries({
+                    queryKey: __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$queryKeys$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["queryKeys"].comments(hubId, contentId)
+                });
+            }
+        }["useCreateComment.useMutation"]
+    });
+}
+_s14(useCreateComment, "ec0A66mtyLA0kdwNsMUsaWj/EHM=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryClientProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQueryClient"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useMutation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMutation"]
+    ];
+});
+function useCreateReply(hubId, contentId, commentId) {
+    _s15();
+    const qc = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryClientProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQueryClient"])();
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useMutation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMutation"])({
+        mutationFn: {
+            "useCreateReply.useMutation": (body)=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$api$2f$content$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["contentApi"].createReply(hubId, contentId, commentId, body)
+        }["useCreateReply.useMutation"],
+        onSuccess: {
+            "useCreateReply.useMutation": ()=>{
+                qc.invalidateQueries({
+                    queryKey: __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$queryKeys$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["queryKeys"].replies(hubId, contentId, commentId)
+                });
+                qc.invalidateQueries({
+                    queryKey: __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$queryKeys$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["queryKeys"].comments(hubId, contentId)
+                });
+            }
+        }["useCreateReply.useMutation"]
+    });
+}
+_s15(useCreateReply, "ec0A66mtyLA0kdwNsMUsaWj/EHM=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryClientProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQueryClient"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useMutation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMutation"]
+    ];
+});
+function useUpdateComment(hubId, contentId) {
+    _s16();
+    const qc = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryClientProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQueryClient"])();
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useMutation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMutation"])({
+        mutationFn: {
+            "useUpdateComment.useMutation": ({ commentId, body })=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$api$2f$content$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["contentApi"].updateComment(commentId, body)
+        }["useUpdateComment.useMutation"],
+        onSuccess: {
+            "useUpdateComment.useMutation": ()=>{
+                qc.invalidateQueries({
+                    queryKey: __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$queryKeys$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["queryKeys"].comments(hubId, contentId)
+                });
+            }
+        }["useUpdateComment.useMutation"]
+    });
+}
+_s16(useUpdateComment, "ec0A66mtyLA0kdwNsMUsaWj/EHM=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryClientProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQueryClient"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useMutation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMutation"]
+    ];
+});
+function useDeleteComment(hubId, contentId) {
+    _s17();
+    const qc = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryClientProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQueryClient"])();
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useMutation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMutation"])({
+        mutationFn: {
+            "useDeleteComment.useMutation": (commentId)=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$api$2f$content$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["contentApi"].deleteComment(commentId)
+        }["useDeleteComment.useMutation"],
+        onSuccess: {
+            "useDeleteComment.useMutation": ()=>{
+                qc.invalidateQueries({
+                    queryKey: __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$queryKeys$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["queryKeys"].comments(hubId, contentId)
+                });
+            }
+        }["useDeleteComment.useMutation"]
+    });
+}
+_s17(useDeleteComment, "ec0A66mtyLA0kdwNsMUsaWj/EHM=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$QueryClientProvider$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useQueryClient"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$tanstack$2b$react$2d$query$40$5$2e$91$2e$2_react$40$19$2e$2$2e$3$2f$node_modules$2f40$tanstack$2f$react$2d$query$2f$build$2f$modern$2f$useMutation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMutation"]
+    ];
+});
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
@@ -506,13 +747,13 @@ const TYPE_ICONS = {
             d: "M8 5v18l16-9L8 5Z"
         }, void 0, false, {
             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-            lineNumber: 40,
-            columnNumber: 80
+            lineNumber: 53,
+            columnNumber: 7
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-        lineNumber: 40,
-        columnNumber: 12
+        lineNumber: 52,
+        columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0)),
     image: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
         width: "26",
@@ -530,8 +771,8 @@ const TYPE_ICONS = {
                 rx: "3"
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                lineNumber: 41,
-                columnNumber: 112
+                lineNumber: 65,
+                columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
                 cx: "8",
@@ -539,21 +780,21 @@ const TYPE_ICONS = {
                 r: "2.5"
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                lineNumber: 41,
-                columnNumber: 161
+                lineNumber: 66,
+                columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                 d: "M2 18l6-6 5 5 4-4 7 7"
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                lineNumber: 41,
-                columnNumber: 192
+                lineNumber: 67,
+                columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-        lineNumber: 41,
-        columnNumber: 12
+        lineNumber: 57,
+        columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0)),
     pdf: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
         width: "24",
@@ -569,22 +810,22 @@ const TYPE_ICONS = {
                 strokeLinejoin: "round"
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                lineNumber: 42,
-                columnNumber: 112
+                lineNumber: 79,
+                columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
                 d: "M3 20h18",
                 strokeLinecap: "round"
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                lineNumber: 42,
-                columnNumber: 190
+                lineNumber: 84,
+                columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-        lineNumber: 42,
-        columnNumber: 12
+        lineNumber: 71,
+        columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0)),
     text: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
         width: "24",
@@ -598,13 +839,13 @@ const TYPE_ICONS = {
             strokeLinecap: "round"
         }, void 0, false, {
             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-            lineNumber: 43,
-            columnNumber: 112
+            lineNumber: 96,
+            columnNumber: 7
         }, ("TURBOPACK compile-time value", void 0))
     }, void 0, false, {
         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-        lineNumber: 43,
-        columnNumber: 12
+        lineNumber: 88,
+        columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0))
 };
 function HubContentLoader({ hubId, typeFilter, view }) {
@@ -620,12 +861,12 @@ function HubContentLoader({ hubId, typeFilter, view }) {
                     className: cn("bg-white rounded-2xl border border-[#F0F0F0] animate-pulse", view === "grid" ? "h-[180px]" : "h-[60px]")
                 }, i, false, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                    lineNumber: 66,
+                    lineNumber: 125,
                     columnNumber: 11
                 }, this))
         }, void 0, false, {
             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-            lineNumber: 62,
+            lineNumber: 117,
             columnNumber: 7
         }, this);
     }
@@ -634,7 +875,7 @@ function HubContentLoader({ hubId, typeFilter, view }) {
         view: view
     }, void 0, false, {
         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-        lineNumber: 78,
+        lineNumber: 137,
         columnNumber: 10
     }, this);
 }
@@ -650,8 +891,7 @@ function ContentList({ items, view }) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "grid grid-cols-2 md:grid-cols-3 gap-3",
             children: items.map((item)=>{
-                const color = "#8A2BE2" // items don't carry hub color in ContentPublicResponse
-                ;
+                const color = "#8A2BE2"; // items don't carry hub color in ContentPublicResponse
                 return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "bg-white rounded-2xl border border-[#F0F0F0] overflow-hidden group hover:border-[#DDD] hover:shadow-[0_2px_16px_rgba(0,0,0,0.05)] transition-all",
                     children: [
@@ -667,14 +907,32 @@ function ContentList({ items, view }) {
                                     className: "absolute inset-0 w-full h-full object-cover"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                    lineNumber: 100,
+                                    lineNumber: 165,
+                                    columnNumber: 19
+                                }, this) : item.content_type === "video" && item.file_url ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("video", {
+                                    src: item.file_url,
+                                    className: "absolute inset-0 w-full h-full object-cover",
+                                    muted: true,
+                                    playsInline: true,
+                                    preload: "metadata"
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
+                                    lineNumber: 171,
+                                    columnNumber: 19
+                                }, this) : item.content_type === "image" && item.file_url ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                    src: item.file_url,
+                                    alt: item.title,
+                                    className: "absolute inset-0 w-full h-full object-cover"
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
+                                    lineNumber: 179,
                                     columnNumber: 19
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "opacity-15 text-[#8A2BE2]",
                                     children: TYPE_ICONS[item.content_type]
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                    lineNumber: 102,
+                                    lineNumber: 185,
                                     columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -682,7 +940,7 @@ function ContentList({ items, view }) {
                                     children: CONTENT_TYPE_LABELS[item.content_type] ?? item.content_type
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                    lineNumber: 106,
+                                    lineNumber: 189,
                                     columnNumber: 17
                                 }, this),
                                 item.is_pinned && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -690,13 +948,13 @@ function ContentList({ items, view }) {
                                     children: "Pinned"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                    lineNumber: 110,
+                                    lineNumber: 193,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                            lineNumber: 98,
+                            lineNumber: 160,
                             columnNumber: 15
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -707,24 +965,24 @@ function ContentList({ items, view }) {
                                     children: item.title
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                    lineNumber: 116,
+                                    lineNumber: 199,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "flex items-center gap-2 text-[10.5px] text-[#AAA]",
                                     children: [
-                                        item.plan ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        item.plans.length ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             className: "text-[#8A2BE2] font-medium",
-                                            children: item.plan.name
+                                            children: item.plans.map((p)=>p.name).join(", ")
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                            lineNumber: 119,
+                                            lineNumber: 204,
                                             columnNumber: 21
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             children: "All subscribers"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                            lineNumber: 121,
+                                            lineNumber: 208,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -732,31 +990,31 @@ function ContentList({ items, view }) {
                                             children: formatDate(item.created_at)
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                            lineNumber: 123,
+                                            lineNumber: 210,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                    lineNumber: 117,
+                                    lineNumber: 202,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                            lineNumber: 115,
+                            lineNumber: 198,
                             columnNumber: 15
                         }, this)
                     ]
                 }, item.id, true, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                    lineNumber: 96,
+                    lineNumber: 155,
                     columnNumber: 13
                 }, this);
             })
         }, void 0, false, {
             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-            lineNumber: 92,
+            lineNumber: 151,
             columnNumber: 7
         }, this);
     }
@@ -769,7 +1027,7 @@ function ContentList({ items, view }) {
                         className: "w-1 h-8 rounded-full shrink-0 bg-[#8A2BE2]"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                        lineNumber: 137,
+                        lineNumber: 227,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -780,7 +1038,7 @@ function ContentList({ items, view }) {
                                 children: item.title
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                lineNumber: 139,
+                                lineNumber: 229,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -790,47 +1048,47 @@ function ContentList({ items, view }) {
                                         children: CONTENT_TYPE_LABELS[item.content_type] ?? item.content_type
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                        lineNumber: 141,
+                                        lineNumber: 233,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "·"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                        lineNumber: 142,
+                                        lineNumber: 236,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        children: item.plan?.name ?? "All subscribers"
+                                        children: item.plans.map((p)=>p.name).join(", ") ?? "All subscribers"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                        lineNumber: 143,
+                                        lineNumber: 237,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "·"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                        lineNumber: 144,
+                                        lineNumber: 240,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: formatDate(item.created_at)
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                        lineNumber: 145,
+                                        lineNumber: 241,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                lineNumber: 140,
+                                lineNumber: 232,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                        lineNumber: 138,
+                        lineNumber: 228,
                         columnNumber: 11
                     }, this),
                     item.is_pinned && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -838,26 +1096,27 @@ function ContentList({ items, view }) {
                         children: "Pinned"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                        lineNumber: 149,
+                        lineNumber: 245,
                         columnNumber: 13
                     }, this)
                 ]
             }, item.id, true, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                lineNumber: 136,
+                lineNumber: 223,
                 columnNumber: 9
             }, this))
     }, void 0, false, {
         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-        lineNumber: 134,
+        lineNumber: 221,
         columnNumber: 5
     }, this);
 }
 _c1 = ContentList;
 function AllHubsContent({ subscriptions, typeFilter, view }) {
+    const uniqueHubs = subscriptions.filter((sub, index, self)=>index === self.findIndex((s)=>s.hub.id === sub.hub.id));
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "flex flex-col gap-8",
-        children: subscriptions.map((sub)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        children: uniqueHubs.map((sub)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex items-center gap-2.5 mb-3",
@@ -870,7 +1129,7 @@ function AllHubsContent({ subscriptions, typeFilter, view }) {
                                 children: initial(sub.hub.name)
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                lineNumber: 172,
+                                lineNumber: 276,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -878,24 +1137,13 @@ function AllHubsContent({ subscriptions, typeFilter, view }) {
                                 children: sub.hub.name
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                lineNumber: 178,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "text-[11px] text-[#CCC]",
-                                children: [
-                                    "· ",
-                                    sub.plan.name
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                lineNumber: 179,
+                                lineNumber: 282,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                        lineNumber: 171,
+                        lineNumber: 275,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(HubContentLoader, {
@@ -904,18 +1152,18 @@ function AllHubsContent({ subscriptions, typeFilter, view }) {
                         view: view
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                        lineNumber: 181,
+                        lineNumber: 286,
                         columnNumber: 11
                     }, this)
                 ]
-            }, sub.id, true, {
+            }, sub.hub.id, true, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                lineNumber: 170,
+                lineNumber: 274,
                 columnNumber: 9
             }, this))
     }, void 0, false, {
         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-        lineNumber: 168,
+        lineNumber: 272,
         columnNumber: 5
     }, this);
 }
@@ -927,6 +1175,7 @@ function SavedPage() {
     const [view, setView] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("grid");
     const { data: subscriptions = [], isLoading: subsLoading } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useSubscriptions$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMySubscriptions"])();
     const activeSubscriptions = subscriptions.filter((s)=>s.status === "active");
+    const uniqueHubs = activeSubscriptions.filter((sub, index, self)=>index === self.findIndex((s)=>s.hub.id === sub.hub.id));
     const selectedHub = activeSubscriptions.find((s)=>s.hub.id === selectedHubId);
     const heading = selectedHubId === "all" ? "All Content" : selectedHub?.hub.name ?? "Content";
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -945,7 +1194,7 @@ function SavedPage() {
                                     children: "My Hubs"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                    lineNumber: 210,
+                                    lineNumber: 328,
                                     columnNumber: 13
                                 }, this),
                                 subsLoading ? [
@@ -954,7 +1203,7 @@ function SavedPage() {
                                         className: "h-9 rounded-xl bg-[#F0F0F0] animate-pulse mb-1"
                                     }, i, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                        lineNumber: 214,
+                                        lineNumber: 334,
                                         columnNumber: 17
                                     }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                                     children: [
@@ -966,24 +1215,24 @@ function SavedPage() {
                                                     children: "All Hubs"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                                    lineNumber: 228,
+                                                    lineNumber: 351,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     className: cn("text-[11px] font-semibold", selectedHubId === "all" ? "text-[#8A2BE2]" : "text-[#CCC]"),
-                                                    children: activeSubscriptions.length
+                                                    children: uniqueHubs.length
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                                    lineNumber: 229,
+                                                    lineNumber: 352,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                            lineNumber: 219,
+                                            lineNumber: 342,
                                             columnNumber: 17
                                         }, this),
-                                        activeSubscriptions.map((sub)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        uniqueHubs.map((sub)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                 onClick: ()=>setSelectedHubId(sub.hub.id),
                                                 className: cn("flex items-center gap-2.5 px-3 py-2 rounded-xl text-left transition-all text-[13px]", selectedHubId === sub.hub.id ? "bg-white border border-[#EEE] text-[#111] font-semibold shadow-[0_1px_4px_rgba(0,0,0,0.04)]" : "text-[#777] hover:text-[#111] font-medium"),
                                                 children: [
@@ -995,7 +1244,7 @@ function SavedPage() {
                                                         children: initial(sub.hub.name)
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                                        lineNumber: 246,
+                                                        lineNumber: 376,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1003,21 +1252,21 @@ function SavedPage() {
                                                         children: sub.hub.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                                        lineNumber: 252,
+                                                        lineNumber: 382,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
-                                            }, sub.id, true, {
+                                            }, sub.hub.id, true, {
                                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                                lineNumber: 236,
+                                                lineNumber: 366,
                                                 columnNumber: 19
                                             }, this)),
-                                        activeSubscriptions.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        uniqueHubs.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             className: "text-[12px] text-[#CCC] px-3 py-2",
                                             children: "No active subscriptions."
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                            lineNumber: 257,
+                                            lineNumber: 387,
                                             columnNumber: 19
                                         }, this)
                                     ]
@@ -1025,7 +1274,7 @@ function SavedPage() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                            lineNumber: 209,
+                            lineNumber: 327,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1041,7 +1290,7 @@ function SavedPage() {
                                                     children: heading
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                                    lineNumber: 269,
+                                                    lineNumber: 400,
                                                     columnNumber: 17
                                                 }, this),
                                                 selectedHub && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1052,13 +1301,13 @@ function SavedPage() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                                    lineNumber: 271,
+                                                    lineNumber: 404,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                            lineNumber: 268,
+                                            lineNumber: 399,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1085,8 +1334,8 @@ function SavedPage() {
                                                                 rx: "1"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                                                lineNumber: 283,
-                                                                columnNumber: 125
+                                                                lineNumber: 431,
+                                                                columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
                                                                 x: "7.5",
@@ -1096,8 +1345,8 @@ function SavedPage() {
                                                                 rx: "1"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                                                lineNumber: 283,
-                                                                columnNumber: 176
+                                                                lineNumber: 432,
+                                                                columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
                                                                 x: "1",
@@ -1107,8 +1356,8 @@ function SavedPage() {
                                                                 rx: "1"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                                                lineNumber: 283,
-                                                                columnNumber: 229
+                                                                lineNumber: 433,
+                                                                columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
                                                                 x: "7.5",
@@ -1118,14 +1367,14 @@ function SavedPage() {
                                                                 rx: "1"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                                                lineNumber: 283,
-                                                                columnNumber: 282
+                                                                lineNumber: 434,
+                                                                columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                                        lineNumber: 283,
-                                                        columnNumber: 25
+                                                        lineNumber: 423,
+                                                        columnNumber: 23
                                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                                         width: "13",
                                                         height: "13",
@@ -1138,28 +1387,28 @@ function SavedPage() {
                                                             strokeLinecap: "round"
                                                         }, void 0, false, {
                                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                                            lineNumber: 284,
-                                                            columnNumber: 125
+                                                            lineNumber: 445,
+                                                            columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                                        lineNumber: 284,
-                                                        columnNumber: 25
+                                                        lineNumber: 437,
+                                                        columnNumber: 23
                                                     }, this)
                                                 }, v, false, {
                                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                                    lineNumber: 277,
+                                                    lineNumber: 412,
                                                     columnNumber: 19
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                            lineNumber: 275,
+                                            lineNumber: 410,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                    lineNumber: 267,
+                                    lineNumber: 398,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1170,12 +1419,12 @@ function SavedPage() {
                                             children: f.label
                                         }, f.key, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                            lineNumber: 294,
+                                            lineNumber: 459,
                                             columnNumber: 17
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                    lineNumber: 292,
+                                    lineNumber: 457,
                                     columnNumber: 13
                                 }, this),
                                 !subsLoading && activeSubscriptions.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1195,17 +1444,17 @@ function SavedPage() {
                                                     strokeLinejoin: "round"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                                    lineNumber: 313,
-                                                    columnNumber: 114
+                                                    lineNumber: 486,
+                                                    columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                                lineNumber: 313,
+                                                lineNumber: 478,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                            lineNumber: 312,
+                                            lineNumber: 477,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1213,7 +1462,7 @@ function SavedPage() {
                                             children: "No subscriptions yet"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                            lineNumber: 315,
+                                            lineNumber: 492,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1221,13 +1470,13 @@ function SavedPage() {
                                             children: "Subscribe to a hub to access its content here."
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                            lineNumber: 316,
+                                            lineNumber: 495,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                    lineNumber: 311,
+                                    lineNumber: 476,
                                     columnNumber: 15
                                 }, this),
                                 !subsLoading && activeSubscriptions.length > 0 && (selectedHubId === "all" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(AllHubsContent, {
@@ -1236,7 +1485,7 @@ function SavedPage() {
                                     view: view
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                    lineNumber: 323,
+                                    lineNumber: 505,
                                     columnNumber: 17
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(HubContentLoader, {
                                     hubId: selectedHubId,
@@ -1244,37 +1493,37 @@ function SavedPage() {
                                     view: view
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                                    lineNumber: 329,
+                                    lineNumber: 511,
                                     columnNumber: 17
                                 }, this))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                            lineNumber: 264,
+                            lineNumber: 396,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                    lineNumber: 206,
+                    lineNumber: 325,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                lineNumber: 205,
+                lineNumber: 324,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("style", {
                 children: `.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}`
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-                lineNumber: 339,
+                lineNumber: 520,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/saved/page.tsx",
-        lineNumber: 204,
+        lineNumber: 323,
         columnNumber: 5
     }, this);
 }

@@ -1,12 +1,12 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { useVerifyEmail, useResendVerification } from "@/hooks/useAuth"
 import { ApiError } from "@/lib/apiClient"
 import { Button } from "@/components/ui/Button"
 
-export default function VerifyEmailPage() {
+function VerifyEmailPageInner() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const token = searchParams.get("token")
@@ -239,5 +239,13 @@ export default function VerifyEmailPage() {
         </div>
       </div>
     </main>
+  )
+}
+
+export default function VerifyEmailPage() {
+  return (
+    <Suspense>
+      <VerifyEmailPageInner />
+    </Suspense>
   )
 }

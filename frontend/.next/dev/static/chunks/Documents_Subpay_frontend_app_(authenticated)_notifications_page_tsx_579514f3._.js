@@ -18,277 +18,289 @@ const cn = (...c)=>c.filter(Boolean).join(" ");
 const TYPE_CONFIG = {
     new_content: {
         color: "#8A2BE2",
-        bg: "#F5EFFF",
-        label: "New Content",
+        bg: "#F4EEFF",
+        label: "Content",
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-            width: "11",
-            height: "11",
-            viewBox: "0 0 11 11",
+            width: "13",
+            height: "13",
+            viewBox: "0 0 13 13",
             fill: "none",
             stroke: "currentColor",
-            strokeWidth: "1.4",
+            strokeWidth: "1.5",
+            strokeLinecap: "round",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
-                    x: "1.5",
-                    y: "1.5",
-                    width: "8",
-                    height: "8",
+                    x: "2",
+                    y: "2",
+                    width: "9",
+                    height: "9",
                     rx: "1.5"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                    lineNumber: 29,
-                    columnNumber: 111
+                    lineNumber: 23,
+                    columnNumber: 133
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                    d: "M3.5 5.5h4M3.5 7h2",
-                    strokeLinecap: "round"
+                    d: "M4 6.5h5M4 8.5h3"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                    lineNumber: 29,
-                    columnNumber: 164
+                    lineNumber: 23,
+                    columnNumber: 182
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-            lineNumber: 29,
+            lineNumber: 23,
             columnNumber: 11
         }, ("TURBOPACK compile-time value", void 0))
     },
     payment_success: {
-        color: "#10B981",
-        bg: "#F0FDF4",
-        label: "Payments",
+        color: "#059669",
+        bg: "#ECFDF5",
+        label: "Payment",
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-            width: "11",
-            height: "11",
-            viewBox: "0 0 11 11",
+            width: "13",
+            height: "13",
+            viewBox: "0 0 13 13",
             fill: "none",
             stroke: "currentColor",
-            strokeWidth: "1.4",
+            strokeWidth: "1.5",
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                    cx: "5.5",
-                    cy: "5.5",
-                    r: "4"
+                    cx: "6.5",
+                    cy: "6.5",
+                    r: "4.5"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                    lineNumber: 33,
-                    columnNumber: 111
+                    lineNumber: 27,
+                    columnNumber: 156
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                    d: "M3.5 5.5l1.5 1.5 2.5-2.5",
-                    strokeLinecap: "round",
-                    strokeLinejoin: "round"
+                    d: "M4.5 6.5l1.5 1.5 2.5-2.5"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                    lineNumber: 33,
-                    columnNumber: 144
+                    lineNumber: 27,
+                    columnNumber: 191
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-            lineNumber: 33,
+            lineNumber: 27,
             columnNumber: 11
         }, ("TURBOPACK compile-time value", void 0))
     },
     payment_failed: {
-        color: "#EF4444",
+        color: "#DC2626",
         bg: "#FEF2F2",
-        label: "Payments",
+        label: "Payment",
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-            width: "11",
-            height: "11",
-            viewBox: "0 0 11 11",
+            width: "13",
+            height: "13",
+            viewBox: "0 0 13 13",
             fill: "none",
             stroke: "currentColor",
-            strokeWidth: "1.4",
+            strokeWidth: "1.5",
+            strokeLinecap: "round",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                    cx: "5.5",
-                    cy: "5.5",
-                    r: "4"
+                    cx: "6.5",
+                    cy: "6.5",
+                    r: "4.5"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                    lineNumber: 37,
-                    columnNumber: 111
+                    lineNumber: 31,
+                    columnNumber: 133
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                    d: "M4 4l3 3M7 4l-3 3",
-                    strokeLinecap: "round"
+                    d: "M4.5 4.5l4 4M8.5 4.5l-4 4"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                    lineNumber: 37,
-                    columnNumber: 144
+                    lineNumber: 31,
+                    columnNumber: 168
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-            lineNumber: 37,
+            lineNumber: 31,
             columnNumber: 11
         }, ("TURBOPACK compile-time value", void 0))
     },
     subscription_expiring: {
-        color: "#F59E0B",
+        color: "#D97706",
         bg: "#FFFBEB",
-        label: "Subscriptions",
+        label: "Subscription",
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-            width: "11",
-            height: "11",
-            viewBox: "0 0 11 11",
+            width: "13",
+            height: "13",
+            viewBox: "0 0 13 13",
             fill: "none",
             stroke: "currentColor",
-            strokeWidth: "1.4",
+            strokeWidth: "1.5",
+            strokeLinecap: "round",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                    cx: "5.5",
-                    cy: "5.5",
-                    r: "4"
+                    cx: "6.5",
+                    cy: "6.5",
+                    r: "4.5"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                    lineNumber: 41,
-                    columnNumber: 111
+                    lineNumber: 35,
+                    columnNumber: 133
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                    d: "M5.5 3v2.5l1.5 1.5",
-                    strokeLinecap: "round"
+                    d: "M6.5 4v3l2 1.5"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                    lineNumber: 41,
-                    columnNumber: 144
+                    lineNumber: 35,
+                    columnNumber: 168
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-            lineNumber: 41,
+            lineNumber: 35,
             columnNumber: 11
         }, ("TURBOPACK compile-time value", void 0))
     },
     subscription_cancelled: {
-        color: "#EF4444",
+        color: "#DC2626",
         bg: "#FEF2F2",
-        label: "Subscriptions",
+        label: "Subscription",
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-            width: "11",
-            height: "11",
-            viewBox: "0 0 11 11",
+            width: "13",
+            height: "13",
+            viewBox: "0 0 13 13",
             fill: "none",
             stroke: "currentColor",
-            strokeWidth: "1.4",
-            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                d: "M5.5 1.5v8M3.5 3.5c0-.7.9-1.2 2-1.2s2 .5 2 1.2S6.6 4.7 5.5 4.7s-2 .4-2 1.2.9 1.2 2 1.2 2-.4 2-1.2"
-            }, void 0, false, {
-                fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                lineNumber: 45,
-                columnNumber: 111
-            }, ("TURBOPACK compile-time value", void 0))
-        }, void 0, false, {
-            fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-            lineNumber: 45,
-            columnNumber: 11
-        }, ("TURBOPACK compile-time value", void 0))
-    },
-    new_subscriber: {
-        color: "#10B981",
-        bg: "#F0FDF4",
-        label: "Subscribers",
-        icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-            width: "11",
-            height: "11",
-            viewBox: "0 0 11 11",
-            fill: "none",
-            stroke: "currentColor",
-            strokeWidth: "1.4",
+            strokeWidth: "1.5",
+            strokeLinecap: "round",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                    cx: "4.5",
-                    cy: "3.5",
-                    r: "2"
+                    cx: "6.5",
+                    cy: "6.5",
+                    r: "4.5"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                    lineNumber: 49,
-                    columnNumber: 111
+                    lineNumber: 39,
+                    columnNumber: 133
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                    d: "M1.5 9.5c0-1.7 1.3-2.8 3-2.8"
+                    d: "M4.5 4.5l4 4M8.5 4.5l-4 4"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                    lineNumber: 49,
-                    columnNumber: 144
-                }, ("TURBOPACK compile-time value", void 0)),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                    d: "M8 6v4M6 8h4",
-                    strokeLinecap: "round"
-                }, void 0, false, {
-                    fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                    lineNumber: 49,
-                    columnNumber: 184
+                    lineNumber: 39,
+                    columnNumber: 168
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-            lineNumber: 49,
+            lineNumber: 39,
+            columnNumber: 11
+        }, ("TURBOPACK compile-time value", void 0))
+    },
+    new_subscriber: {
+        color: "#059669",
+        bg: "#ECFDF5",
+        label: "Subscriber",
+        icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+            width: "13",
+            height: "13",
+            viewBox: "0 0 13 13",
+            fill: "none",
+            stroke: "currentColor",
+            strokeWidth: "1.5",
+            strokeLinecap: "round",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
+                    cx: "5",
+                    cy: "4",
+                    r: "2"
+                }, void 0, false, {
+                    fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
+                    lineNumber: 43,
+                    columnNumber: 133
+                }, ("TURBOPACK compile-time value", void 0)),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                    d: "M2 11c0-2 1.3-3.2 3-3.2"
+                }, void 0, false, {
+                    fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
+                    lineNumber: 43,
+                    columnNumber: 162
+                }, ("TURBOPACK compile-time value", void 0)),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                    d: "M9 8v4M7 10h4"
+                }, void 0, false, {
+                    fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
+                    lineNumber: 43,
+                    columnNumber: 197
+                }, ("TURBOPACK compile-time value", void 0))
+            ]
+        }, void 0, true, {
+            fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
+            lineNumber: 43,
             columnNumber: 11
         }, ("TURBOPACK compile-time value", void 0))
     },
     subscriber_cancelled: {
         color: "#6B7280",
         bg: "#F9FAFB",
-        label: "Subscribers",
+        label: "Subscriber",
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-            width: "11",
-            height: "11",
-            viewBox: "0 0 11 11",
+            width: "13",
+            height: "13",
+            viewBox: "0 0 13 13",
             fill: "none",
             stroke: "currentColor",
-            strokeWidth: "1.4",
+            strokeWidth: "1.5",
+            strokeLinecap: "round",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
-                    cx: "4.5",
-                    cy: "3.5",
+                    cx: "5",
+                    cy: "4",
                     r: "2"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                    lineNumber: 53,
-                    columnNumber: 111
+                    lineNumber: 47,
+                    columnNumber: 133
                 }, ("TURBOPACK compile-time value", void 0)),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                    d: "M1.5 9.5c0-1.7 1.3-2.8 3-2.8M7 7.5l2 2M9 7.5l-2 2",
-                    strokeLinecap: "round"
+                    d: "M2 11c0-2 1.3-3.2 3-3.2M8 8.5l2.5 2.5M10.5 8.5l-2.5 2.5"
                 }, void 0, false, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                    lineNumber: 53,
-                    columnNumber: 144
+                    lineNumber: 47,
+                    columnNumber: 162
                 }, ("TURBOPACK compile-time value", void 0))
             ]
         }, void 0, true, {
             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-            lineNumber: 53,
+            lineNumber: 47,
             columnNumber: 11
         }, ("TURBOPACK compile-time value", void 0))
     },
     withdrawal_update: {
         color: "#6366F1",
         bg: "#EEF2FF",
-        label: "Withdrawals",
+        label: "Withdrawal",
         icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-            width: "11",
-            height: "11",
-            viewBox: "0 0 11 11",
+            width: "13",
+            height: "13",
+            viewBox: "0 0 13 13",
             fill: "none",
             stroke: "currentColor",
-            strokeWidth: "1.4",
+            strokeWidth: "1.5",
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                d: "M5.5 9V2M3 4.5 5.5 2 8 4.5",
-                strokeLinecap: "round",
-                strokeLinejoin: "round"
+                d: "M6.5 10V3M4 5.5 6.5 3 9 5.5"
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                lineNumber: 57,
-                columnNumber: 111
+                lineNumber: 51,
+                columnNumber: 156
             }, ("TURBOPACK compile-time value", void 0))
         }, void 0, false, {
             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-            lineNumber: 57,
+            lineNumber: 51,
             columnNumber: 11
         }, ("TURBOPACK compile-time value", void 0))
     }
@@ -323,101 +335,105 @@ const FILTERS = [
         label: "Withdrawals"
     }
 ];
-// ─── Helpers ──────────────────────────────────────────────────────────────────
 function getGroup(iso) {
-    const d = new Date(iso);
-    const now = new Date();
-    const diff = (now.getTime() - d.getTime()) / 86400000;
+    const diff = (Date.now() - new Date(iso).getTime()) / 86400000;
     if (diff < 1) return "today";
     if (diff < 2) return "yesterday";
     return "earlier";
 }
 function timeAgo(iso) {
-    const diff = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
-    if (diff < 60) return `${diff}s ago`;
-    if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
-    if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
-    if (diff < 172800) return "Yesterday";
+    const s = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
+    if (s < 60) return `${s}s ago`;
+    if (s < 3600) return `${Math.floor(s / 60)}m ago`;
+    if (s < 86400) return `${Math.floor(s / 3600)}h ago`;
+    if (s < 172800) return "Yesterday";
     return new Date(iso).toLocaleDateString("en-GB", {
         day: "numeric",
         month: "short"
     });
 }
+// ─── Notification Row ─────────────────────────────────────────────────────────
 function NotifRow({ notif }) {
     _s();
-    const { mutate: markOne, isPending: marking } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useNotifications$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMarkOneRead"])();
+    const { mutate: markOne } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useNotifications$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMarkOneRead"])();
     const { mutate: deleteNotif, isPending: deleting } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useNotifications$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDeleteNotification"])();
     const cfg = TYPE_CONFIG[notif.type] ?? TYPE_CONFIG.new_content;
-    const handleClick = ()=>{
-        if (!notif.is_read) markOne(notif.id);
-    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        onClick: handleClick,
-        className: cn("flex items-start gap-3.5 px-4 py-3.5 rounded-2xl border cursor-pointer transition-all group hover:shadow-[0_2px_12px_rgba(0,0,0,0.04)]", notif.is_read ? "bg-white border-[#F0F0F0]" : "bg-white border-[#E8E0F8]"),
+        onClick: ()=>{
+            if (!notif.is_read) markOne(notif.id);
+        },
+        className: "flex items-start gap-3.5 px-4 py-3.5 rounded-2xl cursor-pointer group transition-all duration-150 bg-white",
+        style: {
+            boxShadow: notif.is_read ? "0 1px 3px rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.04)" : "0 1px 3px rgba(138,43,226,0.08), 0 0 0 1px rgba(138,43,226,0.15)"
+        },
+        onMouseEnter: (e)=>e.currentTarget.style.boxShadow = "0 4px 16px rgba(0,0,0,0.08)",
+        onMouseLeave: (e)=>e.currentTarget.style.boxShadow = notif.is_read ? "0 1px 3px rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.04)" : "0 1px 3px rgba(138,43,226,0.08), 0 0 0 1px rgba(138,43,226,0.15)",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "w-9 h-9 rounded-full flex items-center justify-center shrink-0",
+                className: "w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5",
                 style: {
                     background: cfg.bg,
                     color: cfg.color
                 },
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "scale-[1.4]",
-                    children: cfg.icon
-                }, void 0, false, {
-                    fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                    lineNumber: 118,
-                    columnNumber: 9
-                }, this)
+                children: cfg.icon
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                lineNumber: 114,
+                lineNumber: 102,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex-1 min-w-0 pt-0.5",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-[13px] font-semibold text-[#111] leading-snug",
-                        children: notif.title
-                    }, void 0, false, {
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex items-start justify-between gap-2",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: cn("text-[13px] leading-snug", notif.is_read ? "font-medium text-[#534670]" : "font-bold text-[#170C28]"),
+                                children: notif.title
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
+                                lineNumber: 109,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "text-[11px] text-[#BEB3D0] shrink-0 mt-0.5",
+                                children: timeAgo(notif.created_at)
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
+                                lineNumber: 112,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                        lineNumber: 123,
+                        lineNumber: 108,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-[12.5px] text-[#666] mt-0.5 leading-relaxed",
+                        className: "text-[12px] text-[#8B7BA8] mt-0.5 leading-relaxed",
                         children: notif.body
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                        lineNumber: 124,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-[11px] text-[#BBB] mt-1.5",
-                        children: timeAgo(notif.created_at)
-                    }, void 0, false, {
-                        fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                        lineNumber: 125,
+                        lineNumber: 114,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                lineNumber: 122,
+                lineNumber: 107,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex flex-col items-end gap-2 shrink-0",
+                className: "flex flex-col items-center gap-2 shrink-0 ml-1",
                 children: [
                     !notif.is_read && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                        className: "w-2 h-2 rounded-full mt-1.5 shrink-0",
+                        className: "w-2 h-2 rounded-full mt-1.5",
                         style: {
                             background: cfg.color
                         }
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                        lineNumber: 131,
+                        lineNumber: 120,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -426,56 +442,56 @@ function NotifRow({ notif }) {
                             deleteNotif(notif.id);
                         },
                         disabled: deleting,
-                        className: "opacity-0 group-hover:opacity-100 text-[11px] text-[#CCC] hover:text-red-400 transition-all disabled:opacity-30 mt-1",
+                        className: "opacity-0 group-hover:opacity-100 transition-opacity text-[#BEB3D0] hover:text-red-400 disabled:opacity-30",
                         title: "Delete",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                            width: "12",
-                            height: "12",
-                            viewBox: "0 0 12 12",
+                            width: "13",
+                            height: "13",
+                            viewBox: "0 0 13 13",
                             fill: "none",
                             stroke: "currentColor",
                             strokeWidth: "1.4",
                             strokeLinecap: "round",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    d: "M2 3h8M4 3V2h4v1"
+                                    d: "M2 3.5h9M4.5 3.5V2.5h4v1"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                    lineNumber: 140,
+                                    lineNumber: 129,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    d: "M3 3l.5 7h5L9 3"
+                                    d: "M3.5 3.5l.5 7h5l.5-7"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                    lineNumber: 140,
-                                    columnNumber: 41
+                                    lineNumber: 129,
+                                    columnNumber: 49
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                            lineNumber: 139,
+                            lineNumber: 128,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                        lineNumber: 133,
+                        lineNumber: 122,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                lineNumber: 129,
+                lineNumber: 118,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-        lineNumber: 106,
+        lineNumber: 88,
         columnNumber: 5
     }, this);
 }
-_s(NotifRow, "o2q035kELkocMy+MuHgmb04ckQU=", false, function() {
+_s(NotifRow, "8rnAbuJ+7umI4vPOS26LuJKWwVE=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useNotifications$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMarkOneRead"],
         __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useNotifications$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDeleteNotification"]
@@ -489,50 +505,45 @@ function NotificationsPage() {
     const { data: unreadData } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useNotifications$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useUnreadCount"])();
     const { mutate: markAllRead, isPending: markingAll } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useNotifications$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMarkAllRead"])();
     const unreadCount = unreadData?.unread_count ?? 0;
-    // Computed stats from notification types
     const stats = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
-        "NotificationsPage.useMemo[stats]": ()=>{
-            const newSubs = notifications.filter({
-                "NotificationsPage.useMemo[stats]": (n)=>n.type === "new_subscriber"
-            }["NotificationsPage.useMemo[stats]"]).length;
-            const payments = notifications.filter({
-                "NotificationsPage.useMemo[stats]": (n)=>n.type === "payment_success" || n.type === "payment_failed"
-            }["NotificationsPage.useMemo[stats]"]).length;
-            const expiring = notifications.filter({
-                "NotificationsPage.useMemo[stats]": (n)=>n.type === "subscription_expiring" || n.type === "subscription_cancelled"
-            }["NotificationsPage.useMemo[stats]"]).length;
-            return [
+        "NotificationsPage.useMemo[stats]": ()=>[
                 {
                     label: "New subscribers",
-                    value: String(newSubs),
-                    color: "#10B981"
+                    value: notifications.filter({
+                        "NotificationsPage.useMemo[stats]": (n)=>n.type === "new_subscriber"
+                    }["NotificationsPage.useMemo[stats]"]).length,
+                    color: "#059669",
+                    bg: "#ECFDF5"
                 },
                 {
                     label: "Payment events",
-                    value: String(payments),
-                    color: "#8A2BE2"
+                    value: notifications.filter({
+                        "NotificationsPage.useMemo[stats]": (n)=>n.type === "payment_success" || n.type === "payment_failed"
+                    }["NotificationsPage.useMemo[stats]"]).length,
+                    color: "#8A2BE2",
+                    bg: "#F4EEFF"
                 },
                 {
                     label: "Sub alerts",
-                    value: String(expiring),
-                    color: "#F59E0B"
+                    value: notifications.filter({
+                        "NotificationsPage.useMemo[stats]": (n)=>n.type === "subscription_expiring" || n.type === "subscription_cancelled"
+                    }["NotificationsPage.useMemo[stats]"]).length,
+                    color: "#D97706",
+                    bg: "#FFFBEB"
                 }
-            ];
-        }
+            ]
     }["NotificationsPage.useMemo[stats]"], [
         notifications
     ]);
     const filtered = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
-        "NotificationsPage.useMemo[filtered]": ()=>{
-            return notifications.filter({
+        "NotificationsPage.useMemo[filtered]": ()=>notifications.filter({
                 "NotificationsPage.useMemo[filtered]": (n)=>{
                     if (filter === "unread") return !n.is_read;
                     if (filter === "payment_success") return n.type === "payment_success" || n.type === "payment_failed";
                     if (filter !== "all") return n.type === filter;
                     return true;
                 }
-            }["NotificationsPage.useMemo[filtered]"]);
-        }
+            }["NotificationsPage.useMemo[filtered]"])
     }["NotificationsPage.useMemo[filtered]"], [
         notifications,
         filter
@@ -551,113 +562,135 @@ function NotificationsPage() {
             items: filtered.filter((n)=>getGroup(n.created_at) === g)
         })).filter((g)=>g.items.length > 0);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "min-h-screen bg-[#FAFAFA]",
+        className: "min-h-screen bg-[#F7F8FC]",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "max-w-[660px] mx-auto px-6 py-8",
+                className: "max-w-[620px] mx-auto px-5 py-8",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex items-start justify-between mb-6",
+                        className: "flex items-start justify-between mb-7",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                        className: "text-[22px] font-bold text-[#111] tracking-tight flex items-center gap-2.5",
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-center gap-2.5",
                                         children: [
-                                            "Notifications",
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                                className: "text-[24px] font-black text-[#170C28] tracking-tight",
+                                                children: "Notifications"
+                                            }, void 0, false, {
+                                                fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
+                                                lineNumber: 172,
+                                                columnNumber: 15
+                                            }, this),
                                             unreadCount > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "text-[12px] font-bold px-2 py-0.5 rounded-full bg-[#8A2BE2] text-white",
+                                                className: "text-[11px] font-bold px-2 py-0.5 rounded-full text-white",
+                                                style: {
+                                                    background: "#8A2BE2"
+                                                },
                                                 children: unreadCount
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                                lineNumber: 197,
+                                                lineNumber: 174,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                        lineNumber: 194,
+                                        lineNumber: 171,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-[13px] text-[#999] mt-0.5",
+                                        className: "text-[13px] text-[#8B7BA8] mt-0.5",
                                         children: "Stay up to date with your activity"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                        lineNumber: 202,
+                                        lineNumber: 179,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                lineNumber: 193,
+                                lineNumber: 170,
                                 columnNumber: 11
                             }, this),
                             unreadCount > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 onClick: ()=>markAllRead(),
                                 disabled: markingAll,
-                                className: "text-[12.5px] font-medium text-[#8A2BE2] hover:underline mt-1 disabled:opacity-50",
+                                className: "text-[12.5px] font-semibold text-[#8A2BE2] hover:opacity-70 transition-opacity disabled:opacity-40 mt-1",
                                 children: "Mark all read"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                lineNumber: 205,
+                                lineNumber: 182,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                        lineNumber: 192,
+                        lineNumber: 169,
                         columnNumber: 9
                     }, this),
                     !isLoading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "grid grid-cols-3 gap-3 mb-6",
                         children: stats.map((s)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "bg-white rounded-2xl border border-[#F0F0F0] px-4 py-3",
+                                className: "bg-white rounded-2xl px-4 py-3.5",
+                                style: {
+                                    boxShadow: "0 1px 4px rgba(0,0,0,0.06)"
+                                },
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-[20px] font-bold",
+                                        className: "text-[22px] font-black leading-none",
                                         style: {
                                             color: s.color
                                         },
                                         children: s.value
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                        lineNumber: 220,
+                                        lineNumber: 197,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-[11.5px] text-[#999] mt-0.5 leading-tight",
+                                        className: "text-[11px] text-[#8B7BA8] mt-1.5 leading-tight",
                                         children: s.label
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                        lineNumber: 221,
+                                        lineNumber: 198,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, s.label, true, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                lineNumber: 219,
+                                lineNumber: 196,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                        lineNumber: 217,
+                        lineNumber: 194,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex gap-2 mb-5 overflow-x-auto pb-1 no-scrollbar",
+                        className: "flex gap-2 mb-6 overflow-x-auto pb-1 no-scrollbar",
                         children: FILTERS.map((f)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 onClick: ()=>setFilter(f.id),
-                                className: cn("shrink-0 text-[12.5px] font-medium px-4 py-1.5 rounded-full border transition-all", filter === f.id ? "bg-[#111] text-white border-[#111]" : "bg-white text-[#555] border-[#EBEBEB] hover:border-[#aaa]"),
+                                className: "shrink-0 text-[12px] font-semibold px-3.5 py-1.5 rounded-full transition-all duration-150",
+                                style: filter === f.id ? {
+                                    background: "#8A2BE2",
+                                    color: "white",
+                                    boxShadow: "0 2px 10px rgba(138,43,226,0.3)"
+                                } : {
+                                    background: "white",
+                                    color: "#534670",
+                                    boxShadow: "0 1px 3px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.05)"
+                                },
                                 children: f.label
                             }, f.id, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                lineNumber: 230,
+                                lineNumber: 207,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                        lineNumber: 228,
+                        lineNumber: 205,
                         columnNumber: 9
                     }, this),
                     isLoading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -665,79 +698,79 @@ function NotificationsPage() {
                         children: [
                             ...Array(5)
                         ].map((_, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "h-[80px] bg-white rounded-2xl border border-[#F0F0F0] animate-pulse"
+                                className: "h-[76px] bg-white rounded-2xl animate-pulse",
+                                style: {
+                                    boxShadow: "0 1px 3px rgba(0,0,0,0.05)"
+                                }
                             }, i, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                lineNumber: 249,
+                                lineNumber: 225,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                        lineNumber: 247,
+                        lineNumber: 223,
                         columnNumber: 11
                     }, this),
                     !isLoading && groups.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex flex-col items-center py-20 text-center",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "w-12 h-12 rounded-full bg-[#F5F0FF] flex items-center justify-center mb-3",
+                                className: "w-14 h-14 rounded-2xl bg-[#F4EEFF] flex items-center justify-center mb-4",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                    width: "20",
-                                    height: "20",
-                                    viewBox: "0 0 20 20",
+                                    width: "22",
+                                    height: "22",
+                                    viewBox: "0 0 22 22",
                                     fill: "none",
-                                    stroke: "#C4A8E0",
+                                    stroke: "#8A2BE2",
                                     strokeWidth: "1.5",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                            d: "M10 2a6 6 0 0 1 6 6c0 3.5 2 5.5 2 5.5H2S4 11.5 4 8a6 6 0 0 1 6-6Z"
+                                            d: "M11 2a7 7 0 0 1 7 7c0 4 2 6 2 6H2s2-2 2-6a7 7 0 0 1 7-7Z"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                            lineNumber: 259,
+                                            lineNumber: 235,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                            d: "M8 16a2 2 0 0 0 4 0"
+                                            d: "M9 18a2 2 0 0 0 4 0",
+                                            strokeLinecap: "round"
                                         }, void 0, false, {
                                             fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                            lineNumber: 260,
+                                            lineNumber: 236,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                    lineNumber: 258,
+                                    lineNumber: 234,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                lineNumber: 257,
+                                lineNumber: 233,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-[14px] font-semibold text-[#333]",
+                                className: "text-[15px] font-bold text-[#170C28]",
                                 children: "All caught up"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                lineNumber: 263,
+                                lineNumber: 239,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-[12.5px] text-[#AAA] mt-1",
-                                children: [
-                                    "No ",
-                                    filter !== "all" && filter !== "unread" ? filter.replace("_", " ") : "",
-                                    " notifications right now."
-                                ]
-                            }, void 0, true, {
+                                className: "text-[13px] text-[#8B7BA8] mt-1",
+                                children: "No notifications right now."
+                            }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                lineNumber: 264,
+                                lineNumber: 240,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                        lineNumber: 256,
+                        lineNumber: 232,
                         columnNumber: 11
                     }, this),
                     !isLoading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -745,58 +778,55 @@ function NotificationsPage() {
                         children: groups.map((group)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-[11px] font-semibold text-[#BBB] uppercase tracking-wider mb-2",
+                                        className: "text-[11px] font-bold uppercase tracking-widest text-[#BEB3D0] mb-3",
                                         children: group.label
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                        lineNumber: 275,
+                                        lineNumber: 249,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex flex-col gap-1.5",
+                                        className: "flex flex-col gap-2",
                                         children: group.items.map((notif)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(NotifRow, {
                                                 notif: notif
                                             }, notif.id, false, {
                                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                                lineNumber: 280,
-                                                columnNumber: 21
+                                                lineNumber: 251,
+                                                columnNumber: 45
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                        lineNumber: 278,
+                                        lineNumber: 250,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, group.key, true, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                                lineNumber: 274,
+                                lineNumber: 248,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                        lineNumber: 272,
+                        lineNumber: 246,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                lineNumber: 189,
+                lineNumber: 166,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("style", {
-                children: `
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      `
+                children: `.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}`
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-                lineNumber: 289,
+                lineNumber: 259,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Documents/Subpay/frontend/app/(authenticated)/notifications/page.tsx",
-        lineNumber: 188,
+        lineNumber: 165,
         columnNumber: 5
     }, this);
 }

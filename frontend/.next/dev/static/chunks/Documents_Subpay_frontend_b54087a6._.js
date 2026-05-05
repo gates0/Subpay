@@ -981,14 +981,12 @@ const tokenStorage = {
     set: (access, refresh)=>{
         localStorage.setItem("access_token", access);
         localStorage.setItem("refresh_token", refresh);
-        // Set the session cookie so middleware can detect auth
-        document.cookie = "hubora_session=1; path=/; max-age=604800; SameSite=Lax";
+        document.cookie = "hubora_session=1; path=/; SameSite=Lax";
     },
     clear: ()=>{
         localStorage.removeItem("access_token");
         localStorage.removeItem("refresh_token");
-        // Clear the session cookie
-        document.cookie = "hubora_session=; path=/; max-age=0";
+        document.cookie = "hubora_session=; path=/; max-age=0; SameSite=Lax";
     }
 };
 class ApiError extends Error {
@@ -1000,14 +998,45 @@ class ApiError extends Error {
         this.name = "ApiError";
     }
 }
+// ─── Token Refresh ────────────────────────────────────────────────────────────
+let isRefreshing = false;
+let refreshPromise = null;
+async function tryRefreshToken() {
+    const refresh = tokenStorage.getRefresh();
+    if (!refresh) return null;
+    if (isRefreshing) return refreshPromise;
+    isRefreshing = true;
+    refreshPromise = fetch(`${BASE_URL}/api/v1/auth/refresh`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            refresh_token: refresh
+        })
+    }).then(async (res)=>{
+        if (!res.ok) return null;
+        const data = await res.json();
+        tokenStorage.set(data.access_token, data.refresh_token ?? refresh);
+        return data.access_token;
+    }).catch(()=>null).finally(()=>{
+        isRefreshing = false;
+        refreshPromise = null;
+    });
+    return refreshPromise;
+}
+function redirectToAuth() {
+    tokenStorage.clear();
+    if ("TURBOPACK compile-time truthy", 1) {
+        window.location.href = `/auth?next=${encodeURIComponent(window.location.pathname)}`;
+    }
+}
 async function apiFetch(path, options = {}) {
-    const { method = "GET", body, headers = {}, auth = true, isFormData = false } = options;
+    const { method = "GET", body, headers = {}, auth = true, isFormData = false, _isRetry = false } = options;
     const reqHeaders = {
         ...headers
     };
-    if (!isFormData) {
-        reqHeaders["Content-Type"] = "application/json";
-    }
+    if (!isFormData) reqHeaders["Content-Type"] = "application/json";
     if (auth) {
         const token = tokenStorage.getAccess();
         if (token) reqHeaders["Authorization"] = `Bearer ${token}`;
@@ -1019,6 +1048,22 @@ async function apiFetch(path, options = {}) {
     });
     // 204 No Content
     if (res.status === 204) return undefined;
+    // 401 — try refresh once, then redirect
+    if (res.status === 401 && auth && !_isRetry) {
+        const newToken = await tryRefreshToken();
+        if (newToken) {
+            return apiFetch(path, {
+                ...options,
+                _isRetry: true
+            });
+        }
+        redirectToAuth();
+        return undefined;
+    }
+    if (res.status === 401 && _isRetry) {
+        redirectToAuth();
+        return undefined;
+    }
     let data;
     try {
         data = await res.json();
@@ -1144,8 +1189,18 @@ const queryKeys = {
         "stats"
     ],
     hubById: (hubId)=>[
-            "hubs",
+            "hub",
             hubId
+        ],
+    hubStats: (hubId)=>[
+            "hubs",
+            hubId,
+            "stats"
+        ],
+    hubContent: (hubId)=>[
+            "hubs",
+            hubId,
+            "content"
         ],
     // Plans
     plansMine: [
@@ -1197,8 +1252,7 @@ const queryKeys = {
             hubId
         ],
     contentHubItem: (hubId, contentId)=>[
-            "content",
-            "hub",
+            "content-hub-item",
             hubId,
             contentId
         ],
@@ -1238,6 +1292,29 @@ const queryKeys = {
             "explore",
             "creators",
             params
+        ],
+    // Feed
+    feed: [
+        "feed"
+    ],
+    comments: (hubId, contentId)=>[
+            "comments",
+            hubId,
+            contentId
+        ],
+    replies: (hubId, contentId, commentId)=>[
+            "replies",
+            hubId,
+            contentId,
+            commentId
+        ],
+    savedContent: [
+        "saved-content"
+    ],
+    hubOverview: (hubId)=>[
+            "hub",
+            "overview",
+            hubId
         ]
 };
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
@@ -1435,7 +1512,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$front
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useAuth$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Subpay/frontend/hooks/useAuth.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$api$2f$Auth$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Subpay/frontend/lib/api/Auth.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$apiClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Subpay/frontend/lib/apiClient.ts [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$client$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Subpay/frontend/node_modules/.pnpm/next@16.1.6_@babel+core@7.29.0_react-dom@19.2.3_react@19.2.3__react@19.2.3/node_modules/next/client.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature(), _s2 = __turbopack_context__.k.signature();
 "use client";
@@ -1448,11 +1524,19 @@ var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.sign
 ;
 ;
 ;
-;
 const AUTH_IMAGES = Array.from({
     length: 28
 }, (_, i)=>`/authclips/auth${i + 1}.jpeg`);
-function AuthPage() {
+/** Safely extract a human-readable message from an ApiError's detail field,
+ *  which may be a string OR a FastAPI validation-error array. */ function extractErrorMessage(err, fallback) {
+    if (err instanceof __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$apiClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ApiError"]) {
+        const detail = err.detail;
+        if (typeof detail === "string") return detail;
+        if (Array.isArray(detail)) return detail.map((e)=>e.msg).join(", ");
+    }
+    return fallback;
+}
+function AuthPageInner() {
     _s();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const searchParams = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSearchParams"])();
@@ -1500,7 +1584,7 @@ function AuthPage() {
                                                     fillOpacity: "0.9"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                                    lineNumber: 62,
+                                                    lineNumber: 73,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
@@ -1513,7 +1597,7 @@ function AuthPage() {
                                                     fillOpacity: "0.9"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                                    lineNumber: 71,
+                                                    lineNumber: 82,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
@@ -1526,7 +1610,7 @@ function AuthPage() {
                                                     fillOpacity: "0.9"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                                    lineNumber: 80,
+                                                    lineNumber: 91,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
@@ -1539,7 +1623,7 @@ function AuthPage() {
                                                     fillOpacity: "0.5"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                                    lineNumber: 89,
+                                                    lineNumber: 100,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
@@ -1552,18 +1636,18 @@ function AuthPage() {
                                                     fillOpacity: "0.3"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                                    lineNumber: 98,
+                                                    lineNumber: 109,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                            lineNumber: 61,
+                                            lineNumber: 72,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                        lineNumber: 53,
+                                        lineNumber: 64,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1576,13 +1660,13 @@ function AuthPage() {
                                         children: "Hubora"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                        lineNumber: 109,
+                                        lineNumber: 120,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                lineNumber: 52,
+                                lineNumber: 63,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -1593,7 +1677,7 @@ function AuthPage() {
                                 children: tab === "register" ? "Create your account" : "Welcome back"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                lineNumber: 121,
+                                lineNumber: 132,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1605,13 +1689,13 @@ function AuthPage() {
                                 children: tab === "register" ? "Join thousands of creators and fans on Hubora." : "Good to see you again. Sign in to continue."
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                lineNumber: 127,
+                                lineNumber: 138,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                        lineNumber: 51,
+                        lineNumber: 62,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1651,7 +1735,7 @@ function AuthPage() {
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                                lineNumber: 177,
+                                                lineNumber: 188,
                                                 columnNumber: 21
                                             }, this),
                                             t === "register" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -1667,7 +1751,7 @@ function AuthPage() {
                                                         fillOpacity: isActive ? 0.9 : 0.6
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                                        lineNumber: 194,
+                                                        lineNumber: 205,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1678,7 +1762,7 @@ function AuthPage() {
                                                         strokeOpacity: isActive ? 0.9 : 0.6
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                                        lineNumber: 199,
+                                                        lineNumber: 210,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1689,13 +1773,13 @@ function AuthPage() {
                                                         strokeOpacity: isActive ? 1 : 0.5
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                                        lineNumber: 206,
+                                                        lineNumber: 217,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                                lineNumber: 187,
+                                                lineNumber: 198,
                                                 columnNumber: 21
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                                 width: "14",
@@ -1715,7 +1799,7 @@ function AuthPage() {
                                                         strokeOpacity: isActive ? 0.9 : 0.6
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                                        lineNumber: 222,
+                                                        lineNumber: 233,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1726,7 +1810,7 @@ function AuthPage() {
                                                         strokeOpacity: isActive ? 0.9 : 0.6
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                                        lineNumber: 232,
+                                                        lineNumber: 243,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
@@ -1737,26 +1821,26 @@ function AuthPage() {
                                                         fillOpacity: isActive ? 0.9 : 0.5
                                                     }, void 0, false, {
                                                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                                        lineNumber: 239,
+                                                        lineNumber: 250,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                                lineNumber: 215,
+                                                lineNumber: 226,
                                                 columnNumber: 21
                                             }, this),
                                             t === "register" ? "Create Account" : "Sign In"
                                         ]
                                     }, t, true, {
                                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                        lineNumber: 153,
+                                        lineNumber: 164,
                                         columnNumber: 17
                                     }, this);
                                 })
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                lineNumber: 144,
+                                lineNumber: 155,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1771,24 +1855,24 @@ function AuthPage() {
                                     onSuccess: handleSuccess
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                    lineNumber: 262,
+                                    lineNumber: 273,
                                     columnNumber: 15
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(LoginForm, {
                                     onSuccess: handleSuccess
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                    lineNumber: 268,
+                                    lineNumber: 279,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                lineNumber: 254,
+                                lineNumber: 265,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                        lineNumber: 137,
+                        lineNumber: 148,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1810,7 +1894,7 @@ function AuthPage() {
                                     children: "Sign in"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                    lineNumber: 280,
+                                    lineNumber: 291,
                                     columnNumber: 15
                                 }, this)
                             ]
@@ -1820,27 +1904,27 @@ function AuthPage() {
                                 " ",
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     onClick: ()=>setTab("register"),
-                                    className: "font-semibold hover:underline underline-offset-2",
+                                    className: "font-semibold hover:underline hover:cursor-pointer underline-offset-2",
                                     style: {
-                                        color: "white"
+                                        color: "purple"
                                     },
                                     children: "Sign up free"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                    lineNumber: 291,
+                                    lineNumber: 302,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true)
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                        lineNumber: 273,
+                        lineNumber: 284,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                lineNumber: 37,
+                lineNumber: 48,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1867,7 +1951,7 @@ function AuthPage() {
                                     children: "Built for creators."
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                    lineNumber: 312,
+                                    lineNumber: 323,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1879,18 +1963,18 @@ function AuthPage() {
                                     children: "Join 14,000+ creators earning on their own terms."
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                    lineNumber: 318,
+                                    lineNumber: 329,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                            lineNumber: 305,
+                            lineNumber: 316,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                        lineNumber: 304,
+                        lineNumber: 315,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1901,7 +1985,7 @@ function AuthPage() {
                         }
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                        lineNumber: 326,
+                        lineNumber: 337,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$components$2f$ui$2f$grid$2d$motion$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1909,13 +1993,13 @@ function AuthPage() {
                         gradientColor: "#C4B5FD"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                        lineNumber: 333,
+                        lineNumber: 344,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                lineNumber: 303,
+                lineNumber: 314,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("style", {
@@ -1928,56 +2012,83 @@ function AuthPage() {
       `
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                lineNumber: 336,
+                lineNumber: 347,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-        lineNumber: 36,
+        lineNumber: 47,
         columnNumber: 5
     }, this);
 }
-_s(AuthPage, "oSo/si2pPlEBnkD48Gh5KeS+FnU=", false, function() {
+_s(AuthPageInner, "oSo/si2pPlEBnkD48Gh5KeS+FnU=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSearchParams"]
     ];
 });
-_c = AuthPage;
+_c = AuthPageInner;
+function AuthPage() {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Suspense"], {
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(AuthPageInner, {}, void 0, false, {
+            fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
+            lineNumber: 361,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
+        lineNumber: 360,
+        columnNumber: 5
+    }, this);
+}
+_c1 = AuthPage;
 // ─────────────────────────────────────────────────────────────────────────────
 // REGISTER FORM
 // ─────────────────────────────────────────────────────────────────────────────
 function RegisterForm({ role, setRole, onSuccess }) {
     _s1();
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const [email, setEmail] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [fullName, setFullName] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [password, setPassword] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const register = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useAuth$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRegister"])();
     const login = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useAuth$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLogin"])();
-    // In your LoginForm handleSubmit (or useLogin's onSuccess)
     async function handleSubmit(e) {
         e.preventDefault();
         setError("");
-        if (!email || !password) return setError("Please fill in all fields.");
+        if (!email || !fullName || !password) return setError("Please fill in all fields.");
         if (password.length < 8) return setError("Password must be at least 8 characters.");
-        // ✅ after
         try {
             await register.mutateAsync({
                 email,
-                password
+                password,
+                full_name: fullName
             });
-            __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$client$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["router"].push(`/verify-email?email=${encodeURIComponent(email)}`);
+            router.push(`/verify-email?email=${encodeURIComponent(email)}`);
         } catch (err) {
-            setError(err instanceof __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$apiClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ApiError"] ? err.detail : "Something went wrong. Please try again.");
+            setError(extractErrorMessage(err, "Something went wrong. Please try again."));
         }
-        const isPending = register.isPending;
     }
     const isPending = register.isPending || login.isPending;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
         onSubmit: handleSubmit,
         className: "flex flex-col gap-[2vh]",
         children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$components$2f$ui$2f$hubora$2d$ui$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
+                label: "Full Name",
+                type: "text",
+                placeholder: "Ada Lovelace",
+                value: fullName,
+                onChange: (e)=>setFullName(e.target.value),
+                autoComplete: "name",
+                disabled: isPending
+            }, void 0, false, {
+                fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
+                lineNumber: 414,
+                columnNumber: 7
+            }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$components$2f$ui$2f$hubora$2d$ui$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
                 label: "Email Address",
                 type: "email",
@@ -1988,7 +2099,7 @@ function RegisterForm({ role, setRole, onSuccess }) {
                 disabled: isPending
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                lineNumber: 394,
+                lineNumber: 425,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$components$2f$ui$2f$hubora$2d$ui$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -2001,7 +2112,7 @@ function RegisterForm({ role, setRole, onSuccess }) {
                 disabled: isPending
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                lineNumber: 405,
+                lineNumber: 436,
                 columnNumber: 7
             }, this),
             error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2012,7 +2123,7 @@ function RegisterForm({ role, setRole, onSuccess }) {
                 children: error
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                lineNumber: 418,
+                lineNumber: 449,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2041,7 +2152,7 @@ function RegisterForm({ role, setRole, onSuccess }) {
                                     strokeWidth: "2"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                    lineNumber: 443,
+                                    lineNumber: 474,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -2051,25 +2162,25 @@ function RegisterForm({ role, setRole, onSuccess }) {
                                     strokeLinecap: "round"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                    lineNumber: 451,
+                                    lineNumber: 482,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                            lineNumber: 436,
+                            lineNumber: 467,
                             columnNumber: 13
                         }, this),
                         "Creating account…"
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                    lineNumber: 435,
+                    lineNumber: 466,
                     columnNumber: 11
                 }, this) : "Create Account"
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                lineNumber: 426,
+                lineNumber: 457,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2086,7 +2197,7 @@ function RegisterForm({ role, setRole, onSuccess }) {
                         children: "Terms"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                        lineNumber: 470,
+                        lineNumber: 501,
                         columnNumber: 9
                     }, this),
                     " ",
@@ -2098,29 +2209,122 @@ function RegisterForm({ role, setRole, onSuccess }) {
                         children: "Privacy Policy"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                        lineNumber: 477,
+                        lineNumber: 508,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                lineNumber: 465,
+                lineNumber: 496,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "flex items-center gap-3",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex-1 h-px bg-[#F3F4F6]"
+                    }, void 0, false, {
+                        fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
+                        lineNumber: 516,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        className: "font-body text-[#D1D5DB]",
+                        style: {
+                            fontSize: "clamp(10px, 0.8vw, 12px)"
+                        },
+                        children: "or"
+                    }, void 0, false, {
+                        fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
+                        lineNumber: 517,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex-1 h-px bg-[#F3F4F6]"
+                    }, void 0, false, {
+                        fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
+                        lineNumber: 523,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
+                lineNumber: 515,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                type: "button",
+                variant: "outline",
+                fullWidth: true,
+                size: "lg",
+                className: "rounded-2xl",
+                disabled: isPending,
+                onClick: ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$api$2f$Auth$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["authApi"].oauthLogin("google"),
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                        className: "w-4 h-4 shrink-0",
+                        viewBox: "0 0 24 24",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                fill: "#4285F4",
+                                d: "M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
+                                lineNumber: 536,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                fill: "#34A853",
+                                d: "M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
+                                lineNumber: 540,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                fill: "#FBBC05",
+                                d: "M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
+                                lineNumber: 544,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                fill: "#EA4335",
+                                d: "M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.47 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
+                                lineNumber: 548,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
+                        lineNumber: 535,
+                        columnNumber: 9
+                    }, this),
+                    "Continue with Google"
+                ]
+            }, void 0, true, {
+                fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
+                lineNumber: 526,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-        lineNumber: 393,
+        lineNumber: 413,
         columnNumber: 5
     }, this);
 }
-_s1(RegisterForm, "mLPjBNQXB+usO1X2alSo0Qvaj9U=", false, function() {
+_s1(RegisterForm, "fhUQEFZlyKKo6rXD3tn0B7Q21mM=", false, function() {
     return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useAuth$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRegister"],
         __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useAuth$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLogin"]
     ];
 });
-_c1 = RegisterForm;
+_c2 = RegisterForm;
 // ─────────────────────────────────────────────────────────────────────────────
 // LOGIN FORM
 // ─────────────────────────────────────────────────────────────────────────────
@@ -2139,10 +2343,11 @@ function LoginForm({ onSuccess }) {
                 email,
                 password
             });
-            document.cookie = `hubora_session=${tokens.access_token}; path=/; max-age=${60 * 60 * 24 * 7}; SameSite=Lax`;
+            const maxAge = 60 * 15;
+            document.cookie = `hubora_session=${tokens.access_token}; path=/; max-age=${maxAge}; SameSite=Lax`;
             onSuccess(tokens.is_onboarded);
         } catch (err) {
-            setError(err instanceof __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$lib$2f$apiClient$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ApiError"] ? err.detail : "Invalid email or password.");
+            setError(extractErrorMessage(err, "Invalid email or password."));
         }
     }
     function handleGoogle() {
@@ -2163,7 +2368,7 @@ function LoginForm({ onSuccess }) {
                 disabled: isPending
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                lineNumber: 528,
+                lineNumber: 600,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2178,7 +2383,7 @@ function LoginForm({ onSuccess }) {
                         disabled: isPending
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                        lineNumber: 540,
+                        lineNumber: 612,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2192,18 +2397,18 @@ function LoginForm({ onSuccess }) {
                             children: "Forgot password?"
                         }, void 0, false, {
                             fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                            lineNumber: 552,
+                            lineNumber: 624,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                        lineNumber: 551,
+                        lineNumber: 623,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                lineNumber: 539,
+                lineNumber: 611,
                 columnNumber: 7
             }, this),
             error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2214,7 +2419,7 @@ function LoginForm({ onSuccess }) {
                 children: error
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                lineNumber: 563,
+                lineNumber: 635,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2243,7 +2448,7 @@ function LoginForm({ onSuccess }) {
                                     strokeWidth: "2"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                    lineNumber: 588,
+                                    lineNumber: 660,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -2253,25 +2458,25 @@ function LoginForm({ onSuccess }) {
                                     strokeLinecap: "round"
                                 }, void 0, false, {
                                     fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                    lineNumber: 596,
+                                    lineNumber: 668,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                            lineNumber: 581,
+                            lineNumber: 653,
                             columnNumber: 13
                         }, this),
                         "Signing in…"
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                    lineNumber: 580,
+                    lineNumber: 652,
                     columnNumber: 11
                 }, this) : "Sign In"
             }, void 0, false, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                lineNumber: 571,
+                lineNumber: 643,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2281,7 +2486,7 @@ function LoginForm({ onSuccess }) {
                         className: "flex-1 h-px bg-[#F3F4F6]"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                        lineNumber: 611,
+                        lineNumber: 683,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2292,20 +2497,20 @@ function LoginForm({ onSuccess }) {
                         children: "or"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                        lineNumber: 612,
+                        lineNumber: 684,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex-1 h-px bg-[#F3F4F6]"
                     }, void 0, false, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                        lineNumber: 618,
+                        lineNumber: 690,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                lineNumber: 610,
+                lineNumber: 682,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$components$2f$ui$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2326,7 +2531,7 @@ function LoginForm({ onSuccess }) {
                                 d: "M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                lineNumber: 631,
+                                lineNumber: 703,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -2334,7 +2539,7 @@ function LoginForm({ onSuccess }) {
                                 d: "M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                lineNumber: 635,
+                                lineNumber: 707,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -2342,7 +2547,7 @@ function LoginForm({ onSuccess }) {
                                 d: "M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                lineNumber: 639,
+                                lineNumber: 711,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$babel$2b$core$40$7$2e$29$2e$0_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -2350,26 +2555,26 @@ function LoginForm({ onSuccess }) {
                                 d: "M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.47 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                             }, void 0, false, {
                                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                                lineNumber: 643,
+                                lineNumber: 715,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                        lineNumber: 630,
+                        lineNumber: 702,
                         columnNumber: 9
                     }, this),
                     "Continue with Google"
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-                lineNumber: 621,
+                lineNumber: 693,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Documents/Subpay/frontend/app/(auth)/auth/page.tsx",
-        lineNumber: 527,
+        lineNumber: 599,
         columnNumber: 5
     }, this);
 }
@@ -2378,11 +2583,12 @@ _s2(LoginForm, "TtG59FMHH/2l/wK1aQ0kFWOq9nU=", false, function() {
         __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Subpay$2f$frontend$2f$hooks$2f$useAuth$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLogin"]
     ];
 });
-_c2 = LoginForm;
-var _c, _c1, _c2;
-__turbopack_context__.k.register(_c, "AuthPage");
-__turbopack_context__.k.register(_c1, "RegisterForm");
-__turbopack_context__.k.register(_c2, "LoginForm");
+_c3 = LoginForm;
+var _c, _c1, _c2, _c3;
+__turbopack_context__.k.register(_c, "AuthPageInner");
+__turbopack_context__.k.register(_c1, "AuthPage");
+__turbopack_context__.k.register(_c2, "RegisterForm");
+__turbopack_context__.k.register(_c3, "LoginForm");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }

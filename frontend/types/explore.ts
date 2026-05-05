@@ -3,7 +3,7 @@ export type { ContentType, HubSortBy, PaginationParams };
 
 
 export interface ExploreCreatorSummary {
-  id: number;
+  id: string;  
   username: string;
   avatar_url?: string | null;
 }
@@ -35,12 +35,13 @@ export interface ContentExploreResponse {
   description?: string | null;
   content_type: ContentType;
   thumbnail_url?: string | null;
+  file_url?: string | null;
   hub: ExploreHubSummary;
   created_at: string;
 }
 
 export interface CreatorExploreResponse {
-  id: number;
+  id: string; 
   username: string;
   full_name?: string | null;
   bio?: string | null;

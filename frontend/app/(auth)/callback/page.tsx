@@ -1,33 +1,10 @@
 "use client"
 
-import { useEffect } from "react"
+import { Suspense, useEffect } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { tokenStorage } from "@/lib/apiClient"
 
-export default function AuthCallbackPage() {
-  const router = useRouter()
-  const searchParams = useSearchParams()
-
-  useEffect(() => {
-    const accessToken = searchParams.get("access_token")
-    const refreshToken = searchParams.get("refresh_token")
-    const isOnboarded = searchParams.get("is_onboarded") === "true"
-
-    if (!accessToken || !refreshToken) {
-      // Something went wrong — back to auth
-      router.replace("/auth?error=oauth_failed")
-      return
-    }
-
-    // Store tokens
-    tokenStorage.set(accessToken, refreshToken)
-
-    // Set the session cookie the middleware checks
-    document.cookie = `hubora_session=${accessToken}; path=/; max-age=${60 * 60 * 24 * 7}; SameSite=Lax`
-
-    router.replace(isOnboarded ? "/feed" : "/onboarding")
-  }, [])
-
+function Spinner() {
   return (
     <div className="min-h-screen flex items-center justify-center" style={{ background: "#F5F3FF" }}>
       <div className="flex flex-col items-center gap-3">
@@ -40,5 +17,35 @@ export default function AuthCallbackPage() {
         </p>
       </div>
     </div>
+  )
+}
+
+function CallbackInner() {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    const accessToken = searchParams.get("access_token")
+    const refreshToken = searchParams.get("refresh_token")
+    const isOnboarded = searchParams.get("is_onboarded") === "true"
+
+    if (!accessToken || !refreshToken) {
+      router.replace("/auth?error=oauth_failed")
+      return
+    }
+
+    tokenStorage.set(accessToken, refreshToken)
+    document.cookie = `hubora_session=${accessToken}; path=/; max-age=${60 * 60 * 24 * 7}; SameSite=Lax`
+    router.replace(isOnboarded ? "/feed" : "/onboarding")
+  }, [router, searchParams])
+
+  return <Spinner />
+}
+
+export default function AuthCallbackPage() {
+  return (
+    <Suspense fallback={<Spinner />}>
+      <CallbackInner />
+    </Suspense>
   )
 }

@@ -1,374 +1,328 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useExploreContent } from "@/hooks/useExplore"
-import { useExploreCreators } from "@/hooks/useExplore"
-import { useMySubscriptions } from "@/hooks/useSubscriptions"
-import type { ContentExploreResponse } from "@/types/explore"
-import type { CreatorExploreResponse } from "@/types/explore"
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { useFeedContent } from "@/hooks/useFeed";
+import { useExploreContent, useExploreCreators } from "@/hooks/useExplore";
+import { useMySubscriptions } from "@/hooks/useSubscriptions";
+import type { ContentPublicResponse } from "@/types/content";
+import type { ContentExploreResponse } from "@/types/explore";
+import type { SubscriptionResponse } from "@/types/subscriptions";
 
-const cn = (...c: (string | boolean | undefined)[]) => c.filter(Boolean).join(" ")
+const initial = (s: string) => s.charAt(0).toUpperCase();
+const HUB_COLORS = ["#8A2BE2", "#6366F1", "#0EA5E9", "#EC4899", "#F59E0B", "#10B981"];
+const hubColor = (id: number) => HUB_COLORS[id % HUB_COLORS.length];
 
-const HUB_COLORS = ["#8A2BE2", "#6366F1", "#0EA5E9", "#EC4899", "#F59E0B", "#10B981"]
-const hubColor = (id: number) => HUB_COLORS[id % HUB_COLORS.length]
-const initial  = (str: string) => str.charAt(0).toUpperCase()
-
-function formatDate(iso: string) {
-  const d = new Date(iso)
-  const now = new Date()
-  const diff = Math.floor((now.getTime() - d.getTime()) / 1000)
-  if (diff < 3600)  return `${Math.floor(diff / 60)}m ago`
-  if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`
-  return `${Math.floor(diff / 86400)}d ago`
+function timeAgo(iso: string) {
+  const s = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
+  if (s < 3600) return `${Math.floor(s / 60)}m`;
+  if (s < 86400) return `${Math.floor(s / 3600)}h`;
+  return `${Math.floor(s / 86400)}d`;
 }
 
-// ─── Type config ──────────────────────────────────────────────────────────────
-const TYPE_CONFIG = {
-  video: {
-    label: "Video",
-    icon: <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M2 2.5v7l8-3.5L2 2.5Z"/></svg>,
-    centerIcon: (color: string) => (
-      <div className="w-12 h-12 rounded-full flex items-center justify-center"
-        style={{ background: color, boxShadow: `0 6px 20px ${color}66` }}>
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="white"><path d="M5 3.5v11l10-5.5L5 3.5Z"/></svg>
-      </div>
-    ),
-  },
-  image: {
-    label: "Photo",
-    icon: <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.4"><rect x="1" y="1" width="10" height="10" rx="1.5"/><circle cx="3.8" cy="3.8" r="1" fill="currentColor" stroke="none"/><path d="M1 8l3-3 2 2 2-2 3 3"/></svg>,
-    centerIcon: (color: string) => (
-      <div className="flex gap-1.5 opacity-40">
-        {[40, 56, 40].map((h, i) => (
-          <div key={i} className="w-10 rounded-lg" style={{ height: h, background: color }} />
-        ))}
-      </div>
-    ),
-  },
-  pdf: {
-    label: "PDF",
-    icon: <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M3 1h4l3 3v7H3V1Z"/><path d="M7 1v3h3"/></svg>,
-    centerIcon: (color: string) => (
-      <div className="flex flex-col items-center gap-1 opacity-40">
-        <div className="w-10 h-12 rounded-lg border-2 flex items-end justify-center pb-1.5" style={{ borderColor: color }}>
-          <div className="w-5 h-1 rounded-full" style={{ background: color }} />
-        </div>
-      </div>
-    ),
-  },
-  text: {
-    label: "Article",
-    icon: <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M1.5 3h9M1.5 6h6M1.5 9h4"/></svg>,
-    centerIcon: (color: string) => (
-      <div className="flex flex-col gap-1.5 opacity-30 w-24">
-        {[100, 80, 90, 60].map((w, i) => (
-          <div key={i} className="h-1.5 rounded-full" style={{ width: `${w}%`, background: color }} />
-        ))}
-      </div>
-    ),
-  },
-} as const
+const TYPE_META: Record<string, { label: string; play?: boolean }> = {
+  video: { label: "Video", play: true },
+  image: { label: "Photo" },
+  pdf: { label: "PDF" },
+  text: { label: "Article" },
+};
 
-// ─── Featured Card (first item, wider) ───────────────────────────────────────
-function FeaturedCard({ item }: { item: ContentExploreResponse }) {
-  const color     = hubColor(item.hub.id)
-  const accentLight = `${color}18`
-  const cfg       = TYPE_CONFIG[item.content_type]
+// ─── Feed Card ────────────────────────────────────────────────────────────────
+function FeedCard({ item, onClick }: { item: ContentPublicResponse; onClick: () => void }) {
+  const color = hubColor(item.hub_id);
+  const meta = TYPE_META[item.content_type] ?? TYPE_META.text;
 
   return (
-    <article className="col-span-2 bg-white rounded-2xl border border-[#EDE5F8] overflow-hidden flex group transition-all duration-200 hover:shadow-[0_4px_24px_rgba(138,43,226,0.1)]">
-      {/* Media */}
-      <div
-        className="w-[260px] shrink-0 relative flex items-center justify-center"
-        style={{ background: `linear-gradient(145deg, ${accentLight} 0%, ${color}22 100%)` }}
-      >
-        <span
-          className="absolute top-3 left-3 flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full"
-          style={{ background: color, color: "white" }}
-        >
-          {cfg.icon}
-          {cfg.label}
-        </span>
+    <article
+      onClick={onClick}
+      className="bg-white rounded-2xl overflow-hidden cursor-pointer group"
+      style={{ boxShadow: "0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04)" }}
+      onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.1)")}
+      onMouseLeave={e => (e.currentTarget.style.boxShadow = "0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04)")}
+    >
+      {/* Thumbnail */}
+      <div className="relative h-44 overflow-hidden flex items-center justify-center" style={{ background: `${color}12` }}>
         {item.thumbnail_url ? (
-          <img src={item.thumbnail_url} alt={item.title} className="absolute inset-0 w-full h-full object-cover" />
+          <Image src={item.thumbnail_url} alt={item.title} fill unoptimized className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width:640px) 100vw, 50vw" />
+        ) : item.content_type === "video" && item.file_url ? (
+          <video src={item.file_url} className="absolute inset-0 w-full h-full object-cover" muted playsInline preload="metadata" />
+        ) : item.content_type === "image" && item.file_url ? (
+          <Image src={item.file_url} alt={item.title} fill unoptimized className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width:640px) 100vw, 50vw" />
         ) : (
-          cfg.centerIcon(color)
-        )}
-      </div>
-
-      {/* Body */}
-      <div className="flex-1 px-5 py-4 flex flex-col justify-between min-w-0">
-        <div>
-          {/* Hub row */}
-          <div className="flex items-center gap-2 mb-3">
-            {item.hub.avatar_url ? (
-              <img src={item.hub.avatar_url} alt={item.hub.name} className="w-7 h-7 rounded-full object-cover shrink-0" />
-            ) : (
-              <div className="w-7 h-7 rounded-full flex items-center justify-center text-white text-[11px] font-bold shrink-0"
-                style={{ background: color }}>
-                {initial(item.hub.name)}
+          <div className="flex flex-col items-center gap-2">
+            {meta.play ? (
+              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: color, boxShadow: `0 6px 20px ${color}55` }}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="white"><path d="M4 2.5v11l9-5.5L4 2.5Z" /></svg>
               </div>
+            ) : item.content_type === "text" ? (
+              <div className="w-16 flex flex-col gap-1.5 opacity-25">
+                {[100, 80, 95, 65].map((w, i) => <div key={i} className="h-1.5 rounded-full" style={{ width: `${w}%`, background: color }} />)}
+              </div>
+            ) : (
+              <div className="opacity-20 text-[40px] font-black" style={{ color }}>{meta.label[0]}</div>
             )}
-            <span className="text-[12.5px] font-semibold text-[#2D0052]">{item.hub.name}</span>
-            <span className="text-[11px] text-[#A08DBE]">· {formatDate(item.created_at)}</span>
           </div>
-          <h2 className="text-[17px] font-bold text-[#1A0040] leading-snug mb-2 line-clamp-2">{item.title}</h2>
-          {item.description && (
-            <p className="text-[13px] text-[#7C6A9A] leading-relaxed line-clamp-3">{item.description}</p>
-          )}
-        </div>
-        <div className="flex items-center pt-3 border-t border-[#F5EFFF] mt-3">
-          <button
-            className="ml-auto text-[13px] font-semibold px-4 py-1.5 rounded-full text-white transition-all hover:opacity-90"
-            style={{ background: color }}
-          >
-            {item.content_type === "video" ? "Watch now" : "Read now"}
-          </button>
-        </div>
-      </div>
-    </article>
-  )
-}
-
-// ─── Post Card ────────────────────────────────────────────────────────────────
-function PostCard({ item }: { item: ContentExploreResponse }) {
-  const color      = hubColor(item.hub.id)
-  const accentLight = `${color}18`
-  const cfg        = TYPE_CONFIG[item.content_type]
-
-  return (
-    <article className="bg-white rounded-2xl border border-[#EDE5F8] overflow-hidden group transition-all duration-200 hover:shadow-[0_4px_24px_rgba(138,43,226,0.1)] hover:-translate-y-[1px]">
-      {/* Media block */}
-      <div
-        className="relative h-[180px] flex items-center justify-center overflow-hidden"
-        style={{ background: `linear-gradient(135deg, ${accentLight} 0%, ${color}22 100%)` }}
-      >
-        {item.thumbnail_url ? (
-          <img src={item.thumbnail_url} alt={item.title} className="absolute inset-0 w-full h-full object-cover" />
-        ) : (
-          cfg.centerIcon(color)
         )}
-        <span
-          className="absolute top-3 left-3 flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full z-10"
-          style={{ background: color, color: "white", boxShadow: `0 2px 8px ${color}55` }}
-        >
-          {cfg.icon} {cfg.label}
+
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+        {/* Type chip */}
+        <span className="absolute top-3 left-3 text-[10.5px] font-bold px-2.5 py-1 rounded-full text-white" style={{ background: color, boxShadow: `0 2px 8px ${color}55` }}>
+          {meta.label}
         </span>
+
+        {item.plans.length > 0 && (
+          <span className="absolute top-3 right-3 text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/90 text-[#8A2BE2]">
+            {item.plans[0].name}
+          </span>
+        )}
       </div>
 
       {/* Body */}
-      <div className="px-4 pt-3.5 pb-3">
-        {/* Hub row */}
-        <div className="flex items-center gap-2.5 mb-2.5">
-          {item.hub.avatar_url ? (
-            <img src={item.hub.avatar_url} alt={item.hub.name} className="w-7 h-7 rounded-full object-cover shrink-0" />
-          ) : (
-            <div className="w-7 h-7 rounded-full flex items-center justify-center text-white text-[11px] font-bold shrink-0"
-              style={{ background: color }}>
-              {initial(item.hub.name)}
-            </div>
-          )}
-          <div className="flex-1 min-w-0">
-            <span className="text-[12.5px] font-semibold text-[#2D0052] truncate block">{item.hub.name}</span>
-          </div>
-          <span className="text-[11px] text-[#A08DBE] shrink-0">{formatDate(item.created_at)}</span>
-        </div>
-
-        <h3 className="text-[13.5px] font-bold text-[#1A0040] leading-snug mb-1.5 line-clamp-2">{item.title}</h3>
+      <div className="px-4 py-3.5">
+        <h3 className="text-[13.5px] font-bold text-[#170C28] leading-snug line-clamp-2">{item.title}</h3>
         {item.description && (
-          <p className="text-[12px] text-[#7C6A9A] leading-relaxed line-clamp-2">{item.description}</p>
+          <p className="text-[12px] text-[#8B7BA8] mt-1 line-clamp-2 leading-relaxed">{item.description}</p>
         )}
+        <div className="flex items-center justify-between mt-3 pt-3 border-t border-[#F5F2FA]">
+          <div className="flex items-center gap-3 text-[11px] text-[#BEB3D0]">
+            <span>{timeAgo(item.created_at)} ago</span>
+            {item.like_count > 0 && (
+              <span className="flex items-center gap-1" style={{ color: item.is_liked ? "#EC4899" : undefined }}>
+                <svg width="11" height="11" viewBox="0 0 11 11" fill={item.is_liked ? "#EC4899" : "none"} stroke={item.is_liked ? "#EC4899" : "currentColor"} strokeWidth="1.3">
+                  <path d="M5.5 9.5S1 7 1 3.8a2.2 2.2 0 0 1 4.5-1 2.2 2.2 0 0 1 4.5 1C10 7 5.5 9.5 5.5 9.5Z" />
+                </svg>
+                {item.like_count}
+              </span>
+            )}
+          </div>
+          <span className="text-[11px] font-semibold text-[#8A2BE2] opacity-0 group-hover:opacity-100 transition-opacity">
+            {item.content_type === "video" ? "Watch" : item.content_type === "image" ? "View" : "Read"} →
+          </span>
+        </div>
       </div>
     </article>
-  )
+  );
+}
+
+// ─── Discover Card ────────────────────────────────────────────────────────────
+function DiscoverCard({ item, onClick }: { item: ContentExploreResponse; onClick: () => void }) {
+  const color = hubColor(item.hub.id);
+  const meta = TYPE_META[item.content_type] ?? TYPE_META.text;
+
+  return (
+    <article
+      onClick={onClick}
+      className="bg-white rounded-2xl overflow-hidden cursor-pointer group"
+      style={{ boxShadow: "0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04)" }}
+      onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.1)")}
+      onMouseLeave={e => (e.currentTarget.style.boxShadow = "0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04)")}
+    >
+      <div className="relative h-36 overflow-hidden flex items-center justify-center" style={{ background: `${color}12` }}>
+        {item.thumbnail_url ? (
+          <Image src={item.thumbnail_url} alt={item.title} fill unoptimized className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width:640px) 100vw, 33vw" />
+        ) : item.content_type === "video" && item.file_url ? (
+          <video src={item.file_url} className="absolute inset-0 w-full h-full object-cover" muted playsInline preload="metadata" />
+        ) : item.content_type === "image" && item.file_url ? (
+          <Image src={item.file_url} alt={item.title} fill unoptimized className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width:640px) 100vw, 33vw" />
+        ) : meta.play ? (
+          <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: color }}>
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="white"><path d="M3 1.5v10L11 6.5 3 1.5Z" /></svg>
+          </div>
+        ) : (
+          <div className="opacity-20 text-[32px] font-black" style={{ color }}>{meta.label[0]}</div>
+        )}
+        <span className="absolute top-2.5 left-2.5 text-[10px] font-bold px-2 py-0.5 rounded-full text-white" style={{ background: color }}>
+          {meta.label}
+        </span>
+      </div>
+      <div className="px-3.5 pt-3 pb-3.5">
+        <div className="flex items-center gap-2 mb-2">
+          <div className="w-5 h-5 rounded-full flex items-center justify-center text-white text-[9px] font-bold shrink-0" style={{ background: color }}>
+            {initial(item.hub.name)}
+          </div>
+          <span className="text-[11.5px] font-semibold text-[#534670] truncate">{item.hub.name}</span>
+          <span className="text-[10.5px] text-[#BEB3D0] ml-auto shrink-0">{timeAgo(item.created_at)}</span>
+        </div>
+        <h3 className="text-[13px] font-bold text-[#170C28] leading-snug line-clamp-2">{item.title}</h3>
+      </div>
+    </article>
+  );
 }
 
 // ─── Skeleton ─────────────────────────────────────────────────────────────────
-function PostSkeleton({ featured = false }: { featured?: boolean }) {
-  if (featured) {
-    return (
-      <div className="col-span-2 bg-white rounded-2xl border border-[#EDE5F8] h-[180px] animate-pulse" />
-    )
-  }
-  return <div className="bg-white rounded-2xl border border-[#EDE5F8] h-[260px] animate-pulse" />
+function CardSkeleton({ tall }: { tall?: boolean }) {
+  return <div className={`bg-white rounded-2xl animate-pulse ${tall ? "h-[280px]" : "h-[220px]"}`} style={{ boxShadow: "0 1px 4px rgba(0,0,0,0.05)" }} />;
 }
 
-// ─── Sidebar: Subscribed Hubs ─────────────────────────────────────────────────
-function SubscribedHubs() {
-  const { data: subscriptions = [], isLoading } = useMySubscriptions()
-  const active = subscriptions.filter(s => s.status === "active")
-
-  if (isLoading) {
-    return (
-      <div className="bg-white rounded-2xl border border-[#EDE5F8] p-4">
-        <div className="h-4 w-24 bg-[#F5EFFF] rounded animate-pulse mb-3" />
-        {[...Array(3)].map((_, i) => (
-          <div key={i} className="h-10 bg-[#F5EFFF] rounded-xl animate-pulse mb-2" />
-        ))}
-      </div>
-    )
-  }
-
-  if (active.length === 0) return null
-
+// ─── Sidebar: My Hubs ─────────────────────────────────────────────────────────
+function HubsSidebar({ subscriptions, onNav }: { subscriptions: SubscriptionResponse[]; onNav: (h: string) => void }) {
+  const unique = subscriptions.filter((s, i, arr) => i === arr.findIndex(x => x.hub.id === s.hub.id));
+  if (unique.length === 0) return null;
   return (
-    <div className="bg-white rounded-2xl border border-[#EDE5F8] p-4">
-      <h3 className="text-[13px] font-bold text-[#2D0052] mb-3">My Hubs</h3>
-      <div className="flex flex-col gap-2">
-        {active.map(sub => {
-          const color = hubColor(sub.hub.id)
+    <div className="bg-white rounded-2xl p-4" style={{ boxShadow: "0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04)" }}>
+      <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#BEB3D0] mb-3">My Hubs</p>
+      <div className="flex flex-col gap-0.5">
+        {unique.map(sub => {
+          const c = hubColor(sub.hub.id);
           return (
-            <div key={sub.id} className="flex items-center gap-2.5 px-2 py-2 rounded-xl hover:bg-[#F5EFFF] transition-colors cursor-pointer group">
-              <div className="w-7 h-7 rounded-full flex items-center justify-center text-white text-[11px] font-bold shrink-0"
-                style={{ background: color }}>
-                {initial(sub.hub.name)}
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-[12.5px] font-semibold text-[#2D0052] group-hover:text-[#8A2BE2] transition-colors truncate leading-tight">
-                  {sub.hub.name}
-                </p>
-                <p className="text-[10.5px] text-[#A08DBE]">{sub.plan.name}</p>
-              </div>
-            </div>
-          )
+            <button key={sub.hub.id} onClick={() => onNav(`/hubs/${sub.hub.id}`)} className="flex items-center gap-2.5 px-2 py-2 rounded-xl hover:bg-[#F7F5FB] transition-colors text-left w-full group">
+              <div className="w-7 h-7 rounded-full flex items-center justify-center text-white text-[10px] font-bold shrink-0" style={{ background: c }}>{initial(sub.hub.name)}</div>
+              <span className="text-[12.5px] font-semibold text-[#170C28] group-hover:text-[#8A2BE2] transition-colors truncate">{sub.hub.name}</span>
+            </button>
+          );
         })}
       </div>
     </div>
-  )
-}
-
-// ─── Sidebar: Suggested Creators ──────────────────────────────────────────────
-function SuggestedCreators() {
-  const { data: creators = [], isLoading } = useExploreCreators({ limit: 4 })
-
-  if (isLoading) {
-    return (
-      <div className="bg-white rounded-2xl border border-[#EDE5F8] p-4">
-        <div className="h-4 w-32 bg-[#F5EFFF] rounded animate-pulse mb-3" />
-        {[...Array(3)].map((_, i) => (
-          <div key={i} className="h-10 bg-[#F5EFFF] rounded-xl animate-pulse mb-2" />
-        ))}
-      </div>
-    )
-  }
-
-  if (creators.length === 0) return null
-
-  return (
-    <div className="bg-white rounded-2xl border border-[#EDE5F8] p-4">
-      <h3 className="text-[13px] font-bold text-[#2D0052] mb-3">Suggested Creators</h3>
-      <div className="flex flex-col gap-3">
-        {creators.map(creator => {
-          const color = hubColor(creator.id)
-          return (
-            <div key={creator.id} className="flex items-center gap-2.5">
-              {creator.avatar_url ? (
-                <img src={creator.avatar_url} alt={creator.username} className="w-8 h-8 rounded-full object-cover shrink-0" />
-              ) : (
-                <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-[12px] font-bold shrink-0"
-                  style={{ background: color }}>
-                  {initial(creator.username)}
-                </div>
-              )}
-              <div className="flex-1 min-w-0">
-                <p className="text-[12.5px] font-semibold text-[#2D0052] truncate leading-tight">
-                  {creator.full_name ?? creator.username}
-                </p>
-                <p className="text-[11px] text-[#A08DBE] leading-tight">@{creator.username}</p>
-              </div>
-              {creator.hub && (
-                <span className="shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#F3E8FF] text-[#8A2BE2]">
-                  Hub
-                </span>
-              )}
-            </div>
-          )
-        })}
-      </div>
-    </div>
-  )
+  );
 }
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function FeedPage() {
-  const [typeFilter, setTypeFilter] = useState<"all" | "video" | "image" | "pdf" | "text">("all")
+  const router = useRouter();
+  const [typeFilter, setTypeFilter] = useState("all");
 
-  const { data: content = [], isLoading } = useExploreContent({
-    content_type: typeFilter === "all" ? undefined : typeFilter,
-    limit: 20,
-  })
+  const { data: subscriptions = [], isLoading: subsLoading } = useMySubscriptions();
+  const { data: feedContent = [], isLoading: feedLoading } = useFeedContent();
+  const { data: exploreContent = [], isLoading: exploreLoading } = useExploreContent({ limit: 6 });
+  const { data: creators = [] } = useExploreCreators({ limit: 4 });
 
-  const [featured, ...rest] = content
+  const activeSubscriptions = subscriptions.filter(s => s.status === "active");
+  const hasSubscriptions = activeSubscriptions.length > 0;
 
-  const FILTERS: { key: "all" | "video" | "image" | "pdf" | "text"; label: string }[] = [
-    { key: "all",   label: "All" },
+  const FILTERS = [
+    { key: "all", label: "All" },
     { key: "video", label: "Video" },
     { key: "image", label: "Photos" },
-    { key: "text",  label: "Articles" },
-    { key: "pdf",   label: "PDFs" },
-  ]
+    { key: "text", label: "Articles" },
+    { key: "pdf", label: "PDFs" },
+  ];
+
+  const filteredFeed = typeFilter === "all" ? feedContent : feedContent.filter(i => i.content_type === typeFilter);
 
   return (
-    <div className="min-h-screen bg-[#FAF8FF]">
-      <div className="max-w-[1100px] mx-auto px-6 lg:px-8 py-7">
+    <div className="min-h-screen bg-[#F7F8FC]">
+      <div className="max-w-[1080px] mx-auto px-6 py-8">
         <div className="flex gap-7">
 
-          {/* ── Main feed ── */}
+          {/* ── Main ── */}
           <div className="flex-1 min-w-0">
 
-            {/* Filter chips */}
-            <div className="flex gap-2 mb-5 overflow-x-auto no-scrollbar">
-              {FILTERS.map(f => (
-                <button
-                  key={f.key}
-                  onClick={() => setTypeFilter(f.key)}
-                  className={cn(
-                    "shrink-0 text-[12.5px] font-semibold px-4 py-1.5 rounded-full border transition-all duration-150",
-                    typeFilter === f.key
-                      ? "bg-[#8A2BE2] text-white border-[#8A2BE2]"
-                      : "bg-white text-[#6B4F8A] border-[#EDE5F8] hover:border-[#C4A8E0] hover:text-[#8A2BE2]"
-                  )}
-                >
-                  {f.label}
-                </button>
-              ))}
+            {/* Header */}
+            <div className="mb-7">
+              <h1 className="text-[22px] font-black text-[#170C28] tracking-tight">Your Feed</h1>
+              <p className="text-[13px] text-[#8B7BA8] mt-0.5">Content from creators you follow</p>
             </div>
 
-            {/* Grid */}
-            {isLoading ? (
-              <div className="grid grid-cols-2 gap-4">
-                <PostSkeleton featured />
-                {[...Array(4)].map((_, i) => <PostSkeleton key={i} />)}
+            {/* Filters */}
+            {hasSubscriptions && (
+              <div className="flex gap-2 mb-5 overflow-x-auto no-scrollbar">
+                {FILTERS.map(f => (
+                  <button
+                    key={f.key}
+                    onClick={() => setTypeFilter(f.key)}
+                    className="shrink-0 text-[12.5px] font-semibold px-4 py-1.5 rounded-full transition-all duration-150"
+                    style={typeFilter === f.key
+                      ? { background: "#8A2BE2", color: "white", boxShadow: "0 2px 10px rgba(138,43,226,0.3)" }
+                      : { background: "white", color: "#534670", boxShadow: "0 1px 3px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.05)" }
+                    }
+                  >
+                    {f.label}
+                  </button>
+                ))}
               </div>
-            ) : content.length === 0 ? (
-              <div className="py-20 text-center">
-                <p className="text-[13px] text-[#A08DBE]">No content found.</p>
+            )}
+
+            {/* Feed content */}
+            {feedLoading || subsLoading ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[...Array(4)].map((_, i) => <CardSkeleton key={i} tall />)}
+              </div>
+            ) : !hasSubscriptions ? (
+              <div className="bg-white rounded-2xl p-10 text-center" style={{ boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
+                <div className="w-14 h-14 rounded-2xl bg-[#F4EEFF] flex items-center justify-center mx-auto mb-4">
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#8A2BE2" strokeWidth="1.5"><circle cx="11" cy="11" r="9" /><path d="M11 7v4l3 2" strokeLinecap="round" /></svg>
+                </div>
+                <h3 className="text-[15px] font-bold text-[#170C28] mb-1">No subscriptions yet</h3>
+                <p className="text-[13px] text-[#8B7BA8] mb-5">Subscribe to creators to see their content here.</p>
+                <button onClick={() => router.push("/explore")} className="px-6 py-2.5 rounded-xl text-[13px] font-bold text-white" style={{ background: "#8A2BE2", boxShadow: "0 4px 14px rgba(138,43,226,0.3)" }}>
+                  Discover Creators
+                </button>
+              </div>
+            ) : filteredFeed.length === 0 ? (
+              <div className="py-16 text-center">
+                <p className="text-[13px] text-[#8B7BA8]">No {typeFilter === "all" ? "" : typeFilter + " "}content yet.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-2 gap-4">
-                {/* Featured — first item spans full width */}
-                {featured && <FeaturedCard item={featured} />}
-                {rest.map(item => (
-                  <PostCard key={item.id} item={item} />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {filteredFeed.map(item => (
+                  <FeedCard key={item.id} item={item} onClick={() => router.push(`/content/${item.id}?hub=${item.hub_id}`)} />
                 ))}
+              </div>
+            )}
+
+            {/* Discover section */}
+            {exploreContent.length > 0 && (
+              <div className="mt-10">
+                <div className="flex items-center justify-between mb-5">
+                  <div>
+                    <h2 className="text-[17px] font-black text-[#170C28]">Discover</h2>
+                    <p className="text-[12px] text-[#8B7BA8]">Free content across the platform</p>
+                  </div>
+                  <button onClick={() => router.push("/explore")} className="text-[12px] font-bold text-[#8A2BE2] hover:opacity-70 transition-opacity">
+                    See all →
+                  </button>
+                </div>
+                {exploreLoading ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {[...Array(3)].map((_, i) => <CardSkeleton key={i} />)}
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {exploreContent.slice(0, 6).map(item => (
+                      <DiscoverCard key={item.id} item={item} onClick={() => router.push(`/content/${item.id}?hub=${item.hub.id}`)} />
+                    ))}
+                  </div>
+                )}
               </div>
             )}
           </div>
 
           {/* ── Sidebar ── */}
-          <div className="hidden xl:flex flex-col gap-4 w-[240px] shrink-0">
-            <SubscribedHubs />
-            <SuggestedCreators />
+          <div className="hidden xl:flex flex-col gap-4 w-[220px] shrink-0">
+            <HubsSidebar subscriptions={activeSubscriptions} onNav={href => router.push(href)} />
+
+            {/* Suggested creators */}
+            {creators.length > 0 && (
+              <div className="bg-white rounded-2xl p-4" style={{ boxShadow: "0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04)" }}>
+                <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#BEB3D0] mb-3">Suggested</p>
+                <div className="flex flex-col gap-0.5">
+                  {creators.map(c => {
+                    const col = hubColor(typeof c.id === "string" ? c.id.charCodeAt(0) : 0);
+                    return (
+                      <button key={c.id} onClick={() => c.hub && router.push(`/hubs/${c.hub.id}`)} className="flex items-center gap-2.5 px-2 py-2 rounded-xl hover:bg-[#F7F5FB] transition-colors text-left w-full group">
+                        {c.avatar_url ? (
+                          <Image src={c.avatar_url} alt={c.username} width={28} height={28} unoptimized className="rounded-full object-cover shrink-0" />
+                        ) : (
+                          <div className="w-7 h-7 rounded-full flex items-center justify-center text-white text-[10px] font-bold shrink-0" style={{ background: col }}>{initial(c.username)}</div>
+                        )}
+                        <div className="min-w-0">
+                          <p className="text-[12px] font-semibold text-[#170C28] truncate leading-tight">{c.full_name ?? c.username}</p>
+                          <p className="text-[10.5px] text-[#BEB3D0] leading-tight">@{c.username}</p>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
+
         </div>
       </div>
-
-      <style>{`
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-      `}</style>
+      <style>{`.no-scrollbar::-webkit-scrollbar{display:none}.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}`}</style>
     </div>
-  )
+  );
 }

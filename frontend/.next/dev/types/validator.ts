@@ -72,10 +72,19 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
   type __Unused = __Check
 }
 
-// Validate ../../../app/(authenticated)/content/page.tsx
+// Validate ../../../app/(authenticated)/content/[id]/page.tsx
 {
-  type __IsExpected<Specific extends AppPageConfig<"/content">> = Specific
-  const handler = {} as typeof import("../../../app/(authenticated)/content/page.js")
+  type __IsExpected<Specific extends AppPageConfig<"/content/[id]">> = Specific
+  const handler = {} as typeof import("../../../app/(authenticated)/content/[id]/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/(authenticated)/creator_content/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/creator_content">> = Specific
+  const handler = {} as typeof import("../../../app/(authenticated)/creator_content/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
@@ -126,6 +135,15 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
   type __Unused = __Check
 }
 
+// Validate ../../../app/(authenticated)/hubs/[id]/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/hubs/[id]">> = Specific
+  const handler = {} as typeof import("../../../app/(authenticated)/hubs/[id]/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../app/(authenticated)/notifications/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/notifications">> = Specific
@@ -157,6 +175,15 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
 {
   type __IsExpected<Specific extends AppPageConfig<"/saved">> = Specific
   const handler = {} as typeof import("../../../app/(authenticated)/saved/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../app/(authenticated)/settings/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/settings">> = Specific
+  const handler = {} as typeof import("../../../app/(authenticated)/settings/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

@@ -1,0 +1,3 @@
+{
+  "/(authenticated)/creator_hub/page": "app/(authenticated)/creator_hub/page.js"
+}

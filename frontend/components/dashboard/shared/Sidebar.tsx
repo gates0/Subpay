@@ -5,6 +5,8 @@ import { useRouter, usePathname } from "next/navigation";
 import { useAuthMe } from "@/hooks/useAuth"
 import { useUnreadCount } from "@/hooks/useNotifications";
 import { useLogout } from "@/hooks/useAuth";
+import { useQueryClient } from "@tanstack/react-query";
+import { tokenStorage } from "@/lib/apiClient";
 import Image from "next/image";
 
 const cn = (...classes: (string | boolean | undefined)[]) =>
@@ -255,7 +257,7 @@ const NAV_DISCOVER = [
   { key: "explore", label: "Explore", icon: Icon.explore, href: "/explore" },
   {
     key: "communities",
-    label: "Communities",
+    label: "hubs",
     icon: Icon.community,
     href: "/communities",
   },
@@ -276,7 +278,7 @@ const NAV_CREATOR = [
     href: "/creator_dashboard",
   },
   { key: "hub", label: "My Hub", icon: Icon.hub, href: "/creator_hub" },
-  { key: "content", label: "Content", icon: Icon.content, href: "/content" },
+  { key: "content", label: "Content", icon: Icon.content, href: "/creator_content" },
   { key: "plans", label: "Plans", icon: Icon.plans, href: "/plans" },
   {
     key: "subscribers",
@@ -291,49 +293,6 @@ const NAV_CREATOR = [
     href: "/earnings",
   },
 ];
-
-// ─── Avatar initials helper ───────────────────────────────────────────────────
-function AvatarCircle({
-  username,
-  avatarUrl,
-  size = 28,
-}: {
-  username?: string | null; // ← was: string | undefined
-  avatarUrl?: string | null;
-  size?: number;
-}) {
-  const letter = (username ?? "?").charAt(0).toUpperCase();
-  if (avatarUrl) {
-    return (
-      <Image
-        src={avatarUrl}
-        alt={username ?? ""}
-        width={size}
-        height={size}
-        style={{ borderRadius: "50%", objectFit: "cover", flexShrink: 0 }}
-      />
-    );
-  }
-  return (
-    <div
-      style={{
-        width: size,
-        height: size,
-        borderRadius: "50%",
-        flexShrink: 0,
-        background: "linear-gradient(135deg, #8A2BE2 0%, #C084FC 100%)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        color: "white",
-        fontSize: size * 0.46,
-        fontWeight: 700,
-      }}
-    >
-      {letter}
-    </div>
-  );
-}
 
 // ── Nav item ──────────────────────────────────────────────────────────────────
 function NavItem({
@@ -466,6 +425,7 @@ function ProfilePopover({ onClose }: { onClose: () => void }) {
   const ref = useRef<HTMLDivElement>(null);
   const { data: me } = useAuthMe()
   const { mutate: logout } = useLogout();
+  const queryClient = useQueryClient();
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -477,7 +437,10 @@ function ProfilePopover({ onClose }: { onClose: () => void }) {
 
   const handleLogout = () => {
     onClose?.();
-    router.push("/auth"); 
+    tokenStorage.clear();
+    queryClient.clear();
+    router.push("/auth");
+    router.refresh();
     logout();
   };
 
@@ -493,11 +456,22 @@ function ProfilePopover({ onClose }: { onClose: () => void }) {
       {/* Profile header */}
       <div className="px-4 py-3.5 border-b border-[#F5EFFF]">
         <div className="flex items-center gap-3">
-          <AvatarCircle
-            username={me?.username}
-            avatarUrl={me?.avatar_url}
-            size={40}
-          />
+          <div className="w-9 h-9 rounded-full shrink-0 overflow-hidden flex items-center justify-center bg-[#8A2BE2]">
+            {me?.avatar_url ? (
+              <Image
+                src={`${process.env.NEXT_PUBLIC_API_URL}${me.avatar_url}`}
+                alt={me.username ?? ""}
+                width={36}
+                height={36}
+                className="w-full h-full object-cover"
+                unoptimized
+              />
+            ) : (
+              <span className="text-white text-[14px] font-bold select-none">
+                {(me?.username ?? "?").charAt(0).toUpperCase()}
+              </span>
+            )}
+          </div>
           <div className="min-w-0">
             <p className="text-[13.5px] font-bold text-[#2D0052] truncate">
               {me?.username ? `@${me.username}` : "…"}
@@ -693,11 +667,22 @@ export default function AppSidebar({
                 : "0 1px 2px rgba(45,0,82,0.06)",
             }}
           >
-            <AvatarCircle
-              username={me?.username}
-              avatarUrl={me?.avatar_url}
-              size={28}
-            />
+            <div className="w-8 h-8 rounded-full shrink-0 overflow-hidden flex items-center justify-center bg-[#8A2BE2]">
+              {me?.avatar_url ? (
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_API_URL}${me.avatar_url}`}
+                  alt={displayName}
+                  width={32}
+                  height={32}
+                  className="w-full h-full object-cover"
+                  unoptimized
+                />
+              ) : (
+                <span className="text-white text-[13px] font-bold select-none">
+                  {displayName.charAt(0).toUpperCase()}
+                </span>
+              )}
+            </div>
             <div className="min-w-0 flex-1 text-left">
               <p className="text-[12.5px] font-semibold text-[#2D0052] truncate leading-tight">
                 {displayName}

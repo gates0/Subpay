@@ -1,7 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { hubsApi } from "@/lib/api/Hubs";
 import { queryKeys } from "@/lib/queryKeys";
-import type { HubUpdate } from "@/types/hubs";
 import type { PaginationParams } from "@/types/shared";
 
 export function useBrowseHubs(params: PaginationParams = {}) {
@@ -34,12 +33,32 @@ export function useHubById(hubId: number) {
   });
 }
 
+// ─── Public hub data (visitor-facing hub page) ────────────────────────────────
+
+export function useHubStats(hubId: number) {
+  return useQuery({
+    queryKey: queryKeys.hubStats(hubId),
+    queryFn: () => hubsApi.getStats(hubId),
+    enabled: !!hubId,
+  });
+}
+
+// ─── Mutations ────────────────────────────────────────────────────────────────
+
 export function useUpdateOwnHub() {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (body: HubUpdate) => hubsApi.updateOwn(body),
+    mutationFn: hubsApi.updateOwn,
     onSuccess: (updated) => {
       qc.setQueryData(queryKeys.hubOwn, updated);
     },
+  });
+}
+
+export function useHubOverview(hubId: number) {
+  return useQuery({
+    queryKey: queryKeys.hubOverview(hubId),
+    queryFn: () => hubsApi.getHubOverview(hubId),
+    enabled: !!hubId,
   });
 }
