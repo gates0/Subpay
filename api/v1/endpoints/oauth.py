@@ -106,14 +106,12 @@ async def oauth_callback(
     # ── Issue our own JWT pair ────────────────────────────────────────────────
     tokens = create_token_pair(user.id)
 
-    # ── Redirect to frontend with tokens + onboarding flag ───────────────────
-    # The frontend reads these from the URL query params.
-    # If is_onboarded=false, the frontend must redirect to the onboarding screen.
+    # ── Redirect to frontend with tokens ─────────────────────────────────────
+    base_url = settings.FRONTEND_OAUTH_REDIRECT_URL if user.is_onboarded else settings.FRONTEND_VERIFY_REDIRECT_URL
     redirect_url = (
-        f"{settings.FRONTEND_OAUTH_REDIRECT_URL}"
+        f"{base_url}"
         f"?access_token={tokens['access_token']}"
         f"&refresh_token={tokens['refresh_token']}"
         f"&token_type=bearer"
-        f"&is_onboarded={str(user.is_onboarded).lower()}"
     )
     return RedirectResponse(redirect_url)
