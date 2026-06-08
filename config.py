@@ -24,12 +24,10 @@ class Settings(BaseSettings):
     # Google OAuth
     GOOGLE_CLIENT_ID: str
     GOOGLE_CLIENT_SECRET: str
-    GOOGLE_REDIRECT_URI: str
 
     # GitHub OAuth
     GITHUB_CLIENT_ID: str
     GITHUB_CLIENT_SECRET: str
-    GITHUB_REDIRECT_URI: str
 
     FRONTEND_OAUTH_REDIRECT_URL: str = "https://kreavly.com/oauth/callback"
     FRONTEND_VERIFY_REDIRECT_URL: str = "https://kreavly.com/onboarding"
