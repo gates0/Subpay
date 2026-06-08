@@ -106,12 +106,14 @@ async def oauth_callback(
     # ── Issue our own JWT pair ────────────────────────────────────────────────
     tokens = create_token_pair(user.id)
 
-    # ── Redirect to frontend with tokens ─────────────────────────────────────
-    base_url = settings.FRONTEND_OAUTH_REDIRECT_URL if user.is_onboarded else settings.FRONTEND_VERIFY_REDIRECT_URL
+    # ── Redirect to frontend OAuth callback page ──────────────────────────────
+    # The frontend /oauth/callback page is not protected by the auth guard.
+    # It saves the tokens then forwards the user to the correct destination.
+    next_page = "feed" if user.is_onboarded else "onboarding"
     redirect_url = (
-        f"{base_url}"
+        f"{settings.FRONTEND_OAUTH_REDIRECT_URL}"
         f"?access_token={tokens['access_token']}"
         f"&refresh_token={tokens['refresh_token']}"
-        f"&token_type=bearer"
+        f"&next={next_page}"
     )
     return RedirectResponse(redirect_url)
