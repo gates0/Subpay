@@ -32,7 +32,7 @@ class Settings(BaseSettings):
     GITHUB_REDIRECT_URI: str
 
     FRONTEND_OAUTH_REDIRECT_URL: str = "http://localhost:3002/feed"
-    FRONTEND_VERIFY_REDIRECT_URL: str = "http://localhost:3002/onboarding"
+    FRONTEND_VERIFY_REDIRECT_URL: str = "https://kreavly.com/onboarding"
 
     # ── Paystack ──────────────────────────────────────────────────────────────
     PAYSTACK_SECRET_KEY: str = ""
