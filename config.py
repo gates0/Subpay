@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
-    OAUTH_CALLBACK_BASE_URL: str = "http://localhost:8002"
+    OAUTH_CALLBACK_BASE_URL: str = "https://subpay.onrender.com"
     # APP_BASE_URL: str = "http://localhost:8002"
     APP_BASE_URL: str = "https://subpay.onrender.com"
 
@@ -31,7 +31,7 @@ class Settings(BaseSettings):
     GITHUB_CLIENT_SECRET: str
     GITHUB_REDIRECT_URI: str
 
-    FRONTEND_OAUTH_REDIRECT_URL: str = "http://localhost:3002/feed"
+    FRONTEND_OAUTH_REDIRECT_URL: str = "https://kreavly.com/feed"
     FRONTEND_VERIFY_REDIRECT_URL: str = "https://kreavly.com/onboarding"
 
     # ── Paystack ──────────────────────────────────────────────────────────────

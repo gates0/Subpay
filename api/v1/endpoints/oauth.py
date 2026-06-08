@@ -116,10 +116,4 @@ async def oauth_callback(
         f"&token_type=bearer"
         f"&is_onboarded={str(user.is_onboarded).lower()}"
     )
-    return {
-        "access_token": tokens["access_token"],
-        "refresh_token": tokens["refresh_token"],
-        "is_onboarded": user.is_onboarded,
-        "email": user.email,
-    }
-    # return RedirectResponse(redirect_url)
+    return RedirectResponse(redirect_url)
