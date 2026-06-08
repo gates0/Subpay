@@ -73,8 +73,13 @@ export function useResetPassword() {
 }
 
 export function useVerifyEmail() {
+  const qc = useQueryClient();
   return useMutation({
     mutationFn: (token: string) => authApi.verifyEmail(token),
+    onSuccess: (data) => {
+      tokenStorage.set(data.access_token, data.refresh_token);
+      qc.invalidateQueries({ queryKey: queryKeys.authMe });
+    },
   });
 }
 

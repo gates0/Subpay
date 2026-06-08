@@ -6,11 +6,13 @@ export const tokenStorage = {
   getAccess: (): string | null =>
     typeof window !== "undefined" ? localStorage.getItem("access_token") : null,
   getRefresh: (): string | null =>
-    typeof window !== "undefined" ? localStorage.getItem("refresh_token") : null,
+    typeof window !== "undefined"
+      ? localStorage.getItem("refresh_token")
+      : null,
   set: (access: string, refresh: string) => {
     localStorage.setItem("access_token", access);
     localStorage.setItem("refresh_token", refresh);
-    document.cookie = "hubora_session=1; path=/; SameSite=Lax";
+    document.cookie = `hubora_session=${access}; path=/; max-age=${60 * 60 * 24 * 7}; SameSite=Lax`;
   },
   clear: () => {
     localStorage.removeItem("access_token");
@@ -25,7 +27,7 @@ export class ApiError extends Error {
   constructor(
     public status: number,
     public detail: string,
-    public raw?: unknown
+    public raw?: unknown,
   ) {
     super(detail);
     this.name = "ApiError";
@@ -82,7 +84,10 @@ type FetchOptions = {
   _isRetry?: boolean; // internal — prevent infinite refresh loop
 };
 
-async function apiFetch<T>(path: string, options: FetchOptions = {}): Promise<T> {
+async function apiFetch<T>(
+  path: string,
+  options: FetchOptions = {},
+): Promise<T> {
   const {
     method = "GET",
     body,
@@ -107,8 +112,8 @@ async function apiFetch<T>(path: string, options: FetchOptions = {}): Promise<T>
     body: isFormData
       ? (body as FormData)
       : body !== undefined
-      ? JSON.stringify(body)
-      : undefined,
+        ? JSON.stringify(body)
+        : undefined,
   });
 
   // 204 No Content
@@ -138,7 +143,8 @@ async function apiFetch<T>(path: string, options: FetchOptions = {}): Promise<T>
 
   if (!res.ok) {
     const detail =
-      (data as { detail?: string })?.detail ?? `HTTP ${res.status}: ${res.statusText}`;
+      (data as { detail?: string })?.detail ??
+      `HTTP ${res.status}: ${res.statusText}`;
     throw new ApiError(res.status, detail, data);
   }
 
@@ -148,14 +154,16 @@ async function apiFetch<T>(path: string, options: FetchOptions = {}): Promise<T>
 // ─── HTTP Helpers ─────────────────────────────────────────────────────────────
 
 export const api = {
-  get: <T>(path: string, auth = true) => apiFetch<T>(path, { method: "GET", auth }),
+  get: <T>(path: string, auth = true) =>
+    apiFetch<T>(path, { method: "GET", auth }),
   post: <T>(path: string, body?: unknown, auth = true) =>
     apiFetch<T>(path, { method: "POST", body, auth }),
   put: <T>(path: string, body?: unknown, auth = true) =>
     apiFetch<T>(path, { method: "PUT", body, auth }),
   patch: <T>(path: string, body?: unknown, auth = true) =>
     apiFetch<T>(path, { method: "PATCH", body, auth }),
-  delete: <T>(path: string, auth = true) => apiFetch<T>(path, { method: "DELETE", auth }),
+  delete: <T>(path: string, auth = true) =>
+    apiFetch<T>(path, { method: "DELETE", auth }),
   postForm: <T>(path: string, body: FormData, auth = true) =>
     apiFetch<T>(path, { method: "POST", body, auth, isFormData: true }),
 };

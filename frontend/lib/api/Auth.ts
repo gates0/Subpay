@@ -5,10 +5,10 @@ import type { MessageResponse } from "@/types/shared";
 
 export const authApi = {
   register: (body: UserRegister) =>
-    api.post<UserResponse>("/api/v1/auth/register", body, false),
+    api.post<TokenResponse>("/api/v1/auth/register", body, false),
 
   verifyEmail: (token: string) =>
-    api.get<MessageResponse>(`/api/v1/auth/verify-email?token=${token}`, false),
+    api.get<TokenResponse>(`/api/v1/auth/verify-email?token=${token}`, false),
 
   resendVerification: (body: ResendVerificationRequest) =>
     api.post<MessageResponse>("/api/v1/auth/resend-verification", body, false),
