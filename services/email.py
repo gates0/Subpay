@@ -39,7 +39,7 @@ async def _send(to_email: str, subject: str, html: str) -> None:
 
 
 async def send_verification_email(to_email: str, token: str) -> None:
-    verify_url = f"{settings.APP_BASE_URL}/api/v1/auth/verify-email?token={token}"
+    verify_url = f"{settings.FRONTEND_BASE_URL}/verify-email?token={token}"
     html = f"""
     <h2>Verify your email address</h2>
     <p>Click the link below to verify your account. This link expires in 24 hours.</p>
