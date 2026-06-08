@@ -98,11 +98,11 @@ async def register(
 
 # ── Email Verification ────────────────────────────────────────────────────────
 
-@router.get("/verify-email")
+@router.get("/verify-email", response_model=TokenResponse)
 def verify_email(token: str = Query(...), db: Session = Depends(get_db)):
     """
     Verify a user's email address using the signed token sent via email.
-    Redirects to the frontend onboarding page on success.
+    Returns a JWT token pair so the frontend can log the user in immediately.
     """
     user_id = verify_signed_token(token, salt=EMAIL_VERIFY_SALT, max_age_seconds=EMAIL_VERIFY_MAX_AGE)
     if not user_id:
@@ -115,7 +115,12 @@ def verify_email(token: str = Query(...), db: Session = Depends(get_db)):
     if not user.is_verified:
         verify_user_email(db, user)
 
-    return RedirectResponse(url=settings.FRONTEND_VERIFY_REDIRECT_URL, status_code=status.HTTP_302_FOUND)
+    tokens = create_token_pair(user.id)
+    return TokenResponse(
+        access_token=tokens["access_token"],
+        refresh_token=tokens["refresh_token"],
+        is_onboarded=user.is_onboarded,
+    )
 
 
 @router.post("/resend-verification", response_model=MessageResponse)
