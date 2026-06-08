@@ -54,6 +54,18 @@ from services.email import send_password_reset_email, send_verification_email
 router = APIRouter(prefix="/auth", tags=["auth"])
 
 
+@router.get("/google")
+def google_login():
+    from fastapi.responses import RedirectResponse
+    return RedirectResponse("/api/v1/oauth/google")
+
+
+@router.get("/github")
+def github_login():
+    from fastapi.responses import RedirectResponse
+    return RedirectResponse("/api/v1/oauth/github")
+
+
 # ── Registration ──────────────────────────────────────────────────────────────
 
 @router.post("/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
