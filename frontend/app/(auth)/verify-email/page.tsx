@@ -27,7 +27,6 @@ function VerifyEmailPageInner() {
 
     verifyEmail.mutate(token, {
       onSuccess: (data) => {
-        document.cookie = `hubora_session=${data.access_token}; path=/; max-age=${60 * 15}; SameSite=Lax`;
         setStatus("success");
         setTimeout(
           () => router.push(data.is_onboarded ? "/feed" : "/onboarding"),

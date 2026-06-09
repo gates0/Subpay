@@ -20,7 +20,6 @@ const PUBLIC_PATHS = [
   "/auth",
   "/auth/callback",
   "/verify-email",
-  "/onboarding",
 ];
 
 // Routes that live inside the authenticated shell
