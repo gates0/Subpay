@@ -99,6 +99,7 @@ async def oauth_callback(
     tokens = create_token_pair(user.id)
 
     from config import settings
+    from fastapi.responses import HTMLResponse
     next_page = "feed" if user.is_onboarded else "onboarding"
     redirect_url = (
         f"{settings.FRONTEND_OAUTH_REDIRECT_URL}"
@@ -106,4 +107,9 @@ async def oauth_callback(
         f"&refresh_token={tokens['refresh_token']}"
         f"&next={next_page}"
     )
-    return RedirectResponse(redirect_url)
+    return HTMLResponse(f"""
+        <script>
+            console.log('OAuth redirect URL:', {repr(redirect_url)});
+            window.location.href = {repr(redirect_url)};
+        </script>
+    """)
