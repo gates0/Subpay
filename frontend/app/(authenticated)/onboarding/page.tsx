@@ -375,7 +375,7 @@ export default function OnboardingPage() {
               ) : `Continue as ${role}`}
             </Button>
             <p className="text-center font-body mt-4" style={{ fontSize: "11px", color: "#9CA3AF" }}>
-              This is a one-time setup. Your role choice is permanent.
+              This is a one-time setup.
             </p>
           </div>
         </form>
