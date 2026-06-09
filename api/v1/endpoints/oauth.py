@@ -1,14 +1,11 @@
 # → app/api/v1/oauth.py
 
-import secrets
-
 from fastapi import APIRouter, Depends, Query
 from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 
-from config import settings
 from core.exceptions import oauth_state_mismatch_exception, oauth_error_exception
-from core.security import create_token_pair
+from core.security import create_token_pair, create_signed_token, verify_signed_token
 from crud.user import get_or_create_oauth_user, update_last_login
 from dependencies import get_db
 from services.oauth import (
@@ -19,10 +16,8 @@ from services.oauth import (
 
 router = APIRouter(prefix="/oauth", tags=["oauth"])
 
-# ── In-memory state store ─────────────────────────────────────────────────────
-# Stores { state_token: provider } for CSRF validation.
-# In production with multiple workers, swap this for a short-TTL Redis key.
-_pending_states: dict[str, str] = {}
+_OAUTH_STATE_SALT = "oauth-state"
+_OAUTH_STATE_MAX_AGE = 60 * 10  # 10 minutes
 
 
 # ── STEP 1 — Redirect user to provider ───────────────────────────────────────
@@ -41,11 +36,8 @@ def oauth_login(provider: str):
     Example:
         window.location.href = "/api/v1/auth/google"
     """
-    state = secrets.token_urlsafe(32)           # random CSRF token
-    _pending_states[state] = provider           # store so callback can verify it
-
+    state = create_signed_token(provider, salt=_OAUTH_STATE_SALT)
     authorization_url = build_authorization_url(provider, state)
-    print(authorization_url)
     return RedirectResponse(authorization_url)
 
 
@@ -77,7 +69,7 @@ async def oauth_callback(
     """
 
     # ── CSRF check ────────────────────────────────────────────────────────────
-    expected_provider = _pending_states.pop(state, None)
+    expected_provider = verify_signed_token(state, salt=_OAUTH_STATE_SALT, max_age_seconds=_OAUTH_STATE_MAX_AGE)
     if not expected_provider or expected_provider != provider:
         raise oauth_state_mismatch_exception
 
@@ -106,12 +98,12 @@ async def oauth_callback(
     # ── Issue our own JWT pair ────────────────────────────────────────────────
     tokens = create_token_pair(user.id)
 
-    # ── Redirect to frontend with tokens ─────────────────────────────────────
-    base_url = settings.FRONTEND_OAUTH_REDIRECT_URL 
+    from config import settings
+    next_page = "feed" if user.is_onboarded else "onboarding"
     redirect_url = (
-        f"{base_url}"
+        f"{settings.FRONTEND_OAUTH_REDIRECT_URL}"
         f"?access_token={tokens['access_token']}"
         f"&refresh_token={tokens['refresh_token']}"
-        f"&token_type=bearer"
+        f"&next={next_page}"
     )
     return RedirectResponse(redirect_url)
