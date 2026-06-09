@@ -107,7 +107,7 @@ async def oauth_callback(
     tokens = create_token_pair(user.id)
 
     # ── Redirect to frontend with tokens ─────────────────────────────────────
-    base_url = settings.FRONTEND_OAUTH_REDIRECT_URL if user.is_onboarded else settings.FRONTEND_VERIFY_REDIRECT_URL
+    base_url = settings.FRONTEND_OAUTH_REDIRECT_URL 
     redirect_url = (
         f"{base_url}"
         f"?access_token={tokens['access_token']}"
