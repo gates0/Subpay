@@ -30,7 +30,7 @@ class Settings(BaseSettings):
     GITHUB_CLIENT_SECRET: str
 
     FRONTEND_BASE_URL: str = "https://kreavly.com"
-    FRONTEND_OAUTH_REDIRECT_URL: str = "https://kreavly.com/oauth/callback"
+    FRONTEND_OAUTH_REDIRECT_URL: str = "https://kreavly.com/callback"
     FRONTEND_VERIFY_REDIRECT_URL: str = "https://kreavly.com/onboarding"
 
     # ── Paystack ──────────────────────────────────────────────────────────────
