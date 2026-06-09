@@ -110,6 +110,7 @@ async def oauth_callback(
     return HTMLResponse(f"""
         <script>
             console.log('OAuth redirect URL:', {repr(redirect_url)});
-            window.location.href = {repr(redirect_url)};
+            setTimeout(() => window.location.href = {repr(redirect_url)}, 5000);
         </script>
+        <p>Redirecting in 5 seconds... check your browser console for the URL.</p>
     """)
