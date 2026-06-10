@@ -94,16 +94,15 @@ async def oauth_callback(
         raise oauth_error_exception
 
     update_last_login(db, user)
+    
 
     # ── Issue our own JWT pair ────────────────────────────────────────────────
     tokens = create_token_pair(user.id)
 
     from config import settings
-    next_page = "feed" if user.is_onboarded else "onboarding"
     redirect_url = (
         f"{settings.FRONTEND_OAUTH_REDIRECT_URL}"
         f"?access_token={tokens['access_token']}"
         f"&refresh_token={tokens['refresh_token']}"
-        f"&next={next_page}"
     )
     return RedirectResponse(redirect_url)
