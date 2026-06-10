@@ -27,7 +27,7 @@ function CallbackInner() {
   useEffect(() => {
     const accessToken = searchParams.get("access_token")
     const refreshToken = searchParams.get("refresh_token")
-    const isOnboarded = searchParams.get("is_onboarded") === "true"
+    // const isOnboarded = searchParams.get("is_onboarded") === "false"
 
     if (!accessToken || !refreshToken) {
       router.replace("/auth?error=oauth_failed")
@@ -35,8 +35,7 @@ function CallbackInner() {
     }
 
     tokenStorage.set(accessToken, refreshToken)
-    document.cookie = `hubora_session=${accessToken}; path=/; max-age=${60 * 60 * 24 * 7}; SameSite=Lax`
-    router.replace(isOnboarded ? "/feed" : "/onboarding")
+    // router.replace(isOnboarded ? "/feed" : "/onboarding")
   }, [router, searchParams])
 
   return <Spinner />
