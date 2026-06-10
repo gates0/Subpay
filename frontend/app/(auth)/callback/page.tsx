@@ -3,6 +3,7 @@
 import { Suspense, useEffect } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { tokenStorage } from "@/lib/apiClient"
+import { onboardingApi } from "@/lib/api/Onboarding"
 
 function Spinner() {
   return (
@@ -27,7 +28,6 @@ function CallbackInner() {
   useEffect(() => {
     const accessToken = searchParams.get("access_token")
     const refreshToken = searchParams.get("refresh_token")
-    const isOnboarded = searchParams.get("is_onboarded") === "false"
 
     if (!accessToken || !refreshToken) {
       router.replace("/auth?error=oauth_failed")
@@ -35,7 +35,16 @@ function CallbackInner() {
     }
 
     tokenStorage.set(accessToken, refreshToken)
-    router.replace(isOnboarded ? "/feed" : "/onboarding")
+
+    onboardingApi.status()
+      .then(status => {
+        router.replace(status.is_onboarded ? "/feed" : "/onboarding")
+      })
+      .catch(() => {
+        // fallback to URL param if status check fails
+        const isOnboarded = searchParams.get("is_onboarded")?.toLowerCase() === "true"
+        router.replace(isOnboarded ? "/feed" : "/onboarding")
+      })
   }, [router, searchParams])
 
   return <Spinner />
