@@ -5,6 +5,8 @@ import { useRouter, useSearchParams } from "next/navigation"
 import { tokenStorage } from "@/lib/apiClient"
 import { onboardingApi } from "@/lib/api/Onboarding"
 
+const BASE_URL = "https://subpay.onrender.com"
+
 function Spinner() {
   return (
     <div className="min-h-screen flex items-center justify-center" style={{ background: "#F5F3FF" }}>
@@ -26,24 +28,30 @@ function CallbackInner() {
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    const accessToken = searchParams.get("access_token")
-    const refreshToken = searchParams.get("refresh_token")
+    const code = searchParams.get("code")
 
-    if (!accessToken || !refreshToken) {
+    // Scrub the code from the address bar immediately
+    window.history.replaceState(null, "", "/callback")
+
+    if (!code) {
       router.replace("/auth?error=oauth_failed")
       return
     }
 
-    tokenStorage.set(accessToken, refreshToken)
-
-    onboardingApi.status()
-      .then(status => {
+    fetch(`${BASE_URL}/api/v1/auth/exchange-code?code=${code}`, {
+      method: "POST",
+    })
+      .then(async (res) => {
+        if (!res.ok) throw new Error("exchange_failed")
+        const data = await res.json()
+        tokenStorage.set(data.access_token, data.refresh_token)
+        return onboardingApi.status()
+      })
+      .then((status) => {
         router.replace(status.is_onboarded ? "/feed" : "/onboarding")
       })
       .catch(() => {
-        // fallback to URL param if status check fails
-        const isOnboarded = searchParams.get("is_onboarded")?.toLowerCase() === "true"
-        router.replace(isOnboarded ? "/feed" : "/onboarding")
+        router.replace("/auth?error=oauth_failed")
       })
   }, [router, searchParams])
 
