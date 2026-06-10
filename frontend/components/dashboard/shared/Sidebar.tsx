@@ -318,7 +318,7 @@ function NavItem({
         "flex items-center gap-2.5 px-2.5 hover:cursor-pointer py-2.5 rounded-[10px] text-[13.5px] font-medium w-full text-left transition-all duration-150 relative",
         isActive
           ? "bg-[#F3E8FF] text-[#8A2BE2] font-semibold"
-          : "text-[#6B4F8A] hover:bg-[#F5EFFF] hover:text-[#8A2BE2]",
+          : "text-[#6B4F8A] hover:bg-[#F5EFFF] hover:text-[#8A2BE2] active:bg-[#F5EFFF] active:text-[#8A2BE2]",
       )}
     >
       {isActive && (
@@ -361,7 +361,7 @@ function CreatorHubDropdown({
           "flex items-center gap-2.5 px-2.5 py-2.5 hover:cursor-pointer rounded-[10px] text-[13.5px] font-medium w-full text-left transition-all duration-150 relative",
           isCreatorActive
             ? "bg-[#F3E8FF] text-[#8A2BE2] font-semibold"
-            : "text-[#6B4F8A] hover:bg-[#F5EFFF] hover:text-[#8A2BE2]",
+            : "text-[#6B4F8A] hover:bg-[#F5EFFF] hover:text-[#8A2BE2] active:bg-[#F5EFFF] active:text-[#8A2BE2]",
         )}
       >
         {isCreatorActive && (
@@ -403,7 +403,7 @@ function CreatorHubDropdown({
                   "flex items-center gap-2.5 px-2.5 py-2 hover:cursor-pointer rounded-[9px] text-[13px] font-medium w-full text-left transition-all duration-150",
                   isActive
                     ? "bg-[#F3E8FF] text-[#8A2BE2] font-semibold"
-                    : "text-[#6B4F8A] hover:bg-[#F5EFFF] hover:text-[#8A2BE2]",
+                    : "text-[#6B4F8A] hover:bg-[#F5EFFF] hover:text-[#8A2BE2] active:bg-[#F5EFFF] active:text-[#8A2BE2]",
                 )}
               >
                 <span
