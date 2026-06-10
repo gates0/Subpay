@@ -87,7 +87,6 @@ async def oauth_callback(
         oauth_id=user_info["provider_id"],
         email=user_info["email"],
         full_name=user_info.get("full_name"),
-        avatar_url=user_info.get("avatar_url"),
     )
 
     if not user.is_active:

@@ -50,7 +50,7 @@ def create_user(db: Session, data: UserRegister) -> User:
     user = User(
         email=data.email,
         hashed_password=hash_password(data.password),
-        full_name=data.full_name,
+        full_name=data.full_name.title() if data.full_name else None,
         username=None,
         role=None,
         is_onboarded=False,
@@ -96,7 +96,7 @@ def get_or_create_oauth_user(
         if not user.avatar_url and avatar_url:
             user.avatar_url = avatar_url
         if not user.full_name and full_name:
-            user.full_name = full_name
+            user.full_name = full_name.title()
         db.commit()
         db.refresh(user)
         return user, False
@@ -111,7 +111,7 @@ def get_or_create_oauth_user(
         oauth_provider=provider,
         oauth_id=oauth_id,
         is_verified=True,   # OAuth provider already verified the email
-        full_name=full_name,
+        full_name=full_name.title() if full_name else None,
         avatar_url=avatar_url,
         role=None,
         is_onboarded=False,
@@ -189,6 +189,8 @@ def reset_password(db: Session, user: User, new_password: str) -> None:
 
 def update_user_profile(db: Session, user: User, data: UserUpdateProfile) -> User:
     update_data = data.model_dump(exclude_unset=True)
+    if "full_name" in update_data and update_data["full_name"]:
+        update_data["full_name"] = update_data["full_name"].title()
     for field, value in update_data.items():
         setattr(user, field, value)
     db.commit()
