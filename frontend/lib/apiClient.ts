@@ -2,21 +2,30 @@ const BASE_URL = "https://subpay.onrender.com";
 
 // ─── Token Storage ────────────────────────────────────────────────────────────
 
+const INVALID_TOKEN_VALUES = new Set(["", "null", "undefined"]);
+
 export const tokenStorage = {
-  getAccess: (): string | null =>
-    typeof window !== "undefined" ? localStorage.getItem("access_token") : null,
-  getRefresh: (): string | null =>
-    typeof window !== "undefined"
-      ? localStorage.getItem("refresh_token")
-      : null,
-  set: (access: string, refresh: string) => {
+  getAccess: (): string | null => {
+    if (typeof window === "undefined") return null;
+    const t = localStorage.getItem("access_token");
+    return t && !INVALID_TOKEN_VALUES.has(t) ? t : null;
+  },
+  getRefresh: (): string | null => {
+    if (typeof window === "undefined") return null;
+    const t = localStorage.getItem("refresh_token");
+    return t && !INVALID_TOKEN_VALUES.has(t) ? t : null;
+  },
+  set: (access: string, refresh?: string | null) => {
     localStorage.setItem("access_token", access);
-    localStorage.setItem("refresh_token", refresh);
+    if (refresh && !INVALID_TOKEN_VALUES.has(refresh)) {
+      localStorage.setItem("refresh_token", refresh);
+    }
     document.cookie = `hubora_session=${access}; path=/; max-age=${60 * 60 * 24 * 7}; SameSite=Lax`;
   },
   clear: () => {
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
+    localStorage.removeItem("hubora_me");
     document.cookie = "hubora_session=; path=/; max-age=0; SameSite=Lax";
   },
 };
@@ -46,22 +55,31 @@ async function tryRefreshToken(): Promise<string | null> {
   if (isRefreshing) return refreshPromise;
 
   isRefreshing = true;
-  refreshPromise = fetch(`${BASE_URL}/api/v1/auth/refresh`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ refresh_token: refresh }),
-  })
-    .then(async (res) => {
-      if (!res.ok) return null;
-      const data = await res.json();
-      tokenStorage.set(data.access_token, data.refresh_token ?? refresh);
-      return data.access_token as string;
-    })
-    .catch(() => null)
-    .finally(() => {
-      isRefreshing = false;
-      refreshPromise = null;
-    });
+  refreshPromise = (async () => {
+    for (let attempt = 0; attempt < 2; attempt++) {
+      try {
+        const res = await fetch(`${BASE_URL}/api/v1/auth/refresh`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ refresh_token: refresh }),
+        });
+        if (res.ok) {
+          const data = await res.json();
+          tokenStorage.set(data.access_token, data.refresh_token ?? refresh);
+          return data.access_token as string;
+        }
+        // 4xx means the token is genuinely invalid — no point retrying
+        if (res.status < 500) return null;
+      } catch {
+        // network error — fall through to retry
+      }
+      if (attempt === 0) await new Promise(r => setTimeout(r, 1500));
+    }
+    return null;
+  })().finally(() => {
+    isRefreshing = false;
+    refreshPromise = null;
+  });
 
   return refreshPromise;
 }

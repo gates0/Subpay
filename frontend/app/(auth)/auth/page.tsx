@@ -579,8 +579,6 @@ function LoginForm({
 
     try {
       const tokens = await login.mutateAsync({ email, password });
-      const maxAge = 60 * 15;
-      document.cookie = `hubora_session=${tokens.access_token}; path=/; max-age=${maxAge}; SameSite=Lax`;
       onSuccess(tokens.is_onboarded);
     } catch (err) {
       setError(

@@ -1,11 +1,13 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { notificationsApi } from "@/lib/api/Notifications";
+import { tokenStorage } from "@/lib/apiClient";
 import { queryKeys } from "@/lib/queryKeys";
 
 export function useNotifications() {
   return useQuery({
     queryKey: queryKeys.notifications,
     queryFn: notificationsApi.list,
+    enabled: !!tokenStorage.getAccess(),
   });
 }
 
@@ -13,7 +15,7 @@ export function useUnreadCount() {
   return useQuery({
     queryKey: queryKeys.notificationsUnreadCount,
     queryFn: notificationsApi.unreadCount,
-    // Poll every 30s to keep the bell badge fresh
+    enabled: !!tokenStorage.getAccess(),
     refetchInterval: 1000 * 30,
   });
 }

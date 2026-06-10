@@ -12,12 +12,25 @@ import type {
 
 // ─── Queries ──────────────────────────────────────────────────────────────────
 
+const ME_CACHE_KEY = "hubora_me"
+
 /** Currently authenticated user's profile (via /auth/me — accessible pre-onboarding) */
 export function useAuthMe() {
   return useQuery({
     queryKey: queryKeys.authMe,
-    queryFn: authApi.me,
+    queryFn: async () => {
+      const data = await authApi.me()
+      localStorage.setItem(ME_CACHE_KEY, JSON.stringify(data))
+      return data
+    },
+    initialData: () => {
+      if (typeof window === "undefined") return undefined
+      const cached = localStorage.getItem(ME_CACHE_KEY)
+      return cached ? JSON.parse(cached) : undefined
+    },
+    initialDataUpdatedAt: 0,
     enabled: !!tokenStorage.getAccess(),
+    staleTime: 1000 * 30,
   });
 }
 
