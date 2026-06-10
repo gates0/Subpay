@@ -27,7 +27,7 @@ function CallbackInner() {
   useEffect(() => {
     const accessToken = searchParams.get("access_token")
     const refreshToken = searchParams.get("refresh_token")
-    // const isOnboarded = searchParams.get("is_onboarded") === "false"
+    const isOnboarded = searchParams.get("is_onboarded") === "false"
 
     if (!accessToken || !refreshToken) {
       router.replace("/auth?error=oauth_failed")
@@ -35,7 +35,7 @@ function CallbackInner() {
     }
 
     tokenStorage.set(accessToken, refreshToken)
-    // router.replace(isOnboarded ? "/feed" : "/onboarding")
+    router.replace(isOnboarded ? "/feed" : "/onboarding")
   }, [router, searchParams])
 
   return <Spinner />
