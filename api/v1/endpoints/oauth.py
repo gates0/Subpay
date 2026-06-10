@@ -5,7 +5,7 @@ from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 
 from core.exceptions import oauth_state_mismatch_exception, oauth_error_exception
-from core.security import create_token_pair, create_signed_token, verify_signed_token
+from core.security import create_signed_token, verify_signed_token, OAUTH_CODE_SALT
 from crud.user import get_or_create_oauth_user, update_last_login
 from dependencies import get_db
 from services.oauth import (
@@ -95,13 +95,7 @@ async def oauth_callback(
     update_last_login(db, user)
     
 
-    # ── Issue our own JWT pair ────────────────────────────────────────────────
-    tokens = create_token_pair(user.id)
-
     from config import settings
-    redirect_url = (
-        f"{settings.FRONTEND_OAUTH_REDIRECT_URL}"
-        f"?access_token={tokens['access_token']}"
-        f"&refresh_token={tokens['refresh_token']}"
-    )
+    code = create_signed_token(str(user.id), salt=OAUTH_CODE_SALT)
+    redirect_url = f"{settings.FRONTEND_OAUTH_REDIRECT_URL}?code={code}"
     return RedirectResponse(redirect_url)

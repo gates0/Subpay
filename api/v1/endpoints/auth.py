@@ -18,6 +18,8 @@ from core.exceptions import (
 from core.security import (
     EMAIL_VERIFY_MAX_AGE,
     EMAIL_VERIFY_SALT,
+    OAUTH_CODE_MAX_AGE,
+    OAUTH_CODE_SALT,
     PASSWORD_RESET_MAX_AGE,
     PASSWORD_RESET_SALT,
     create_token_pair,
@@ -233,6 +235,30 @@ def do_reset_password(data: PasswordResetConfirm, db: Session = Depends(get_db))
 
     reset_password(db, user, data.new_password)
     return {"message": "Password reset successfully"}
+
+
+# ── OAuth Code Exchange ───────────────────────────────────────────────────────
+
+@router.post("/exchange-code", response_model=TokenResponse)
+def exchange_oauth_code(code: str = Query(...), db: Session = Depends(get_db)):
+    """
+    Exchange a short-lived OAuth code for a JWT token pair.
+    The code is issued by the OAuth callback and expires in 60 seconds.
+    """
+    user_id = verify_signed_token(code, salt=OAUTH_CODE_SALT, max_age_seconds=OAUTH_CODE_MAX_AGE)
+    if not user_id:
+        raise invalid_token_exception
+
+    user = get_user_by_id(db, uuid.UUID(user_id))
+    if not user or not user.is_active:
+        raise invalid_token_exception
+
+    tokens = create_token_pair(user.id)
+    return TokenResponse(
+        access_token=tokens["access_token"],
+        refresh_token=tokens["refresh_token"],
+        is_onboarded=user.is_onboarded,
+    )
 
 
 # ── Current User ──────────────────────────────────────────────────────────────

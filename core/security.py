@@ -91,6 +91,8 @@ def verify_signed_token(token: str, salt: str, max_age_seconds: int) -> str | No
 # Salts namespace the token purpose so a verification token can't be used as a reset token
 EMAIL_VERIFY_SALT = "email-verification"
 PASSWORD_RESET_SALT = "password-reset"
+OAUTH_CODE_SALT = "oauth-code"
 
 EMAIL_VERIFY_MAX_AGE = 60 * 60 * 24        # 24 hours
 PASSWORD_RESET_MAX_AGE = 60 * 60           # 1 hour
+OAUTH_CODE_MAX_AGE = 60                    # 60 seconds
