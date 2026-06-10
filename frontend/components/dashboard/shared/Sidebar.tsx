@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { useAuthMe } from "@/hooks/useAuth"
+import { useAuthMe } from "@/hooks/useAuth";
 import { useUnreadCount } from "@/hooks/useNotifications";
 import { useLogout } from "@/hooks/useAuth";
 import { useQueryClient } from "@tanstack/react-query";
@@ -257,7 +257,7 @@ const NAV_DISCOVER = [
   { key: "explore", label: "Explore", icon: Icon.explore, href: "/explore" },
   {
     key: "communities",
-    label: "hubs",
+    label: "Hubs",
     icon: Icon.community,
     href: "/communities",
   },
@@ -277,8 +277,13 @@ const NAV_CREATOR = [
     icon: Icon.grid,
     href: "/creator_dashboard",
   },
-  { key: "hub", label: "My Hub", icon: Icon.hub, href: "/creator_hub" },
-  { key: "content", label: "Content", icon: Icon.content, href: "/creator_content" },
+  { key: "Hub", label: "My Hub", icon: Icon.hub, href: "/creator_hub" },
+  {
+    key: "content",
+    label: "Content",
+    icon: Icon.content,
+    href: "/creator_content",
+  },
   { key: "plans", label: "Plans", icon: Icon.plans, href: "/plans" },
   {
     key: "subscribers",
@@ -310,7 +315,7 @@ function NavItem({
     <button
       onClick={() => onNavigate(item.href)}
       className={cn(
-        "flex items-center gap-2.5 px-2.5 py-2.5 rounded-[10px] text-[13.5px] font-medium w-full text-left transition-all duration-150 relative",
+        "flex items-center gap-2.5 px-2.5 hover:cursor-pointer py-2.5 rounded-[10px] text-[13.5px] font-medium w-full text-left transition-all duration-150 relative",
         isActive
           ? "bg-[#F3E8FF] text-[#8A2BE2] font-semibold"
           : "text-[#6B4F8A] hover:bg-[#F5EFFF] hover:text-[#8A2BE2]",
@@ -353,7 +358,7 @@ function CreatorHubDropdown({
       <button
         onClick={() => setOpen((o) => !o)}
         className={cn(
-          "flex items-center gap-2.5 px-2.5 py-2.5 rounded-[10px] text-[13.5px] font-medium w-full text-left transition-all duration-150 relative",
+          "flex items-center gap-2.5 px-2.5 py-2.5 hover:cursor-pointer rounded-[10px] text-[13.5px] font-medium w-full text-left transition-all duration-150 relative",
           isCreatorActive
             ? "bg-[#F3E8FF] text-[#8A2BE2] font-semibold"
             : "text-[#6B4F8A] hover:bg-[#F5EFFF] hover:text-[#8A2BE2]",
@@ -395,7 +400,7 @@ function CreatorHubDropdown({
                 key={item.key}
                 onClick={() => onNavigate(item.href)}
                 className={cn(
-                  "flex items-center gap-2.5 px-2.5 py-2 rounded-[9px] text-[13px] font-medium w-full text-left transition-all duration-150",
+                  "flex items-center gap-2.5 px-2.5 py-2 hover:cursor-pointer rounded-[9px] text-[13px] font-medium w-full text-left transition-all duration-150",
                   isActive
                     ? "bg-[#F3E8FF] text-[#8A2BE2] font-semibold"
                     : "text-[#6B4F8A] hover:bg-[#F5EFFF] hover:text-[#8A2BE2]",
@@ -423,7 +428,7 @@ function CreatorHubDropdown({
 function ProfilePopover({ onClose }: { onClose: () => void }) {
   const router = useRouter();
   const ref = useRef<HTMLDivElement>(null);
-  const { data: me } = useAuthMe()
+  const { data: me } = useAuthMe();
   const { mutate: logout } = useLogout();
   const queryClient = useQueryClient();
 
@@ -533,7 +538,7 @@ export default function AppSidebar({
   const pathname = usePathname();
   const [profileOpen, setProfileOpen] = useState(false);
 
-  const { data: me } = useAuthMe()
+  const { data: me } = useAuthMe();
   const { data: unreadData } = useUnreadCount();
   const unreadCount = unreadData?.unread_count ?? 0;
 
