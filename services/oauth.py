@@ -59,9 +59,9 @@ def build_authorization_url(provider: str, state: str) -> str:
         "response_type": "code",
     }
 
-    # Google requires access_type=offline to get a refresh token (optional here)
     if provider == "google":
         params["access_type"] = "offline"
+        params["prompt"] = "select_account"
 
     query_string = "&".join(f"{k}={v}" for k, v in params.items())
     return f"{config['authorize_url']}?{query_string}"
