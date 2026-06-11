@@ -5,7 +5,6 @@ import { useRouter, usePathname } from "next/navigation";
 import { useAuthMe } from "@/hooks/useAuth";
 import { useUnreadCount } from "@/hooks/useNotifications";
 import { useLogout } from "@/hooks/useAuth";
-import { useQueryClient } from "@tanstack/react-query";
 import { tokenStorage } from "@/lib/apiClient";
 import Image from "next/image";
 
@@ -430,7 +429,6 @@ function ProfilePopover({ onClose }: { onClose: () => void }) {
   const ref = useRef<HTMLDivElement>(null);
   const { data: me } = useAuthMe();
   const { mutate: logout } = useLogout();
-  const queryClient = useQueryClient();
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -443,7 +441,6 @@ function ProfilePopover({ onClose }: { onClose: () => void }) {
   const handleLogout = () => {
     onClose?.();
     tokenStorage.clear();
-    queryClient.clear();
     logout();
     window.location.href = "/auth";
   };
