@@ -18,6 +18,7 @@ const SESSION_COOKIE = "hubora_session";
 // Routes that are always public (no auth needed)
 const PUBLIC_PATHS = [
   "/auth",
+  "/callback",
   "/auth/callback",
   "/verify-email",
 ];
