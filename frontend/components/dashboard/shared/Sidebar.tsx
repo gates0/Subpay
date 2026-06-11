@@ -444,9 +444,8 @@ function ProfilePopover({ onClose }: { onClose: () => void }) {
     onClose?.();
     tokenStorage.clear();
     queryClient.clear();
-    router.push("/auth");
-    router.refresh();
     logout();
+    window.location.href = "/auth";
   };
 
   return (
