@@ -1,6 +1,6 @@
 "use client"
 
-import { Suspense, useEffect } from "react"
+import { Suspense, useEffect, useRef } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { tokenStorage } from "@/lib/apiClient"
 import { onboardingApi } from "@/lib/api/Onboarding"
@@ -26,11 +26,13 @@ function Spinner() {
 function CallbackInner() {
   const router = useRouter()
   const searchParams = useSearchParams()
+  const hasRun = useRef(false)
 
   useEffect(() => {
-    const code = searchParams.get("code")
+    if (hasRun.current) return
+    hasRun.current = true
 
-    // Scrub the code from the address bar immediately
+    const code = searchParams.get("code")
     window.history.replaceState(null, "", "/callback")
 
     if (!code) {
